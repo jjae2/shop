@@ -11,23 +11,21 @@
  		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
  	</select> -->
  
-<!--  	<insert id="add" parameterType="NoticeDTO">
+  	<insert id="add" parameterType="NoticeDTO">
 	    INSERT INTO NOTICES (NOTICE_NUM, ID, TITLE, CONTENTS, CD, MD, HIT)
 	    VALUES (notices_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
  	</insert>
  	
  	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
 		select * from notices where notice_num = #{notice_num}
- 	</select> -->
+ 	</select>
  	
  
  	<select id="list" parameterType="NoticeDTO" resultType="NoticeDTO">
- 		SELECT * FROM NOTICES
- 	
-<!--  		SELECT * FROM
+  		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
 		        (SELECT * FROM NOTICES WHERE 
-		        	NUM>0 
+		        	NOTICE_NUM>0 
 		        	and 
 		        	<choose>
 		        		<when test="kind=='col1'">
@@ -41,16 +39,16 @@
 		        		</otherwise>
 		        	</choose>	
 		        	LIKE '%'||#{search}||'%'
-		            ORDER BY NUM DESC
+		            ORDER BY NOTICE_NUM DESC
 		         ) B
 		     )
-		WHERE R between #{startRow} and #{lastRow}  -->
+		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
-<!--  	<select id="total" resultType="Long" parameterType="Pager">
- 		SELECT COUNT(NUM) FROM NOTICES
+	<select id="total" resultType="Long" parameterType="Pager">
+ 		SELECT COUNT(NOTICE_NUM) FROM NOTICES
  		WHERE
- 			NUM>0 
+ 			NOTICE_NUM>0 
 		    and 	       	
 		     <choose>
 		     	<when test="kind=='col1'">
@@ -65,14 +63,14 @@
 		     </choose>	
         	LIKE '%'||#{search}||'%' 
  	</select>
- 	
+		
  	<update id="update" parameterType="NoticeDTO">
  		update notices set title=#{title}, contents=#{contents} where notice_num=#{notice_num}
  	</update>
  	
  	<delete id="delete" parameterType="NoticeDTO">
  		delete notices where notice_num=#{notice_num}
- 	</delete> -->
+ 	</delete>
 
 
 </mapper>
