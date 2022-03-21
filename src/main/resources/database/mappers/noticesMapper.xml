@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.one.s1.board.notices.NoticeDAO">
+
+<!--  	<select id="seqNum" resultType="Long">
+ 		select max(num) from notice
+ 		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+ 	</select> -->
+ 
+<!--  	<insert id="add" parameterType="NoticeDTO">
+	    INSERT INTO NOTICES (NOTICE_NUM, ID, TITLE, CONTENTS, CD, MD, HIT)
+	    VALUES (notices_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
+ 	</insert>
+ 	
+ 	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
+		select * from notices where notice_num = #{notice_num}
+ 	</select> -->
+ 	
+ 
+ 	<select id="list" parameterType="NoticeDTO" resultType="NoticeDTO">
+ 		SELECT * FROM NOTICES
+ 	
+<!--  		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM NOTICES WHERE 
+		        	NUM>0 
+		        	and 
+		        	<choose>
+		        		<when test="kind=='col1'">
+		        			TITLE
+		        		</when>
+		        		<when test="kind =='col2'">
+		        			CONTENTS
+		        		</when>
+		        		<otherwise>
+		        			ID
+		        		</otherwise>
+		        	</choose>	
+		        	LIKE '%'||#{search}||'%'
+		            ORDER BY NUM DESC
+		         ) B
+		     )
+		WHERE R between #{startRow} and #{lastRow}  -->
+ 	</select>
+ 	
+<!--  	<select id="total" resultType="Long" parameterType="Pager">
+ 		SELECT COUNT(NUM) FROM NOTICES
+ 		WHERE
+ 			NUM>0 
+		    and 	       	
+		     <choose>
+		     	<when test="kind=='col1'">
+		     		TITLE
+		     	</when>
+		     	<when test="kind =='col2'">
+		     		CONTENTS
+		     	</when>
+		     	<otherwise>
+		     		ID
+		     	</otherwise>
+		     </choose>	
+        	LIKE '%'||#{search}||'%' 
+ 	</select>
+ 	
+ 	<update id="update" parameterType="NoticeDTO">
+ 		update notices set title=#{title}, contents=#{contents} where notice_num=#{notice_num}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="NoticeDTO">
+ 		delete notices where notice_num=#{notice_num}
+ 	</delete> -->
+
+
+</mapper>
+

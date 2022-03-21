@@ -17,5 +17,9 @@
    		<typeAlias type="com.iu.s1.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
    		<typeAlias type="com.iu.s1.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
    		<typeAlias type="java.util.List" alias="List"/> -->
+   		<typeAlias type="java.util.List" alias="List"/>
+   		<typeAlias type="java.lang.Long" alias="Long"/>
+   		<typeAlias type="com.one.s1.board.BoardDTO" alias="BoardDTO"/>
+   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/> 		
     </typeAliases>
   </configuration>
