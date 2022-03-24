@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	footer{
+		color: 35c5f0;
+	}
+</style>
 </head>
 <body>
 
