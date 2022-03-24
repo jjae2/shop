@@ -31,21 +31,21 @@
 		
 			<table class="table-basic">
 				<tr>
-					<td>Num</td><td>Title</td><td>Writer</td><td>Date</td><td>Hit</td>
+					<td>Notice_num</td><td>Title</td><td>Id</td><td>Cd</td><td>Hit</td>
 				</tr>
 				<c:forEach items="${list}" var="dto">
 				<tr>
-					<td>${dto.num}</td>
+					<td>${dto.notice_num}</td>
 					<td>
-						<a href="./detail?num=${dto.num}">
+						<a href="./detail?notice_num=${dto.notice_num}">
 							<c:catch var="message">
 								<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
 							</c:catch>
 							${dto.title}
 						</a>
 					</td>
-					<td>${dto.writer}</td>
-					<td>${dto.regDate}</td>
+					<td>${dto.id}</td>
+					<td>${dto.cd}</td>
 					<td>${dto.hit}</td>
 				</tr>
 				
