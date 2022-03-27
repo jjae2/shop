@@ -21,6 +21,6 @@
 		<h3>EMAIL : ${dto.email}</h3>
 	</div>
 	<a href="./update?id=${dto.id}">Update</a>
-
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

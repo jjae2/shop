@@ -58,7 +58,9 @@
 			<button type="button" id="btn">JOIN</button>
 		</fieldset>
 	</form>
-
+	
 	<script type="text/javascript" src="../resources/js/join.js"></script>
+	<c:import url="../template/footer.jsp"></c:import>
+
 </body>
 </html>

@@ -40,6 +40,6 @@
 		</div>
 		<button type="submit">제출</button>
 	</form>
-
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

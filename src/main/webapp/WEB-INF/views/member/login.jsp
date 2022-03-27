@@ -29,5 +29,8 @@
 		<fieldset>
 			<button type="submit">Login</button>
 		</fieldset>
+		
+	</form>
+		<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

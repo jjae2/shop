@@ -54,7 +54,8 @@
 			<button id="btn">Join</button>
 		</div>
 	</div>
-
+	
 	<script src="../resources/js/joinCheck.js"></script>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
