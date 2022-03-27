@@ -13,7 +13,5 @@ public class NoticeDTO extends BoardDTO {
 	public void setNotice_num(Long notice_num) {
 		this.notice_num = notice_num;
 	}
-	
-	
-	
+
 }

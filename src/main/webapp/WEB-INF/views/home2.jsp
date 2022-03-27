@@ -14,15 +14,14 @@
 	<script type="text/javascript"></script>
 </head>
 <body>
+	
 	<c:import url="./template/header3.jsp"></c:import>
 <h1>
-	Hello world!  
+	Hi world!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
 <h1>가나다라마바사아자차카타파함</h1>
-
 <c:import url="./template/footer2.jsp"></c:import>
-
 </body>
 </html>
