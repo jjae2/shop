@@ -4,28 +4,28 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.one.s1.board.notices.NoticeDAO">
+<mapper namespace="com.one.s1.board.qnas.QnaDAO">
 
 <!--  	<select id="seqNum" resultType="Long">
- 		select max(num) from notice
- 		SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
+ 		select max(num) from qna
+ 		SELECT qna_SEQ.NEXTVAL FROM DUAL
  	</select> -->
  
-  	<insert id="add" parameterType="NoticeDTO">
-	    INSERT INTO NOTICES (NUM, ID, TITLE, CONTENTS, CD, MD, HIT)
-	    VALUES (notices_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
+  	<insert id="add" parameterType="qnaDTO">
+	    INSERT INTO qnas (NUM, PRODUCT_NUM, ID, QNA_TITLE, QNA_CONTENTS, QNA_CD, QNA_REPLY, QNA_SECRET, HIT)
+	    VALUES (qnas_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
  	</insert>
  	
- 	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notices where num = #{num}
+ 	<select id="detail" parameterType="qnaDTO" resultType="qnaDTO">
+		select * from qnas where qna_num = #{qna_num}
  	</select>
  	
  
- 	<select id="list" parameterType="NoticeDTO" resultType="NoticeDTO">
+ 	<select id="list" parameterType="qnaDTO" resultType="qnaDTO">
   		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
-		        (SELECT * FROM NOTICES WHERE 
-		        	NUM>0 
+		        (SELECT * FROM qnaS WHERE 
+		        	qna_NUM>0 
 		        	and 
 		        	<choose>
 		        		<when test="kind=='col1'">
@@ -39,16 +39,16 @@
 		        		</otherwise>
 		        	</choose>	
 		        	LIKE '%'||#{search}||'%'
-		            ORDER BY NUM DESC
+		            ORDER BY qna_NUM DESC
 		         ) B
 		     )
 		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
 	<select id="total" resultType="Long" parameterType="Pager">
- 		SELECT COUNT(NUM) FROM NOTICES
+ 		SELECT COUNT(qna_NUM) FROM qnaS
  		WHERE
- 			NUM>0 
+ 			qna_NUM>0 
 		    and 	       	
 		     <choose>
 		     	<when test="kind=='col1'">
@@ -64,12 +64,12 @@
         	LIKE '%'||#{search}||'%' 
  	</select>
 		
- 	<update id="update" parameterType="NoticeDTO">
- 		update notices set title=#{title}, contents=#{contents} where num=#{num}
+ 	<update id="update" parameterType="qnaDTO">
+ 		update qnas set title=#{title}, contents=#{contents} where qna_num=#{qna_num}
  	</update>
  	
- 	<delete id="delete" parameterType="NoticeDTO">
- 		delete notices where num=#{num}
+ 	<delete id="delete" parameterType="qnaDTO">
+ 		delete qnas where qna_num=#{qna_num}
  	</delete>
 
 

@@ -21,6 +21,7 @@
    		<typeAlias type="java.util.List" alias="List"/>
    		<typeAlias type="java.lang.Long" alias="Long"/>
    		<typeAlias type="com.one.s1.board.BoardDTO" alias="BoardDTO"/>
-   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/> 		
+   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/>
+   		<!-- <typeAlias type="com.one.s1.board.qnas.QnaDTO" alias="QnaDTO"/>  -->		
     </typeAliases>
   </configuration>

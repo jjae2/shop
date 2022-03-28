@@ -35,9 +35,9 @@
 				</tr>
 				<c:forEach items="${list}" var="dto">
 				<tr>
-					<td>${dto.notice_num}</td>
+					<td>${dto.num}</td>
 					<td>
-						<a href="./detail?notice_num=${dto.notice_num}">
+						<a href="./detail?num=${dto.num}">
 							<c:catch var="message">
 								<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
 							</c:catch>
