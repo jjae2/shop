@@ -17,6 +17,7 @@
    		<typeAlias type="com.iu.s1.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
    		<typeAlias type="com.iu.s1.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
    		<typeAlias type="java.util.List" alias="List"/> -->
+   		<typeAlias type="com.one.s1.members.MemberDTO" alias="MemberDTO"/>
    		<typeAlias type="com.one.s1.util.Pager" alias="Pager"/>
    		<typeAlias type="java.util.List" alias="List"/>
    		<typeAlias type="java.lang.Long" alias="Long"/>

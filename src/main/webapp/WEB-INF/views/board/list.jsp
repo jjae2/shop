@@ -7,8 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/table.css" rel="styleSheet" />
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
 	<div class="table-container">
 		<h1>${board} List page</h1>
 		<!-- 검색 창-->
@@ -70,5 +72,6 @@
 			<a href="./add">ADD</a>
 		</c:if>
 	</div>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
