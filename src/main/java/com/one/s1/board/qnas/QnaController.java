@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.one.s1.board.BoardDTO;
-import com.one.s1.board.member.MemberDTO;
+import com.one.s1.members.MemberDTO;
 import com.one.s1.util.Pager;
 
 @Controller
