@@ -5,7 +5,6 @@ import com.one.s1.board.BoardDTO;
 public class QnaDTO extends BoardDTO {
 
 	private Long product_num;
-	private Long qna_contents;
 	private Long qna_buy;
 	private Long qna_reply;
 	private Long qna_secret;
@@ -18,12 +17,6 @@ public class QnaDTO extends BoardDTO {
 	}
 	public void setProduct_num(Long product_num) {
 		this.product_num = product_num;
-	}
-	public Long getQna_contents() {
-		return qna_contents;
-	}
-	public void setQna_contents(Long qna_contents) {
-		this.qna_contents = qna_contents;
 	}
 	public Long getQna_buy() {
 		return qna_buy;

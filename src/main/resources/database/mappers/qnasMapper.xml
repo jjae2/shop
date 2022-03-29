@@ -10,22 +10,33 @@
  		select max(num) from qna
  		SELECT qna_SEQ.NEXTVAL FROM DUAL
  	</select> -->
+
+  	<insert id="reply" parameterType="QnaDTO">
+ 		insert into qnas (NUM, PRODUCT_NUM, ID, TITLE, CONTENTS, QNA_TYPE, QNA_BUY, CD, QNA_REPLY, QNA_SECRET, QNA_REF, QNA_STEP, QNA_DEPTH )
+ 		values (QNAS_seq.nextval, 222, #{id}, #{title}, #{contents}, 2, 0, SYSDATE, 0, 0, #{qna_ref}, #{qna_step}, #{qna_depth})
+ 	</insert>
+
+ 	<update id="stepUpdate" parameterType="QnaDTO">
+ 		update qnas set qna_step=qna_step+1
+ 		where qna_ref=#{qna_ref} and qna_step>#{qna_step}
+ 	</update>
  
-  	<insert id="add" parameterType="qnaDTO">
-	    INSERT INTO qnas (NUM, PRODUCT_NUM, ID, QNA_TITLE, QNA_CONTENTS, QNA_CD, QNA_REPLY, QNA_SECRET, HIT)
-	    VALUES (qnas_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
+ 
+  	<insert id="add" parameterType="QnaDTO">
+	    INSERT INTO QNAS (NUM, PRODUCT_NUM, ID, TITLE, CONTENTS, QNA_TYPE, QNA_BUY, CD, QNA_REPLY, QNA_SECRET, QNA_REF, QNA_STEP, QNA_DEPTH )
+        VALUES (QNAS_seq.nextval, 222, #{id}, #{title}, #{contents}, 2, 0, SYSDATE, 0, 0, qnas_seq.currval, 0, 0)  
  	</insert>
  	
- 	<select id="detail" parameterType="qnaDTO" resultType="qnaDTO">
-		select * from qnas where qna_num = #{qna_num}
+ 	<select id="detail" parameterType="QnaDTO" resultType="QnaDTO">
+		select * from qnas where num = #{num}
  	</select>
  	
  
- 	<select id="list" parameterType="qnaDTO" resultType="qnaDTO">
+ 	<select id="list" parameterType="QnaDTO" resultType="QnaDTO">
   		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
-		        (SELECT * FROM qnaS WHERE 
-		        	qna_NUM>0 
+		        (SELECT * FROM qnas WHERE 
+		        	NUM>0 
 		        	and 
 		        	<choose>
 		        		<when test="kind=='col1'">
@@ -39,16 +50,16 @@
 		        		</otherwise>
 		        	</choose>	
 		        	LIKE '%'||#{search}||'%'
-		            ORDER BY qna_NUM DESC
+		            ORDER BY QNA_REF DESC, QNA_STEP ASC
 		         ) B
 		     )
 		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
 	<select id="total" resultType="Long" parameterType="Pager">
- 		SELECT COUNT(qna_NUM) FROM qnaS
+ 		SELECT COUNT(NUM) FROM qnas
  		WHERE
- 			qna_NUM>0 
+ 			NUM>0 
 		    and 	       	
 		     <choose>
 		     	<when test="kind=='col1'">
@@ -64,12 +75,12 @@
         	LIKE '%'||#{search}||'%' 
  	</select>
 		
- 	<update id="update" parameterType="qnaDTO">
- 		update qnas set title=#{title}, contents=#{contents} where qna_num=#{qna_num}
+ 	<update id="update" parameterType="QnaDTO">
+ 		update qnas set title=#{title}, contents=#{contents} where num=#{num}
  	</update>
  	
- 	<delete id="delete" parameterType="qnaDTO">
- 		delete qnas where qna_num=#{qna_num}
+ 	<delete id="delete" parameterType="QnaDTO">
+ 		delete qnas where num=#{num}
  	</delete>
 
 

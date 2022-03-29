@@ -39,7 +39,7 @@
 					<td>
 						<a href="./detail?num=${dto.num}">
 							<c:catch var="message">
-								<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+								<c:forEach begin="1" end="${dto.qna_depth}">┖></c:forEach><!-- &nbsp; -->
 							</c:catch>
 							${dto.title}
 						</a>

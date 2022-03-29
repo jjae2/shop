@@ -2,6 +2,8 @@ package com.one.s1.board.qnas;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.one.s1.board.BoardDTO;
+import com.one.s1.board.member.MemberDTO;
 import com.one.s1.util.Pager;
 
 @Controller
@@ -19,7 +22,7 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
-	
+	MemberDTO memberDTO;
 	@ModelAttribute("board")
 	public String board() {
 		return "qna";
@@ -29,6 +32,7 @@ public class QnaController {
 	@RequestMapping(value="reply", method=RequestMethod.POST)
 	public ModelAndView reply(QnaDTO qnaDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+
 		int result = qnaService.reply(qnaDTO);
 		mv.setViewName("redirect:./list");
 		
@@ -43,23 +47,23 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "update", method=RequestMethod.POST)
-	public ModelAndView update(QnaDTO qnasDTO)throws Exception{
+	public ModelAndView update(QnaDTO qnaDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.update(qnasDTO);
+		int result = qnaService.update(qnaDTO);
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
 	
 	@RequestMapping(value="update", method=RequestMethod.GET)
-	public String update(QnaDTO qnasDTO, Model model)throws Exception{
-		BoardDTO boardDTO = qnaService.detail(qnasDTO);
+	public String update(QnaDTO qnaDTO, Model model)throws Exception{
+		BoardDTO boardDTO = qnaService.detail(qnaDTO);
 		model.addAttribute("dto", boardDTO);
 		return "board/update";
 	}
 	
 	@RequestMapping(value = "delete", method=RequestMethod.GET)
-	public String delete(QnaDTO qnasDTO)throws Exception{
-		int result = qnaService.delete(qnasDTO);
+	public String delete(QnaDTO qnaDTO)throws Exception{
+		int result = qnaService.delete(qnaDTO);
 		return "redirect:./list";
 	}
 	
@@ -72,9 +76,10 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "add", method=RequestMethod.POST)
-	public ModelAndView add(QnaDTO qnasDTO)throws Exception{
+	public ModelAndView add(QnaDTO qnaDTO)throws Exception{
+		
 		ModelAndView mv = new ModelAndView();
-		int result = qnaService.add(qnasDTO);
+		int result = qnaService.add(qnaDTO);
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
