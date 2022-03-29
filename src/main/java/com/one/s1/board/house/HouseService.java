@@ -1,4 +1,4 @@
-package com.one.s1.board.notices;
+package com.one.s1.board.house;
 
 import java.util.List;
 
@@ -8,51 +8,44 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardService;
-import com.one.s1.board.house.HouseFileDTO;
 import com.one.s1.util.FileManager;
 import com.one.s1.util.Pager;
 
 @Service
-public class NoticeService implements BoardService {
-
-	
+public class HouseService implements BoardService {
 	@Autowired
-	private NoticeDAO noticeDAO;
+	private HouseDAO houseDAO;
 	@Autowired
 	private FileManager fileManager;
-
-
+	
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
-		
 		pager.makeRow();
-		
-		pager.makeNum(noticeDAO.total(pager));
-		
-		return noticeDAO.list(pager);
+		pager.makeNum(houseDAO.total(pager));
+		return houseDAO.list(pager);
 	}
 
 	@Override
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.detail(boardDTO);
+		return houseDAO.detail(boardDTO);
 	}
 
 	@Override
 	public int add(BoardDTO boardDTO,MultipartFile[] files) throws Exception {
-		int result= noticeDAO.add(boardDTO);
+		int result= houseDAO.add(boardDTO);
 		//1.HDD에 저장
 		for(int i=0;i<files.length;i++) {
 			if(files[i].isEmpty()) {
 				continue;
 			}
-			String fileName=fileManager.save(files[i], "resources/upload/notice");
+			String fileName=fileManager.save(files[i], "resources/upload/house");
 		//2.DB에 저장
-			NoticeFileDTO noticeFileDTO =new NoticeFileDTO();
-			noticeFileDTO.setNum(boardDTO.getNum());
-			noticeFileDTO.setFileName(fileName);
-			noticeFileDTO.setOriName(files[i].getOriginalFilename());
-			result=noticeDAO.addFile(noticeFileDTO);
+			HouseFileDTO houseFileDTO = new HouseFileDTO();
+			houseFileDTO.setNum(boardDTO.getNum());
+			houseFileDTO.setFileName(fileName);
+			houseFileDTO.setOriName(files[i].getOriginalFilename());
+			result=houseDAO.addFile(houseFileDTO);
 		}
 		return result;
 	}
@@ -60,16 +53,13 @@ public class NoticeService implements BoardService {
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.update(boardDTO);
+		return houseDAO.update(boardDTO);
 	}
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		//num 으로 HDD에 저장된 파일명 조회
-		
-		int result = noticeDAO.delete(boardDTO);
-		return result;	
+		return houseDAO.delete(boardDTO);
 	}
-	
+
 }

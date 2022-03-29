@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.one.s1.board.house.HouseDAO">
+
+	<select id="list" parameterType="HouseDTO" resultType="HouseDTO">
+		SELECT * FROM
+		(SELECT ROWNUM R, H.* FROM
+		(SELECT * FROM HOUSE WHERE
+		NUM>0
+		and
+		<choose>
+			<when test="kind=='col1'">
+				HOUSE_TYPE
+			</when>
+			<when test="kind =='col2'">
+				HOUSE_SPACE
+			</when>
+			<otherwise>
+				HOUSE_STYLE
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+		ORDER BY NUM DESC
+		) H
+		)
+		WHERE R between
+		#{startRow} and #{lastRow}
+	</select>
+
+	<select id="total" resultType="Long" parameterType="Pager">
+		SELECT COUNT(NUM) FROM HOUSE
+		WHERE
+		NUM>0
+		and
+		<choose>
+			<when test="kind=='col1'">
+				HOUSE_TYPE
+			</when>
+			<when test="kind =='col2'">
+				HOUSE_SPACE
+			</when>
+			<otherwise>
+				HOUSE_STYLE
+			</otherwise>
+		</choose>
+		LIKE '%'||#{search}||'%'
+	</select>
+
+	<select id="detail" parameterType="HouseDTO"
+		resultMap="detailResult">
+		SELECT H.*,HF.*
+		FROM HOUSE H
+		LEFT JOIN
+		HOUSEFILE HF
+		ON (H.NUM =HF.NUM)
+		WHERE H.NUM=#{num}
+	</select>
+	<resultMap type="HouseDTO" id="detailResult">
+		<id column="num" property="num" />
+		<result column="order_num" property="order_num" />
+		<result column="cart_num" property="cart_num" />
+		<result column="product_num" property="product_num" />
+		<result column="title" property="title" />
+		<result column="id" property="id" />
+		<result column="contents" property="contents" />
+		<result column="cd" property="cd" />
+		<result column="md" property="md" />
+		<result column="hit" property="hit" />
+		<result column="house_type" property="house_type" />
+		<result column="house_space" property="house_space" />
+		<result column="house_style" property="house_style" />
+
+
+		<collection property="fileDTOs" javaType="List"
+			ofType="HouseFileDTO">
+			<id column="fileNum" property="fileNum" /> 		<!-- num은 위에서 써줬기 때문에 안써줘도 된다 -->
+			<result column="fileName" property="fileName" />
+			<result column="oriName" property="oriName" />
+		</collection>
+
+	</resultMap>
+	<update id="update" parameterType="HouseDTO">
+		UPDATE HOUSE SET
+		TITLE=#{title},CONTENTS=#{contents},HOUSE_TYPE=#{house_type},HOUSE_SPACE=#{house_space},HOUSE_STYLE=#{house_style}
+		WHERE NUM=#{num}
+	</update>
+
+	<delete id="delete" parameterType="HouseDTO">
+		DELETE HOUSE WHERE NUM=#{num}
+	</delete>
+
+	<insert id="addFile" parameterType="BoardFileDTO">
+		INSERT INTO HOUSEFILE
+		(FILENUM, NUM, FILENAME, ORINAME)
+		VALUES (FILE_SEQ.NEXTVAL, #{num},
+		#{fileName}, #{oriName})
+
+	</insert>
+
+	<insert id="add" parameterType="HouseDTO">
+		<selectKey keyProperty="num" order="BEFORE"	resultType="Long">
+			SELECT HOUSE_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO
+		HOUSE(NUM,ID,ORDER_NUM,CART_NUM,PRODUCT_NUM,TITLE,CONTENTS,CD,MD,HIT,HOUSE_TYPE,HOUSE_SPACE,HOUSE_STYLE)
+		VALUES(HOUSE_SEQ.NEXTVAL,#{id},0,0,0,#{title},#{contents},SYSDATE,SYSDATE,0,#{house_type},#{house_space},#{house_style})
+	</insert>
+
+
+
+
+</mapper>

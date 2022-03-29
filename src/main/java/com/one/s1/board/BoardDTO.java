@@ -3,13 +3,20 @@ package com.one.s1.board;
 import java.sql.Date;
 
 public class BoardDTO {
-
+	private Long num;
 	private String title;
 	private String id;
 	private String contents;
 	private Date cd;
 	private Date md;
 	private Long hit;
+
+	public Long getNum() {
+		return num;
+	}
+	public void setNum(Long num) {
+		this.num = num;
+	}
 	public String getTitle() {
 		return title;
 	}

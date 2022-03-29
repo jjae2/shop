@@ -21,6 +21,12 @@
    		<typeAlias type="java.util.List" alias="List"/>
    		<typeAlias type="java.lang.Long" alias="Long"/>
    		<typeAlias type="com.one.s1.board.BoardDTO" alias="BoardDTO"/>
-   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/> 		
+   		<typeAlias type="com.one.s1.board.BoardFileDTO" alias="BoardFileDTO"/>
+   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/> 
+   		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
+   		<typeAlias type="com.one.s1.board.house.HouseDTO" alias="HouseDTO"/>
+   		<typeAlias type="com.one.s1.board.house.HouseFileDTO" alias="HouseFileDTO"/>
+   		<typeAlias type="com.one.s1.member.MemberDTO" alias="MemberDTO"/>
+   		<typeAlias type="com.one.s1.member.MemberFileDTO" alias="MemberFileDTO"/>		
     </typeAliases>
   </configuration>
