@@ -19,14 +19,14 @@
 		<div id="fileResult">
 			
 		</div>
-		<div>
+<!-- 		<div>
 			<button type="button" id="fileAdd">FileAdd</button>
 			<button type="button" class="del">Sample DEL</button>
-		</div>
+		</div> -->
 		
 		<button type="submit">ADD</button>
 	
 	</form>
-	<script src="../resources/js/file.js"></script>
-</body>
+<!-- 	<script src="../resources/js/file.js"></script>
+ --></body>
 </html>

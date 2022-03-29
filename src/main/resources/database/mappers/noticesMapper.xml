@@ -17,7 +17,7 @@
  	</insert>
  	
  	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notices where notice_num = #{notice_num}
+		select * from notices where notice_num = #{num}
  	</select>
  	
  
@@ -65,11 +65,11 @@
  	</select>
 		
  	<update id="update" parameterType="NoticeDTO">
- 		update notices set title=#{title}, contents=#{contents} where notice_num=#{notice_num}
+ 		update notices set title=#{title}, contents=#{contents} where notice_num=#{num}
  	</update>
  	
  	<delete id="delete" parameterType="NoticeDTO">
- 		delete notices where notice_num=#{notice_num}
+ 		delete notices where notice_num=#{num}
  	</delete>
 
 

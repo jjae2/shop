@@ -4,12 +4,14 @@ import java.sql.Date;
 
 public class BoardDTO {
 
+	private Long num;
 	private String title;
 	private String id;
 	private String contents;
 	private Date cd;
 	private Date md;
 	private Long hit;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -45,6 +47,12 @@ public class BoardDTO {
 	}
 	public void setHit(Long hit) {
 		this.hit = hit;
+	}
+	public Long getNum() {
+		return num;
+	}
+	public void setNum(Long num) {
+		this.num = num;
 	}	
 	
 	
