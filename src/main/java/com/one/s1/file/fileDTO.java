@@ -1,4 +1,4 @@
-package com.prac.s1.file;
+package com.one.s1.file;
 
 public class fileDTO {
 	private Long fileNum;

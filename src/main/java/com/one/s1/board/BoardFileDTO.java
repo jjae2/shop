@@ -1,6 +1,6 @@
 package com.one.s1.board;
 
-import com.prac.s1.file.fileDTO;
+import com.one.s1.file.fileDTO;
 
 public class BoardFileDTO extends fileDTO{
 

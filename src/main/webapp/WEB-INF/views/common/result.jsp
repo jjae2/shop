@@ -7,11 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Result page</h1>
-
-<script type="text/javascript">
-alert('${message}');
-window.location.href='${path}';
-</script>
+	<script type="text/javascript">
+		alert('${message}');
+		window.location.href="${path}";
+	</script>
 </body>
 </html>

@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
 <body>
+
+	<c:import url="../template/header.jsp"></c:import>
 	<h1>${board} Detail Page</h1>
 	
 	<h3>Title : ${dto.title}</h3>
@@ -30,5 +32,6 @@
 	<c:if test="${board ne 'notice'}">
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
