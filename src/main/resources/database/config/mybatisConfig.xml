@@ -24,5 +24,6 @@
    		<typeAlias type="com.one.s1.board.BoardDTO" alias="BoardDTO"/>
    		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/>
    		<typeAlias type="com.one.s1.board.qnas.QnaDTO" alias="QnaDTO"/>	
+   		<typeAlias type="com.one.s1.board.qnas.qnasReply.QnaReplyDTO" alias="QnaReplyDTO"/>
     </typeAliases>
   </configuration>

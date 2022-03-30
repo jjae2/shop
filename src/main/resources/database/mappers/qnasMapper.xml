@@ -21,7 +21,6 @@
  		where qna_ref=#{qna_ref} and qna_step>#{qna_step}
  	</update>
  
- 
   	<insert id="add" parameterType="QnaDTO">
 	    INSERT INTO QNAS (NUM, PRODUCT_NUM, ID, TITLE, CONTENTS, QNA_TYPE, QNA_BUY, CD, QNA_REPLY, QNA_SECRET, QNA_REF, QNA_STEP, QNA_DEPTH )
         VALUES (QNAS_seq.nextval, 222, #{id}, #{title}, #{contents}, 2, 0, SYSDATE, 0, 0, qnas_seq.currval, 0, 0)  

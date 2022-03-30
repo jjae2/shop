@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="com.one.s1.board.qnas.qnasReply.QnaReplyDAO">
+ 	<update id="update" parameterType="QnaReplyDTO">
+ 		update QNAREPLY SET CONTENTS = #{contents} WHERE REPLYNUM=#{replyNum}
+ 	</update>
+ 	
+ 	
+ 	<delete id="delete" parameterType="QnaReplyDTO">
+ 		DELETE QNAREPLY WHERE REPLYNUM=#{replyNum}
+ 	</delete>
+ 	
+ 	<insert id="add" parameterType="QnaReplyDTO">
+ 		INSERT INTO QNAREPLY (REPLYNUM, NUM, ID, CONTENTS, REGDATE)
+ 		VALUES (QNAS_SEQ.NEXTVAL, #{num}, #{id}, #{contents}, sysdate)
+ 	</insert>
+ 	
+ 	<select id="list" parameterType="QnaReplyDTO" resultType="QnaReplyDTO">
+ 		SELECT * FROM QNAREPLY
+ 		WHERE NUM=#{num} 
+ 		ORDER BY REPLYNUM DESC
+ 	</select>
+ 
+ </mapper>  

@@ -16,6 +16,7 @@ public class MemberDTO {
 	private Date enrolldate;
 	private String com_name;
 	private String com_address;
+	MemberFileDTO memberFileDTO;
 
 	public String getId() {
 		return id;
