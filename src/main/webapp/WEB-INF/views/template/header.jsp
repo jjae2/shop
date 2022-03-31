@@ -272,7 +272,7 @@
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item1" href="/s1">스토어홈</a>
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item2" href="#">카테고리</a>
+								id="navigation_bot_content_menu_item2" href="/s1/product/list">카테고리</a>
 							<!-- ?category=0&amp;order=popular -->
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item3" href="#">베스트</a>
@@ -296,7 +296,7 @@
 								class="navigation_bot_content_menu_item navigation_bot_content_menu_item_active under"
 								id="navigation_bot_content_menu_item1" href="/s1">스토어홈</a>
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item2" href="#">카테고리</a>
+								id="navigation_bot_content_menu_item2" href="/s1/product/list">카테고리</a>
 							<!-- ?category=0&amp;order=popular -->
 							<a class="navigation_bot_content_menu_item"
 								id="navigation_bot_content_menu_item3" href="#">베스트</a>
