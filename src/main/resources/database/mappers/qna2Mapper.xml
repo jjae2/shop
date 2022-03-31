@@ -6,16 +6,36 @@
     
 <mapper namespace="com.one.s1.board.qna2.Qna2DAO">
 
+	<delete id="fileDelete" parameterType="Qna2FileDTO">
+		DELETE QNA2FILE WHERE FILENUM=#{fileNum}
+	</delete>
+	
+	<select id="listFile" parameterType="BoardDTO" resultType="Qna2FileDTO">
+		SELECT * FROM QNA2FILE
+		WHERE NUM=#{num}
+	</select>
+	
+	<select id="detailFile" parameterType="Qna2FileDTO" resultType="Qna2FileDTO">
+		SELECT * FROM QNA2FILE
+		WHERE FILENUM=#{fileNum}
+	</select>
+	
+	<insert id="addFile" parameterType="BoardFileDTO">
+		INSERT INTO QNA2FILE(FILENUM, NUM, FILENAME, ORINAME)
+		VALUES (FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	</insert> 
+	
+
 	<insert id="add" parameterType="Qna2DTO">
 		<selectKey keyProperty="num" order="BEFORE" resultType="Long">
 			SELECT QNA2_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO QNA2(num, id, title, contents, cd, md, hit, qna2_ref, qna2_step, qna2_depth)
-		VALUES (#{num}, #{id}, #{title}, #{contents}, sysdate, sysdate, #{hit}, #{qna2_ref}, #{qna2_step}, #{qna2_depth})
+		VALUES (#{num}, #{id}, #{title}, #{contents}, sysdate, sysdate, 0, #{num}, 0, 0)
 	</insert>
 	
 	<delete id="delete" parameterType="Qna2DTO">
-		DELETE QNA2 WHERE QNA2_num=#{num}
+		DELETE QNA2 WHERE num=#{num}
 	</delete>
 	
 	<update id="update" parameterType="Qna2DTO">
@@ -43,6 +63,12 @@
 		<result column="qna2_ref" property="qna2_ref"/>
 		<result column="qna2_step" property="qna2_step"/>
 		<result column="qan2_depth" property="qna2_depth"/>
+		<collection property="fileDTOs" javaType="List" ofType="NoticeFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</collection> 
+		
 	</resultMap>
 	
 	<insert id="reply" parameterType="Qna2DTO">

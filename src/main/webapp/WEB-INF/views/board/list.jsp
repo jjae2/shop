@@ -8,8 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/table.css" rel="styleSheet" />
+<c:import url="../template/header_css.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
 	<div class="table-container">
 		<h1>${board} List page</h1>
 		<!-- 검색 창-->
@@ -69,9 +71,10 @@
 		</div>	
 		
 		<!-- member생기면 not empty로 수정해야함 -->
-		<c:if test="${not empty members}">
+		<c:if test="${not empty member}">
 			<a href="./add">ADD</a>
 		</c:if>
 	</div>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

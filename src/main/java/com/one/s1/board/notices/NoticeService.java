@@ -12,18 +12,16 @@ import com.one.s1.util.Pager;
 @Service
 public class NoticeService implements BoardService {
 
-	
 	@Autowired
 	private NoticeDAO noticeDAO;
 
-
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
-		
+
 		pager.makeRow();
-		
+
 		pager.makeNum(noticeDAO.total(pager));
-		
+
 		return noticeDAO.list(pager);
 	}
 
@@ -36,10 +34,10 @@ public class NoticeService implements BoardService {
 	@Override
 	public int add(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		//long num = noticeDAO.seqNum();
-		//boardDTO.setNum(num);
-		int result=noticeDAO.add(boardDTO);
-		
+//		 long num = noticeDAO.seqNum();
+//		 boardDTO.setNum(num);
+		int result = noticeDAO.add(boardDTO);
+
 		return result;
 	}
 
@@ -52,10 +50,10 @@ public class NoticeService implements BoardService {
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		//num 으로 HDD에 저장된 파일명 조회
-		
+		// num 으로 HDD에 저장된 파일명 조회
+
 		int result = noticeDAO.delete(boardDTO);
-		return result;	
+		return result;
 	}
-	
+
 }

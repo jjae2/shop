@@ -5,11 +5,15 @@
   
   <configuration>
   	<typeAliases>
+   		<typeAlias type="com.one.s1.members.MemberDTO" alias="MemberDTO"/>
    		<typeAlias type="com.one.s1.util.Pager" alias="Pager"/>
    		<typeAlias type="java.util.List" alias="List"/>
    		<typeAlias type="java.lang.Long" alias="Long"/>
    		<typeAlias type="com.one.s1.board.BoardDTO" alias="BoardDTO"/>
-   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/> 
-   		<typeAlias type="com.one.s1.board.qna2.Qna2DTO" alias="Qna2DTO"/>		
+   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/>
+   		<typeAlias type="com.one.s1.board.qna2.Qna2DTO" alias="Qna2DTO"/> 
+   		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
+   		<typeAlias type="com.one.s1.board.qna2.Qna2FileDTO" alias="Qna2FileDTO"/>
+   		<typeAlias type="com.one.s1.board.BoardFileDTO" alias="BoardFileDTO"/>
     </typeAliases>
   </configuration>
