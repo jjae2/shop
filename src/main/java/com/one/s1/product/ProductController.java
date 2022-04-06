@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.one.s1.board.house.houseReply.HouseReplyDTO;
 import com.one.s1.review.ReviewDTO;
 
 @Controller
@@ -53,7 +55,22 @@ public class ProductController {
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("result",result);
 		mv.setViewName("common/ajaxResult");
-		
+		return mv;
+	}
+	@PostMapping("updateReview")
+	public ModelAndView updateReview(ReviewDTO reviewDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result =  productService.updateReview(reviewDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result",result);
+		return mv;
+	}
+	@PostMapping("deleteReview")
+	public ModelAndView delete(ReviewDTO reviewDTO) throws Exception{
+		int result=productService.deleteReview(reviewDTO);
+		ModelAndView mv =new ModelAndView();
+		mv.addObject("result",result);
+		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
 	

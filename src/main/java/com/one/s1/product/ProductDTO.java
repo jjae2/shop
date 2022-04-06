@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.one.s1.review.ReviewDTO;
 
+
 public class ProductDTO {
 	private Long product_num;
 	private String id;

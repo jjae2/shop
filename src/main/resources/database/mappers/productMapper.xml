@@ -46,5 +46,12 @@ SELECT * FROM PRODUCT
 		ORDER BY REVIEW_NUMBER DESC
 	</select>
 	
+	<update id="updateReview" parameterType="ReviewDTO">
+		UPDATE REVIEW SET CONTENTS=#{contents},MD=sysdate WHERE REVIEW_NUMBER=#{review_number}
+	</update>
+	
+	<delete id="deleteReview" parameterType="ReviewDTO">
+		DELETE REVIEW WHERE REVIEW_NUMBER=#{review_number}
+	</delete>
 
 </mapper>

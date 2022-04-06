@@ -16,6 +16,7 @@
 	<h2>상품이름::${detail.product_name}</h2>
 	<hr>
 	<hr>
+
 	      <h1>리뷰 쓰기</h1>
   <p class="">-----상품 내용----</p>
 <form name="myform" id="myform" action="./addReview" method="post">

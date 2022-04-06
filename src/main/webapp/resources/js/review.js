@@ -9,76 +9,76 @@ const point=document.getElementsByName("detail.reviewDTO.review_point")
 
 
 // update
-// reviewResult.addEventListener("click", function () {
-//   if (event.target.classList.contains("update")) {
-//     let num = event.target.getAttribute("data-index");
-//     let review_number = document.querySelector("#up" + num);
+reviewResult.addEventListener("click", function () {
+  if (event.target.classList.contains("update")) {
+    let num = event.target.getAttribute("data-index");
+    let review_number = document.querySelector("#up" + num);
 
-//     let text = review_number.innerText;
-//     review_number.innerText = "";
+    let text = review_number.innerText;
+    review_number.innerText = "";
 
-//     let tx = document.createElement("textarea");
-//     tx.setAttribute("id", "update" + num);
-//     tx.classList.add("save");
-//     tx.setAttribute("data-num", num);
-//     tx.value = text;
-//     review_number.append(tx);
-//   }
-// });
+    let tx = document.createElement("textarea");
+    tx.setAttribute("id", "update" + num);
+    tx.classList.add("save");
+    tx.setAttribute("data-num", num);
+    tx.value = text;
+    review_number.append(tx);
+  }
+});
 
-// reviewResult.addEventListener("change", function (event) {
-//   if (event.target.classList.contains("save")) {
-//     let contents = event.target.value;
-//     let review_Number = event.target.getAttribute("data-num");
+reviewResult.addEventListener("change", function (event) {
+  if (event.target.classList.contains("save")) {
+    let contents = event.target.value;
+    let review_number = event.target.getAttribute("data-num");
 
-//     let check = window.confirm("수정 하시겠습니까??"); //확인 : true , 취소 :false
-//     if (check) {
-//       let xhttp = new XMLHttpRequest();
+    let check = window.confirm("수정 하시겠습니까??"); //확인 : true , 취소 :false
+    if (check) {
+      let xhttp = new XMLHttpRequest();
 
-//       xhttp.open("POST", "../review/update");
-//       xhttp.setRequestHeader(
-//         "Content-type",
-//         "application/x-www-form-urlencoded"
-//       );
-//       xhttp.send("review_number=" + review_Number + "&contents=" + contents);
+      xhttp.open("POST", "../product/updateReview");
+      xhttp.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      xhttp.send("review_number=" + review_number + "&contents=" + contents);
 
-//       xhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//           if (this.responseText.trim() == "1") {
-//             alert("수정 완료");
-//             document.querySelector("#up" + review_Number).innerHTML = contents;
-//           } else {
-//             alert("수정 실패");
-//           }
-//         }
-//       };
-//     }
-//   }
-// });
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          if (this.responseText.trim() == "1") {
+            alert("수정 완료");
+            document.querySelector("#up" + review_number).innerHTML = contents;
+          } else {
+            alert("수정 실패");
+          }
+        }
+      };
+    }
+  }
+});
 
 // // delete
-// reviewResult.addEventListener("click", function (event) {
-//   if (event.target.classList.contains("del")) {
-//     let review_Number = event.target.getAttribute("data-num");
+reviewResult.addEventListener("click", function (event) {
+  if (event.target.classList.contains("del")) {
+    let review_number = event.target.getAttribute("data-num");
 
-//     const xhttp = new XMLHttpRequest();
+    const xhttp = new XMLHttpRequest();
 
-//     xhttp.open("POST", "../review/delete");
-//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     xhttp.send("review_number=" + review_Number);
+    xhttp.open("POST", "../product/deleteReview");
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("review_number=" +review_number);
 
-//     xhttp.onreadystatechange = function () {
-//       if (this.readyState == 4 && this.status == 200) {
-//         if (this.responseText.trim() == "1") {
-//           alert("삭제 성공");
-//           getList();
-//         } else {
-//           alert("삭제 실패");
-//         }
-//       }
-//     };
-//   }
-// });
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        if (this.responseText.trim() == "1") {
+          alert("삭제 성공");
+          getList();
+        } else {
+          alert("삭제 실패");
+        }
+      }
+    };
+  }
+});
 
 getList();
 

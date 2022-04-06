@@ -10,6 +10,7 @@ public class ReviewDTO {
 	private String contents;
 	private Date cd;
 	private Date md;
+
 	public Long getReview_number() {
 		return review_number;
 	}
