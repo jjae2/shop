@@ -9,8 +9,8 @@
 		INSERT INTO MEMBERS (ID,AUTH_ID,PW,NAME,GENDER, AGE, EMAIL, ADDRESS, PHONE, ENROLLDATE, COM_NAME, COM_ADDRESS)
         VALUES (#{id}, 0, #{pw}, #{name}, #{gender}, #{age}, #{email}, #{address}, #{phone}, SYSDATE, NULL, NULL) <!-- auth_id default 0 잡아줘야함 -->
 	</insert>
-	<select id="login" parameterType="MemberDTO" resultType="com.one.s1.members.MemberDTO">
-		SELECT ID, NAME FROM MEMBERS WHERE ID = #{id} AND PW = #{pw}
+	<select id="login" parameterType="MemberDTO" resultType="MemberDTO">
+		SELECT ID,AUTH_ID FROM MEMBERS WHERE ID = #{id} AND PW = #{pw}
 	</select>
 	<select id="mypage" parameterType="MemberDTO" resultType="MemberDTO">
 		SELECT * FROM MEMBERS WHERE ID = #{id}
@@ -18,5 +18,13 @@
 	<update id="update" parameterType="MemberDTO">
 		UPDATE MEMBERS SET PW=#{pw}, NAME=#{name}, GENDER=#{gender}, AGE=#{age}, EMAIL=#{email}, ADDRESS=#{address}, PHONE=#{phone} WHERE ID=#{id}
 	</update>
+	<select id="list" resultType="MemberDTO">
+	SELECT * FROM MEMBERS WHERE ID NOT IN ('admin') ORDER BY enrolldate DESC
+	</select>
+	<update id="updateA" parameterType="MemberDTO">
+		UPDATE MEMBERS SET AUTH_ID=#{auth_id}  WHERE ID=#{id}
+	</update>
+	<select id="detail" parameterType="MemberDTO" resultType="MemberDTO">
+		SELECT * FROM MEMBERS WHERE ID = #{id}
+	</select>
 </mapper>
-

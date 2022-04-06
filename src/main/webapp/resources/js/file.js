@@ -14,11 +14,14 @@ fileAdd.addEventListener("click", function () {
   let upload = document.createElement("input"); //<input>
   upload.setAttribute("type", "file"); // <input type="file"></input>
   upload.setAttribute("name", "files"); // <input type="file" names="files"></input>
+  upload.setAttribute("id", "image");
+  upload.setAttribute("onchange", "setThumbnail(event);"); //사진 썸네일
+
   let button = document.createElement("button");
   button.setAttribute("type", "button");
   button.className = "del";
   button.setAttribute("data-num", "del" + num);
-  button.innerHTML = "지우기";
+  button.innerHTML = "삭제";
 
   div.append(upload);
   div.append(button);
@@ -27,6 +30,16 @@ fileAdd.addEventListener("click", function () {
 
   num++;
 });
+//사진 미리보기
+function setThumbnail(event) {
+  var reader = new FileReader();
+  reader.onload = function (event) {
+    var img = document.createElement("img");
+    img.setAttribute("src", event.target.result);
+    document.querySelector("div#image_container").appendChild(img);
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
 
 fileResult.addEventListener("click", function (event) {
   let cn = event.target;

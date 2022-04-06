@@ -11,7 +11,7 @@ public class HouseReplyDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private String NAMESPACE = "com.one.s1.board.house.houseReply.HouseReplyDAO.";
+	private final String NAMESPACE = "com.one.s1.board.house.houseReply.HouseReplyDAO.";
 	
 	public int add(HouseReplyDTO houseReplyDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"add",houseReplyDTO);

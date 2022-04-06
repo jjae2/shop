@@ -11,12 +11,23 @@ import com.one.s1.board.BoardService;
 import com.one.s1.util.FileManager;
 import com.one.s1.util.Pager;
 
+
+
 @Service
 public class HouseService implements BoardService {
 	@Autowired
 	private HouseDAO houseDAO;
 	@Autowired
 	private FileManager fileManager;
+	
+	public int deleteFile(HouseFileDTO houseFileDTO)throws Exception{
+		return houseDAO.deleteFile(houseFileDTO);
+	}
+
+	public HouseFileDTO detailFile(HouseFileDTO houseFileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return houseDAO.detailFile(houseFileDTO);
+	}
 	
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
@@ -39,13 +50,14 @@ public class HouseService implements BoardService {
 			if(files[i].isEmpty()) {
 				continue;
 			}
-			String fileName=fileManager.save(files[i], "resources/upload/house");
+			String fileName=fileManager.save(files[i], "resources/upload/house/");
 		//2.DB에 저장
 			HouseFileDTO houseFileDTO = new HouseFileDTO();
 			houseFileDTO.setNum(boardDTO.getNum());
 			houseFileDTO.setFileName(fileName);
 			houseFileDTO.setOriName(files[i].getOriginalFilename());
 			result=houseDAO.addFile(houseFileDTO);
+			System.out.println(result);
 		}
 		return result;
 	}
@@ -58,8 +70,14 @@ public class HouseService implements BoardService {
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return houseDAO.delete(boardDTO);
+		List<HouseFileDTO> ar = houseDAO.listFile(boardDTO);
+		int result = houseDAO.delete(boardDTO);
+		if (result > 0) {
+			for (HouseFileDTO dto : ar) {
+				boolean check = fileManager.remove("resources/upload/house/", dto.getFileName());
+			}
+		}
+		return result;
 	}
 
 }

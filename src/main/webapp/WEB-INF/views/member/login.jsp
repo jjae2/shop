@@ -23,7 +23,7 @@
 			<input type="password" name="pw">
 		</fieldset>
 		<fieldset>
-			<legend>Remember me</legend>
+			<legend>아이디 저장</legend>
 			<input type="checkbox" name="remember" value="1">
 		</fieldset>
 		<fieldset>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.one.s1.product.ProductDAO">
+
+<select id="list" resultType="ProductDTO">
+SELECT * FROM PRODUCT
+</select>
+       <select id="detail"  parameterType="ProductDTO" resultMap="detailResult">
+         SELECT P.*,R.*
+         FROM PRODUCT P
+         LEFT JOIN
+         REVIEW R
+         ON (P.PRODUCT_NUM =R.PRODUCT_NUM)
+         WHERE P.PRODUCT_NUM=#{product_num}
+      </select>
+      		<resultMap type="ProductDTO" id="detailResult">
+			<id column="product_num" property="product_num"/>
+			<result column="id" property="id"/>
+			<result column="product_name" property="product_name"/>
+		<!-- 	<result column="writer" property="writer"/>
+			<result column="regDate" property="regDate"/>
+			<result column="hit" property="hit"/> -->
+			
+			<collection property="reviewDTO" javaType="List" ofType="ReviewDTO">
+				<id column="review_number" property="review_number"/> 		<!-- num은 위에서 써줬기 때문에 안써줘도 된다 -->
+				<result column="id" property="id"/>
+				<result column="review_point" property="review_point"/>
+				<result column="contents" property="contents"/>
+				<result column="cd" property="cd"/>
+				<result column="md" property="md"/>
+			</collection>
+		</resultMap>
+		
+	<insert id="addReview" parameterType="ReviewDTO">
+		INSERT INTO REVIEW (REVIEW_NUMBER,PRODUCT_NUM,ID,REVIEW_POINT,CONTENTS,CD,MD)
+		VALUES (REVIEW_SEQ.NEXTVAL,#{product_num},#{id},#{review_point},#{contents},sysdate,null)
+	</insert>
+	
+	<select id="listReview" parameterType="ProductDTO"	resultType="ReviewDTO">
+		SELECT * FROM REVIEW
+		WHERE PRODUCT_NUM=#{product_num}
+		ORDER BY REVIEW_NUMBER DESC
+	</select>
+	
+
+</mapper>

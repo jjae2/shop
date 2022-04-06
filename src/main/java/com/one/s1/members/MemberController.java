@@ -1,5 +1,7 @@
 package com.one.s1.members;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +26,8 @@ public class MemberController {
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(MemberDTO memberDTO) throws Exception {
-		System.out.println("hi");
 		int result = memberService.update(memberDTO);
-		System.out.println(result);
-		return "redirect:../";
+		return "redirect:./mypage";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.GET)
@@ -69,7 +70,6 @@ public class MemberController {
 
 	}
 
-	// select
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(HttpSession session, MemberDTO memberDTO, String remember, Model model,
 			HttpServletResponse response) throws Exception {
@@ -90,13 +90,13 @@ public class MemberController {
 
 		memberDTO = memberService.login(memberDTO);
 
-		String message = "Login Fail";
+		String message = "로그인 실패";
 		String p = "./login";
 
 		if (memberDTO != null) {
 
 			session.setAttribute("member", memberDTO);
-			message = "Login Success";
+			message = "로그인 성공";
 			p = "../";
 		}
 

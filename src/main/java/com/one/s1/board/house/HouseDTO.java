@@ -12,8 +12,8 @@ public class HouseDTO extends BoardDTO {
 	private String house_type;
 	private Long house_space;
 	private String house_style;
-	
 	private List<HouseFileDTO> fileDTOs;
+	
 	public List<HouseFileDTO> getFileDTOs() {
 		return fileDTOs;
 	}

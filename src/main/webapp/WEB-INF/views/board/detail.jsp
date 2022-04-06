@@ -14,20 +14,20 @@
 	<h1>${board} Detail Page</h1>
 	
 	<h3>Title : ${dto.title}</h3>
-	<h3>Writer : ${dto.id}</h3>
+	<h3>Writer : ${dto.writer}</h3>
 	<h3>Contents : ${dto.contents}</h3>
 	<div>
 		<c:forEach items="${dto.fileDTOs}" var="f">
-			<a href="./fileDown?fileNum=${f.fileNum}">${f.oriName}</a>
+			<a href="./fileDown?fileNum=${f.fileNum}">${f.oriName}</a>		
 		</c:forEach>
-	</div> 
-
+	</div>
+	
 	<a href="./list">List</a>
 	
-<%-- 	<c:if test="${member.id eq dto.writer}"> --%>
+	<c:if test="${member.id eq dto.writer}">
 	<a href="./delete?num=${dto.num}">Delete</a>
 	<a href="./update?num=${dto.num}">update</a>
-<%-- 	</c:if> --%>
+	</c:if>
 	
 	<c:if test="${board ne 'notice'}">
 		<a href="./reply?num=${dto.num}">Reply</a>

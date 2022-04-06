@@ -27,7 +27,9 @@
    		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
    		<typeAlias type="com.one.s1.board.house.HouseDTO" alias="HouseDTO"/>
    		<typeAlias type="com.one.s1.board.house.HouseFileDTO" alias="HouseFileDTO"/>
-   		<typeAlias type="com.one.s1.member.MemberDTO" alias="MemberDTO"/>
-   		<typeAlias type="com.one.s1.member.MemberFileDTO" alias="MemberFileDTO"/>		
+   		<typeAlias type="com.one.s1.members.MemberFileDTO" alias="MemberFileDTO"/>
+   		<typeAlias type="com.one.s1.board.house.houseReply.HouseReplyDTO" alias="HouseReplyDTO"/>
+   		<typeAlias type="com.one.s1.review.ReviewDTO" alias="ReviewDTO"/>	
+   		<typeAlias type="com.one.s1.product.ProductDTO" alias="ProductDTO"/>
     </typeAliases>
   </configuration>

@@ -25,6 +25,24 @@ public class HouseReplyController {
 		mv.setViewName("common/houseReply");
 		return mv;
 	}
+	@PostMapping("add")
+	public ModelAndView add(HouseReplyDTO houseReplyDTO) throws Exception{
+		int result=houseReplyService.add(houseReplyDTO);
+		System.out.println(result);
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("result",result);
+		mv.setViewName("common/ajaxResult");
+		
+		return mv;
+	}
+	@PostMapping("update")
+	public ModelAndView update(HouseReplyDTO houseReplyDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result =  houseReplyService.update(houseReplyDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result",result);
+		return mv;
+	}
 	@PostMapping("delete")
 	public ModelAndView delete(HouseReplyDTO houseReplyDTO) throws Exception{
 		System.out.println(houseReplyDTO.getNum());

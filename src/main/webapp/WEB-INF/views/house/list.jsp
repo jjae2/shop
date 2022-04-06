@@ -6,9 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/table.css" rel="styleSheet" />
+<c:import url="../template/header_css.jsp"></c:import>
+<link href="../resources/css/house.css" rel="styleSheet" />
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
+	
+	<div class="all">
 	<h1>집들이 페이지</h1>
 	
 	<div class="table-container">
@@ -23,8 +27,11 @@
 					<button type="submit">검색</button>
 				</fieldset>
 			</form>
-			<a href="./add">글 쓰기</a>
-
+			<div>
+			<c:if test="${not empty member}">
+			<a href="./add">집들이 글쓰기</a>
+			</c:if>
+			</div>
 		</div>
 		<table class="table-basic">
 			<tr>
@@ -39,8 +46,8 @@
 			</tr>
 			<c:forEach items="${list}" var="h">
 				<tr>
-					<td><a href="./detail?num=${h.num}">${h.num}</a></td>
-					<td>${h.title}</td>
+					<td>${h.num }</td>
+					<td><a href="./detail?num=${h.num}">${h.title}</a></td>
 					<td>${h.contents}</td>
 					<td>${h.id}</td>
 					<td>${h.house_type}</td>
@@ -63,6 +70,7 @@
 		</div>
 		
 	</div>
-
+	</div>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

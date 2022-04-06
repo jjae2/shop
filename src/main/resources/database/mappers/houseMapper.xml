@@ -86,6 +86,7 @@
 	<update id="update" parameterType="HouseDTO">
 		UPDATE HOUSE SET
 		TITLE=#{title},CONTENTS=#{contents},HOUSE_TYPE=#{house_type},HOUSE_SPACE=#{house_space},HOUSE_STYLE=#{house_style}
+		,md=sysdate
 		WHERE NUM=#{num}
 	</update>
 
@@ -107,9 +108,24 @@
 		</selectKey>
 		INSERT INTO
 		HOUSE(NUM,ID,ORDER_NUM,CART_NUM,PRODUCT_NUM,TITLE,CONTENTS,CD,MD,HIT,HOUSE_TYPE,HOUSE_SPACE,HOUSE_STYLE)
-		VALUES(HOUSE_SEQ.NEXTVAL,#{id},0,0,0,#{title},#{contents},SYSDATE,SYSDATE,0,#{house_type},#{house_space},#{house_style})
+		VALUES(#{num},#{id},0,0,0,#{title},#{contents},SYSDATE,null,0,#{house_type},#{house_space},#{house_style})
 	</insert>
-
+	
+    <select id="listFile" parameterType="BoardDTO" resultType="HouseFileDTO">
+    SELECT * FROM HOUSEFILE
+    WHERE NUM= #{num}
+    </select>
+    
+    
+    <select id="detailFile" resultType="HouseFileDTO" parameterType="HouseFileDTO">
+	SELECT * FROM HOUSEFILE
+	WHERE FILENUM=#{fileNum}
+	</select>
+	
+	<delete id="deleteFile" parameterType="HouseFileDTO">
+ 		DELETE HOUSEFILE WHERE FILENUM=#{fileNum}
+ 	</delete>
+	
 
 
 

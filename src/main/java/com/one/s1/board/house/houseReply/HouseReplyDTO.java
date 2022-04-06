@@ -5,7 +5,7 @@ import java.sql.Date;
 public class HouseReplyDTO {
 	private Long replyNum;
 	private Long num;
-	private String writer;
+	private String id;
 	private String contents;
 	private Date regDate;
 	public Long getReplyNum() {
@@ -20,11 +20,11 @@ public class HouseReplyDTO {
 	public void setNum(Long num) {
 		this.num = num;
 	}
-	public String getWriter() {
-		return writer;
+	public String getId() {
+		return id;
 	}
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getContents() {
 		return contents;
@@ -38,4 +38,5 @@ public class HouseReplyDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+
 }

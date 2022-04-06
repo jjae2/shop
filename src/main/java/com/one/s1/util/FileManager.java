@@ -26,7 +26,8 @@ public class FileManager {
    
    public String save(MultipartFile multipartFile,String path) throws Exception{//HDD에 저장하는곳
       //파일 저장은 tomcat이 아니라 os에 저장
-      //path= /resources/upload/member
+      //path= /resources/upload/*
+	
       String realPath =servletContext.getRealPath(path);
       System.out.println(realPath);
       

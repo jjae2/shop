@@ -25,6 +25,7 @@ public class MemberDTO {
 		this.id = id;
 	}
 
+
 	public Long getAuth_id() {
 		return auth_id;
 	}
@@ -111,6 +112,14 @@ public class MemberDTO {
 
 	public void setCom_address(String com_address) {
 		this.com_address = com_address;
+	}
+
+	public MemberFileDTO getMemberFileDTO() {
+		return memberFileDTO;
+	}
+
+	public void setMemberFileDTO(MemberFileDTO memberFileDTO) {
+		this.memberFileDTO = memberFileDTO;
 	}
 
 }

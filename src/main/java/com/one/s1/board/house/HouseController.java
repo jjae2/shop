@@ -75,5 +75,16 @@ public class HouseController {
 
 		return "redirect:./list";
 	}
+	//filedelete
+	@PostMapping("deleteFile")
+	public ModelAndView fileDelete(HouseFileDTO houseFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(houseFileDTO.getFileNum());
+		int result = houseService.deleteFile(houseFileDTO);
+		
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", result);
+		return mv;
+	}
 
 }

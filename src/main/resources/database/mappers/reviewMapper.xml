@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.one.s1.review.ReveiwDAO">
+
+	<insert id="add" parameterType="ReviewDTO">
+		INSERT INTO REVIEW (REVIEW_NUMBER,PRODUCT_NUM,ID,REVIEW_POINT,CONTENTS,CD,MD)
+		VALUES (REVIEW_SEQ.NEXTVAL,#{product_num},#{id},#{review_point},#{contents},sysdate,null)
+	</insert>
+
+	<select id="list" parameterType="ReviewDTO"	resultType="ReviewDTO">
+		SELECT * FROM REVIEW
+		WHERE PRODUCT_NUM=#{product_num}
+		ORDER BY REVIEW_NUMBER DESC
+	</select>
+
+	<delete id="delete" parameterType="ReviewDTO">
+		DELETE REVIEW WHERE REVIEW_NUMBER=#{review_number}
+	</delete>
+
+	<update id="update" parameterType="ReviewDTO">
+		UPDATE REVIEW SET REVIEW_POINT=#{review_point},CONTENTS=#{contents},MD=sysdate WHERE REVIEW_NUMBER=#{review_number}
+	</update>
+	
+	
+
+</mapper>  
