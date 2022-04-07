@@ -31,5 +31,7 @@
    		<typeAlias type="com.one.s1.board.house.houseReply.HouseReplyDTO" alias="HouseReplyDTO"/>
    		<typeAlias type="com.one.s1.review.ReviewDTO" alias="ReviewDTO"/>	
    		<typeAlias type="com.one.s1.product.ProductDTO" alias="ProductDTO"/>
+   		<typeAlias type="com.one.s1.scrapbook.ScrapBookDTO" alias="ScrapBookDTO"/>
+   		
     </typeAliases>
   </configuration>

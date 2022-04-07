@@ -11,12 +11,14 @@
 <body>
 	<h1>상품 디테일 페이지</h1>
 
-	<h2>상품번호::${detail.product_num}</h2>
-	<h2>Id::${detail.id}</h2>
+	<h2>상품번호::${detail.product_num}</h2>	
 	<h2>상품이름::${detail.product_name}</h2>
+	<input type="hidden" name="product_num" value="${detail.product_num}" id="product_nums">  
+	<input type="hidden" name="id" value="${member.id}" id="ids">
+	<input type="hidden" name="product_name" value="${detail.product_name}" id="product_name">
 	<hr>
 	<hr>
-
+<button type="button" id="scrap">스크랩 하기</button>
 	      <h1>리뷰 쓰기</h1>
   <p class="">-----상품 내용----</p>
 <form name="myform" id="myform" action="./addReview" method="post">
@@ -41,6 +43,7 @@
 	<table id="reviewResult">
 	</table>
 	<hr>
+	<script src="../resources/js/scrap.js"></script>
 	<script src="../resources/js/review.js"></script>
 </body>
 </html>
