@@ -33,6 +33,14 @@ public class AdminController {
 	@Autowired
 	private MemberService memberService;
 
+	@GetMapping("main")
+	public String main() {
+			
+	return "admin/main";
+		}
+
+
+
 	// list
 	@GetMapping("list")
 	public ModelAndView admindetail() throws Exception {
