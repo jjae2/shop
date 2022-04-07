@@ -33,7 +33,7 @@
 			</c:if>
 			</div>
 		</div>
-		<table class="table-basic">
+ 		<table class="table-basic">
 			<tr>
 				<td>번호</td>
 				<td>제목</td>
@@ -56,7 +56,7 @@
 					<td>${h.hit}</td>
 				</tr>
 			</c:forEach>
-		</table>
+		</table> 
 		<div>
 			<c:if test="${pager.pre}">
 				<a href="./list?page=${pager.startNum-1}">이전</a>
