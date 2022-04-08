@@ -8,18 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:import url="../template/header.jsp"></c:import>
-	<h1>My Page</h1>
-	<hr>
-<c:forEach items="${scrap}" var="scrap" varStatus="i">
+	
+	<h1>스크랩 북</h1>
+ 	 <hr>
+<c:forEach items="${scrap}" var="s" varStatus="i">
 
-<div>상품번호:${scrap.product_num}</div>
-<div>상품이름:${scrap.product_name}</div>
+<div>상품번호:${s.product_num}</div>
+<div>상품이름:${s.product_name}</div>
 </c:forEach>
 
-<c:if test="${member.id eq scrap.id}">	
+<%-- <c:if test="${member.id eq scrap.id}">	
 <button class="del" type="button" data-num="${scrap.scrap_num}">삭 제</button>
-</c:if>
-	<c:import url="../template/footer.jsp"></c:import>
+</c:if> --%>
 </body>
 </html>

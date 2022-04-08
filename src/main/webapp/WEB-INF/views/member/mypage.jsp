@@ -20,7 +20,7 @@
 		<h3>PHONE : ${dto.phone}</h3>
 		<h3>EMAIL : ${dto.email}</h3>
 	</div>
-	<a href="./listScrap?id=${dto.id}">스크랩</a>
+	<a href="../scrap/listScrap?id=${dto.id}">스크랩 북</a>
 	<a href="./update?id=${dto.id}">Update</a>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#scrap{
+color:#35c5f0;
+}
+#not_scrap{
+color:#35c5f0;
+}
+</style>
 <link href="../resources/css/point.css" rel="styleSheet" />
 </head>
 <body>
@@ -16,9 +24,18 @@
 	<input type="hidden" name="product_num" value="${detail.product_num}" id="product_nums">  
 	<input type="hidden" name="id" value="${member.id}" id="ids">
 	<input type="hidden" name="product_name" value="${detail.product_name}" id="product_name">
+
+	
+	<c:if test="${not empty member.id}}">
+	<svg id="scrap" class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"><path d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z"></path></svg>
+	</c:if>
+	<c:if test="${empty member.id}">
+	<svg id="not_scrap" class="icon--stroke" aria-label="스크랩" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="0.5" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet"><path d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z"></path></svg>
+	</c:if>
 	<hr>
 	<hr>
-<button type="button" id="scrap">스크랩 하기</button>
+	
+
 	      <h1>리뷰 쓰기</h1>
   <p class="">-----상품 내용----</p>
 <form name="myform" id="myform" action="./addReview" method="post">

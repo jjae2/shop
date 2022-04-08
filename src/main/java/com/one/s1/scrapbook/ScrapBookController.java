@@ -22,9 +22,9 @@ public ModelAndView listScrap(ProductDTO productDTO) throws Exception {
 	ModelAndView mv = new ModelAndView();
 	List<ScrapBookDTO> ar = scrapBookService.listScrap(productDTO);
 	mv.addObject("scrap",ar);
-	mv.setViewName("member/listScrap");
+	mv.setViewName("scrap/listScrap");
 	return mv;
-}
+	}
 @PostMapping("addScrap")
 public ModelAndView addScrap(ScrapBookDTO scrapBookDTO) throws Exception {
 	ModelAndView mv = new ModelAndView();

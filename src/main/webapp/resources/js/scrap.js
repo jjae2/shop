@@ -2,23 +2,14 @@ const scrap = document.querySelector("#scrap");
 const product_nums = document.querySelector("#product_nums");
 const ids = document.querySelector("#ids");
 const product_name = document.querySelector("#product_name");
+const not_scrap=document.querySelector("#not_scrap");
 
+not_scrap.addEventListener("click",function(){
+  
+  alert("로그인이 필요합니다.")
+  location.href = "../member/login";
+})
 
-// getList();
-
-// function getList() {
-//   const xhttp2 = new XMLHttpRequest();
-
-//   xhttp2.open("GET", "../scrap/listScrap?id=" + ids.value+"&product_num="+product_nums.value);
-//   xhttp2.send();
-
-//   xhttp2.onreadystatechange = function () {
-//     if (this.readyState == 4 && this.status == 200) {
-//       console.log(this.responseText);
-//       reviewResult.innerHTML = this.responseText.trim();
-//     }
-//   };
-// }
 scrap.addEventListener("click", function () {
     console.log(product_num.value);
     console.log(id.value);
@@ -44,6 +35,7 @@ scrap.addEventListener("click", function () {
         console.log(this.responseText);
         let result = this.responseText.trim();
         if (result == "1") {
+            
           alert("스크랩 되었습니다");
         //   getList();
         } else {

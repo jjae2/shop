@@ -15,29 +15,30 @@ VALUES(SCRAP_SEQ.NEXTVAL,#{product_num},0,#{id})
 		DELETE SCRAPBOOK WHERE PRODUCT_NUM=#{product_num} AND id=#{id}
 </delete>
 
-      <select id="listScrap"  parameterType="ProductDTO" resultMap="listResult">
+       <select id="listScrap"  parameterType="ProductDTO" resultMap="listResult">
          SELECT P.*,S.*
          FROM PRODUCT P
          LEFT JOIN 
          SCRAPBOOK S
          ON (P.PRODUCT_NUM =S.PRODUCT_NUM)
-         WHERE S.id=#{id}
+         WHERE S.ID=#{id}
       </select>
       		<resultMap type="ProductDTO" id="listResult">
 			<id column="product_num" property="product_num"/>
 			<result column="id" property="id"/>
 			<result column="product_name" property="product_name"/>
-		<!-- 	<result column="writer" property="writer"/>
+			<result column="writer" property="writer"/>
 			<result column="regDate" property="regDate"/>
-			<result column="hit" property="hit"/> -->
+			<result column="hit" property="hit"/>
 			
 			<collection property="scrapBookDTO" javaType="List" ofType="ScrapBookDTO">
-				<id column="scrap_num" property="scrap_num"/> 		<!-- num은 위에서 써줬기 때문에 안써줘도 된다 -->
+				<id column="scrap_num" property="scrap_num"/> 		
 				<result column="id" property="id"/>
 				<result column="category_num" property="category_num"/>
 			</collection>
 		</resultMap>
 
+ 
 	
 </mapper>
 
