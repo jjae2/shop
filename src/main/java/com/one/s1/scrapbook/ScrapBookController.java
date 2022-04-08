@@ -27,19 +27,27 @@ public ModelAndView listScrap(ProductDTO productDTO) throws Exception {
 	return mv;
 	}
 @PostMapping("addScrap")
-public ModelAndView addScrap(ScrapBookDTO scrapBookDTO) throws Exception {
-	ModelAndView mv = new ModelAndView();
+public String addScrap(ScrapBookDTO scrapBookDTO,ProductDTO productDTO,Model model) throws Exception {
+	Long scrap= scrapBookService.scrapCheck(productDTO);
 		int result = scrapBookService.addScrap(scrapBookDTO);
-		mv.addObject("result",result);
-		mv.setViewName("common/ajaxResult");
-		System.out.println("스크랩 추가");
-	return mv;
+			model.addAttribute("result",result);
+			String path = "common/ajaxResult";
+		if(scrap==1) {
+			
+		result=scrapBookService.deleteScrap(scrapBookDTO);
+		result=scrapBookService.addScrap(scrapBookDTO);
+			String message = "스크랩 중복";
+			model.addAttribute("message", message);
+			 path = "common/result";
+		}
+	
+		return path;
 }
 
 @GetMapping("deleteScrap")
 public String deleteScrap(ScrapBookDTO scrapBookDTO,Model model) throws Exception {
 	int result = scrapBookService.deleteScrap(scrapBookDTO);
-	
+	System.out.println("스크랩넘"+scrapBookDTO.getScrap_num());
 	String message = "스크랩 취소";
 	String p= "./listScrap?id="+scrapBookDTO.getId();
 	model.addAttribute("message", message);

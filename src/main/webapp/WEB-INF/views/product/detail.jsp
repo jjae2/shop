@@ -10,6 +10,7 @@
 #scrap{
 color:#35c5f0;
 }
+
 </style>
 <link href="../resources/css/point.css" rel="styleSheet" />
 </head>
@@ -25,7 +26,7 @@ color:#35c5f0;
 	
 	 <c:if test="${not empty member.id}"> 
 	<button id="scrap">스크랩 하기</button>
-	<button><a href="../scrap/deleteScrap?product_num=${detail.product_num}&id=${member.id}">스크랩 취소</a></button>
+	<a href="../scrap/deleteScrap?product_num=${detail.product_num}&id=${member.id}">스크랩 취소</a>
 	 </c:if> 
 	<hr>
 	<hr>

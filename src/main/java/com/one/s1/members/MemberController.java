@@ -2,6 +2,7 @@ package com.one.s1.members;
 
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -98,6 +99,7 @@ public class MemberController {
 			session.setAttribute("member", memberDTO);
 			message = "로그인 성공";
 			p = "../";
+			
 		}
 
 		model.addAttribute("message", message);

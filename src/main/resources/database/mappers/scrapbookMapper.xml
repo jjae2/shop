@@ -12,8 +12,8 @@
 	</insert>
 
 	<delete id="deleteScrap" parameterType="ScrapBookDTO">
-		DELETE SCRAPBOOK WHERE
-		PRODUCT_NUM=#{product_num} AND id=#{id}
+		DELETE SCRAPBOOK 
+		WHERE product_num=#{product_num} AND id=#{id} 
 	</delete>
 
 	<select id="listScrap" parameterType="ProductDTO" resultMap="listResult">
@@ -39,7 +39,9 @@
 			<result column="category_num" property="category_num" />
 		</collection>
 	</resultMap>
-	
+	<select id="scrapCheck" resultType="Long" parameterType="ProductDTO">
+	select count(product_num) from SCRAPBOOK where product_num=#{product_num} AND ID=#{id}
+	</select>
 
 
 

@@ -32,7 +32,9 @@ scrap.addEventListener("click", function () {
         if (result == "1") {
           alert("스크랩 되었습니다.");
          
-        } else {}
+        } else {
+          alert("중복된 스크랩입니다.");
+        }
         
       }
     };

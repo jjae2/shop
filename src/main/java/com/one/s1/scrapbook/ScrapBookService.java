@@ -21,4 +21,8 @@ private ScrapBookDAO scrapBookDAO;
 	public int deleteScrap(ScrapBookDTO scrapBookDTO)throws Exception{
 		return scrapBookDAO.deleteScrap(scrapBookDTO);
 	}
+	public Long scrapCheck(ProductDTO productDTO)throws Exception{
+		return scrapBookDAO.scrapCheck(productDTO);
+	}
+
 }
