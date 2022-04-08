@@ -28,19 +28,17 @@ public ModelAndView listScrap(ProductDTO productDTO) throws Exception {
 @PostMapping("addScrap")
 public ModelAndView addScrap(ScrapBookDTO scrapBookDTO) throws Exception {
 	ModelAndView mv = new ModelAndView();
-	int result = scrapBookService.addScrap(scrapBookDTO);
-	mv.addObject("result",result);
-	mv.setViewName("common/ajaxResult");
+		int result = scrapBookService.addScrap(scrapBookDTO);
+		mv.addObject("result",result);
+		mv.setViewName("common/ajaxResult");
+		System.out.println("스크랩 추가");
 	return mv;
 }
 
 @GetMapping("deleteScrap")
-public ModelAndView deleteScrap(ScrapBookDTO scrapBookDTO) throws Exception {
+public String deleteScrap(ScrapBookDTO scrapBookDTO) throws Exception {
 	int result = scrapBookService.deleteScrap(scrapBookDTO);
-	ModelAndView mv = new ModelAndView();
-	mv.addObject("result",result);
-	mv.setViewName("common/ajaxResult");
-	return mv;
+	return "redirect:./listScrap?id="+scrapBookDTO.getId();
+}
 }
 
-}

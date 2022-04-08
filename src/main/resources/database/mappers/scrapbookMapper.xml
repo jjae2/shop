@@ -3,42 +3,45 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.one.s1.scrapbook.ScrapBookDAO">
 
-<insert id="addScrap" parameterType="ScrapBookDTO">
-INSERT INTO SCRAPBOOK(SCRAP_NUM,PRODUCT_NUM,CATEGORY_NUM,ID)
-VALUES(SCRAP_SEQ.NEXTVAL,#{product_num},0,#{id})
-</insert>
+	<insert id="addScrap" parameterType="ScrapBookDTO">
+		INSERT INTO SCRAPBOOK(SCRAP_NUM,PRODUCT_NUM,CATEGORY_NUM,ID)
+		VALUES(SCRAP_SEQ.NEXTVAL,#{product_num},0,#{id})
+	</insert>
 
-<delete id="deleteScrap" parameterType="ScrapBookDTO">
-		DELETE SCRAPBOOK WHERE PRODUCT_NUM=#{product_num} AND id=#{id}
-</delete>
+	<delete id="deleteScrap" parameterType="ScrapBookDTO">
+		DELETE SCRAPBOOK WHERE
+		PRODUCT_NUM=#{product_num} AND id=#{id}
+	</delete>
 
-       <select id="listScrap"  parameterType="ProductDTO" resultMap="listResult">
-         SELECT P.*,S.*
-         FROM PRODUCT P
-         LEFT JOIN 
-         SCRAPBOOK S
-         ON (P.PRODUCT_NUM =S.PRODUCT_NUM)
-         WHERE S.ID=#{id}
-      </select>
-      		<resultMap type="ProductDTO" id="listResult">
-			<id column="product_num" property="product_num"/>
-			<result column="id" property="id"/>
-			<result column="product_name" property="product_name"/>
-			<result column="writer" property="writer"/>
-			<result column="regDate" property="regDate"/>
-			<result column="hit" property="hit"/>
-			
-			<collection property="scrapBookDTO" javaType="List" ofType="ScrapBookDTO">
-				<id column="scrap_num" property="scrap_num"/> 		
-				<result column="id" property="id"/>
-				<result column="category_num" property="category_num"/>
-			</collection>
-		</resultMap>
+	<select id="listScrap" parameterType="ProductDTO" resultMap="listResult">
+		SELECT P.*,S.*
+		FROM PRODUCT P
+		LEFT JOIN
+		SCRAPBOOK S
+		ON (P.PRODUCT_NUM =S.PRODUCT_NUM)
+		WHERE S.ID=#{id}
+	</select>
+	<resultMap type="ProductDTO" id="listResult">
+		<id column="product_num" property="product_num" />
+		<result column="id" property="id" />
+		<result column="product_name" property="product_name" />
+		<result column="writer" property="writer" />
+		<result column="regDate" property="regDate" />
+		<result column="hit" property="hit" />
 
- 
+		<collection property="scrapBookDTO" javaType="List"
+			ofType="ScrapBookDTO">
+			<id column="scrap_num" property="scrap_num" />
+			<result column="id" property="id" />
+			<result column="category_num" property="category_num" />
+		</collection>
+	</resultMap>
 	
+
+
+
 </mapper>
 

@@ -23,5 +23,4 @@ public class ScrapBookDAO {
 	public int deleteScrap(ScrapBookDTO scrapBookDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"deleteScrap",scrapBookDTO);
 	}
-
 }
