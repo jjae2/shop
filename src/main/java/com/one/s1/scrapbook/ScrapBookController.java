@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,9 +37,15 @@ public ModelAndView addScrap(ScrapBookDTO scrapBookDTO) throws Exception {
 }
 
 @GetMapping("deleteScrap")
-public String deleteScrap(ScrapBookDTO scrapBookDTO) throws Exception {
+public String deleteScrap(ScrapBookDTO scrapBookDTO,Model model) throws Exception {
 	int result = scrapBookService.deleteScrap(scrapBookDTO);
-	return "redirect:./listScrap?id="+scrapBookDTO.getId();
+	
+	String message = "스크랩 취소";
+	String p= "./listScrap?id="+scrapBookDTO.getId();
+	model.addAttribute("message", message);
+	model.addAttribute("path", p);
+	String path = "common/result";
+	return path;
 }
 }
 
