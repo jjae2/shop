@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%-- <c:import url="../template/header_css.jsp"></c:import> --%>
 </head>
 <body>
-	<h1>${board } Reply page</h1>
-	
+<%-- <c:import url="../template/header.jsp"></c:import> --%>
+	<h1>${board} Reply Page</h1>
+	<!-- add, reply, update 하나가지고 3가지 기능 다 돌릴 수 있음 -->
 	<form action="./reply" method="post">
-		<input type="hidden" value="${dto.num }" name="num">
-		Title <input type="text" name="title">
-		Contents<textarea name="contents" rows="10" cols="10"></textarea>
-		Writer <input type="text" name="id">
-		
-		<input type="submit" value="reply">
+		<input type="hidden" value="${dto.num}" name="num">
+		Title<input type="text" name="title">
+		Writer<input type="text" name="id">
+		Contents<textarea name="contents" rows="" cols=""></textarea>
+		<button type="submit">Reply</button>
 	
 	</form>
 </body>

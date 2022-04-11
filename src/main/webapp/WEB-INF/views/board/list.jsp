@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +33,7 @@
 		
 			<table class="table-basic">
 				<tr>
-					<td>Num</td><td>Title</td><td>Contents</td><td>Id</td><td>Cd</td><td>Hit</td>
+					<td>Notice_num</td><td>Title</td><td>Id</td><td>Cd</td><td>Hit</td>
 				</tr>
 				<c:forEach items="${list}" var="dto">
 				<tr>
@@ -42,14 +41,13 @@
 					<td>
 						<a href="./detail?num=${dto.num}">
 							<c:catch var="message">
-								<c:forEach begin="1" end="${dto.depth}">&nbsp;</c:forEach>
+								<c:forEach begin="1" end="${dto.qna_depth}">┖></c:forEach><!-- &nbsp; -->
 							</c:catch>
 							${dto.title}
 						</a>
 					</td>
-					<td>${dto.contents}</td>
 					<td>${dto.id}</td>
-					<td><fmt:formatDate value="${dto.cd}" pattern="yy-MM-dd"/> </td>
+					<td>${dto.cd}</td>
 					<td>${dto.hit}</td>
 				</tr>
 				
@@ -70,7 +68,6 @@
 			
 		</div>	
 		
-		<!-- member생기면 not empty로 수정해야함 -->
 		<c:if test="${not empty member}">
 			<a href="./add">ADD</a>
 		</c:if>

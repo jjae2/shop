@@ -12,12 +12,13 @@
  	</select> -->
  
   	<insert id="add" parameterType="NoticeDTO">
-	    INSERT INTO NOTICES (NOTICE_NUM, ID, TITLE, CONTENTS, CD, MD, HIT)
+	    INSERT INTO NOTICES (NUM, ID, TITLE, CONTENTS, CD, MD, HIT)
 	    VALUES (notices_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
  	</insert>
  	
  	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
 		select * from notices where notice_num = #{num}
+		
  	</select>
  	
  
@@ -25,7 +26,7 @@
   		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
 		        (SELECT * FROM NOTICES WHERE 
-		        	NOTICE_NUM>0 
+		        	NUM>0 
 		        	and 
 		        	<choose>
 		        		<when test="kind=='col1'">
@@ -39,16 +40,16 @@
 		        		</otherwise>
 		        	</choose>	
 		        	LIKE '%'||#{search}||'%'
-		            ORDER BY NOTICE_NUM DESC
+		            ORDER BY NUM DESC
 		         ) B
 		     )
 		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
 	<select id="total" resultType="Long" parameterType="Pager">
- 		SELECT COUNT(NOTICE_NUM) FROM NOTICES
+ 		SELECT COUNT(NUM) FROM NOTICES
  		WHERE
- 			NOTICE_NUM>0 
+ 			NUM>0 
 		    and 	       	
 		     <choose>
 		     	<when test="kind=='col1'">

@@ -186,4 +186,31 @@ public class Pager {
 		this.lastRow = lastRow;
 	}
 
+	
+	private Long category_num;
+
+	public Long getCategory_num() {
+		if(this.category_num == null) {
+			this.category_num=0L;
+		}
+		return category_num;
+	}
+	public void setCategory_num(Long category_num) {
+		this.category_num = category_num;
+	}
+	
+	private Long product_num;
+
+	public Long getProduct_num() {
+		return product_num;
+	}
+
+	public void setProduct_num(Long product_num) {
+		this.product_num = product_num;
+	}
+	
+	
+	
+	
+	
 }

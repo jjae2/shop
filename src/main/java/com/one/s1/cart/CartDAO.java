@@ -13,10 +13,10 @@ public class CartDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.one.s1.cart.CartDAO.";
 	
-	//insert 추가
-	public int add(CartDTO cartDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"add", cartDTO);
-	}
+//	//insert 추가
+//	public int add(CartDTO cartDTO) throws Exception{
+//		return sqlSession.insert(NAMESPACE+"add", cartDTO);
+//	}
 	
 	//delete 삭제
 	public int delete(CartDTO cartDTO) throws Exception{
@@ -38,4 +38,8 @@ public class CartDAO {
 		return null;
 	}
 
+
+	public int add(CartDTO cartDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"cartAdd", cartDTO);
+	}
 }

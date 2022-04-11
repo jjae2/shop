@@ -22,6 +22,7 @@ import com.one.s1.members.MemberDTO;
 
 @Controller
 @RequestMapping("/cart/**")
+
 public class CartController {
 
 	@Autowired
@@ -65,21 +66,21 @@ public class CartController {
 }
 	
 
-	@ResponseBody
-	@PostMapping("add")
-	public String add(CartDTO cartDTO ,HttpServletRequest request) throws Exception{
-		//로그인 안되면 3 반환
-		HttpSession session = request.getSession();
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		if(memberDTO.getId() == null) {
-			return "redirect:../member/join.jsp";
-		}
-		
-		//등록
-		int result = cartService.add(cartDTO);
-		return result + "";
+//	@ResponseBody
+//	@PostMapping("add")
+//	public String add(CartDTO cartDTO ,HttpServletRequest request) throws Exception{
+//		//로그인 안되면 3 반환
+//		HttpSession session = request.getSession();
 //		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-	}
+//		if(memberDTO.getId() == null) {
+//			return "redirect:../member/join.jsp";
+//		}
+//		
+//		//등록
+//		int result = cartService.add(cartDTO);
+//		return result + "";
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//	}
 	
 	@PostMapping("delete")
 	public String delete(CartDTO cartDTO)throws Exception{
@@ -93,6 +94,18 @@ public class CartController {
 		model.addAttribute("dto", cartDTO);
 		return "redirect:./list";
 	}
+	
+	@PostMapping("add")
+	public String cart(CartDTO cartDTO, Model model) throws Exception {
+		 
+		int result = cartService.add(cartDTO);
+ 
+
+		model.addAttribute("result", result);
+//		model.addAttribute("cart", ar);
+		return "common/ajaxResult";
+	}
+	
 	
 	
 }

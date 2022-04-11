@@ -6,6 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.one.s1.product.ProductDAO;
+import com.one.s1.util.FileManager;
+
 @Service
 public class CartService {
 
@@ -24,7 +30,7 @@ public class CartService {
 	
 		//등록 에러시 0 반환
 		try {
-			return cartDAO.add(cartDTO);
+			return cartDAO.cartAdd(cartDTO);
 		}catch (Exception e) {
 			return 0;
 		}
@@ -57,6 +63,22 @@ public class CartService {
 //		return cartlist;
 //		
 	}
+
+//	public int cartAdd(CartDTO cartDTO) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 	
 }
+
+//	private CartDAO cartDAO;
+//
+//	
+//	
+//	public int cartAdd(CartDTO cartDTO) throws Exception{
+//		
+//		return cartDAO.cartAdd(cartDTO);
+//	}
+//	
+	
 

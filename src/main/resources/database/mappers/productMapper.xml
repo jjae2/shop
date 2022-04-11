@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.one.s1.product.ProductDAO">
+
+	<delete id="fileDelete" parameterType="ProductFileDTO">
+ 		DELETE PRODUCTFILE WHERE FILENUM=#{fileNum}
+ 	</delete>
+ 
+ 	<select id="listFile" parameterType="ProductDTO" resultType="ProductFileDTO">
+ 		SELECT * FROM PRODUCTFILE
+ 		WHERE PRODUCT_NUM=#{product_num} AND FILESECTION = 0
+ 	</select>
+ 	 	<select id="listFileInfo" parameterType="ProductDTO" resultType="ProductFileDTO">
+ 		SELECT * FROM PRODUCTFILE
+ 		WHERE PRODUCT_NUM=#{product_num} AND FILESECTION = 1
+ 	</select>
+ 
+  	<select id="detailFile" parameterType="ProductFileDTO" resultType="ProductFileDTO">
+ 		SELECT * FROM PRODUCTFILE
+ 		WHERE FILENUM=#{fileNum} AND FILESECTION = 0
+ 	</select>
+  	<select id="detailFileInfo" parameterType="ProductFileDTO" resultType="ProductFileDTO">
+ 		SELECT * FROM PRODUCTFILE
+ 		WHERE FILENUM=#{fileNum} AND FILESECTION = 1
+ 	</select>
+	<insert id="addFile" parameterType="ProductFileDTO">
+		INSERT INTO PRODUCTFILE (FILENUM, PRODUCT_NUM, FILENAME, ORINAME, FILESECTION)
+		VALUES (FILE_SEQ.NEXTVAL, #{product_num}, #{fileName}, #{oriName}, #{fileSection})
+	</insert>
+
+
+ 
+  	<insert id="add" parameterType="ProductDTO">
+  		<selectKey keyProperty="product_num" order="BEFORE" resultType="Long">
+  			SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>	
+	    INSERT INTO PRODUCT (PRODUCT_NUM, CATEGORY_NUM, ID, PRODUCT_NAME, PRODUCT_PRICE, CONTENT, SALES, STOCK, HIT, RATE)
+	    VALUES (#{product_num}, #{category_num}, #{id}, #{product_name}, #{product_price}, #{content}, 0, #{stock}, 0, #{rate})
+ 	</insert>
+ 
+  	<select id="sellerInfo" parameterType="ProductDTO" resultType="MemberDTO">
+		SELECT * FROM MEMBERS WHERE ID=#{id}
+ 	</select> 
+ 	
+ 	<select id="detail" parameterType="ProductDTO" resultMap="detailResult">
+		SELECT P.*, PF.*
+		FROM
+        PRODUCT P
+            LEFT OUTER JOIN
+        PRODUCTFILE PF
+        	ON P.PRODUCT_NUM=PF.PRODUCT_NUM
+		WHERE   P.PRODUCT_NUM=#{product_num} 
+ 	</select> 
+ 	
+ 	<resultMap type="ProductDTO" id="detailResult">
+ 		<id column="product_num" property="product_num"/>
+ 		<result column="category_num" property="category_num"/>
+ 		<result column="id" property="id"/>
+ 		<result column="product_name" property="product_name"/>
+ 		<result column="product_price" property="product_price"/>
+ 		<result column="content" property="content"/>
+ 		<result column="sales" property="sales"/>
+ 		<result column="stock" property="stock"/>
+ 		<result column="hit" property="hit"/>
+ 		<result column="rate" property="rate"/>
+		<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+			<result column="fileSection" property="fileSection"/>
+		</collection>
+ 	</resultMap>
+ 	
+ 	
+  	<select id="categoryListTotal" parameterType="PassingNum" resultType="int">
+		  	SELECT COUNT(R) FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM  		        
+		        (SELECT P.*, PF.FILENAME, PF.FILENUM, PF.ORINAME, M.COM_NAME FROM PRODUCT P, (select *
+				from PRODUCTFILE
+				where (PRODUCT_NUM, FILENUM) in (
+				select PRODUCT_NUM, MIN(FILENUM) as FILENUM
+				from PRODUCTFILE WHERE FILESECTION = 0 group by PRODUCT_NUM)) PF, MEMBERS M WHERE P.PRODUCT_NUM = PF.PRODUCT_NUM AND P.ID = M.ID)	        
+		        WHERE 
+		        	PRODUCT_NUM>0 
+		        	and
+		        	category_num = #{category_num}
+		        	AND
+		        	RATE != #{filterSale}		        	
+		        	AND 
+		        	COM_NAME LIKE '%'||#{filterBrand}||'%'
+		        	AND
+		        	PRODUCT_PRICE BETWEEN #{filterStartPrice} AND #{filterLastPrice}
+		        	
+		            ORDER BY 
+		            <choose>
+		        		<when test="productArray==1">
+		        			HIT DESC
+		        		</when>
+		        		<when test="productArray==2">
+		        			PRODUCT_PRICE ASC
+		        		</when>
+		        		<when test="productArray==3">
+		        			PRODUCT_PRICE DESC
+		        		</when>
+		        		<when test="productArray==4">
+		        			PRODUCT_NUM DESC
+		        		</when>
+		        	</choose>
+		         ) B
+		     )
+ 	</select> 	
+ 	
+ 	<select id="categoryList" parameterType="PassingNum" resultMap="categoryResult">
+  		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM  		        
+		        (SELECT P.*, PF.FILENAME, PF.FILENUM, PF.ORINAME, M.COM_NAME FROM PRODUCT P, (select *
+				from PRODUCTFILE
+				where (PRODUCT_NUM, FILENUM) in (
+				select PRODUCT_NUM, MIN(FILENUM) as FILENUM
+				from PRODUCTFILE WHERE FILESECTION = 0 group by PRODUCT_NUM)) PF, MEMBERS M WHERE P.PRODUCT_NUM = PF.PRODUCT_NUM AND P.ID = M.ID)	        
+		        WHERE 
+		        	PRODUCT_NUM>0 
+		        	and
+		        	category_num = #{category_num}
+
+		        	AND
+		        	RATE != #{filterSale}		        	
+		        	AND 
+		        	COM_NAME LIKE '%'||#{filterBrand}||'%'
+		        	AND
+		        	PRODUCT_PRICE BETWEEN #{filterStartPrice} AND #{filterLastPrice}
+		            ORDER BY
+					<choose>
+		        		<when test="productArray==1">
+		        			HIT DESC
+		        		</when>
+		        		<when test="productArray==2">
+		        			PRODUCT_PRICE ASC
+		        		</when>
+		        		<when test="productArray==3">
+		        			PRODUCT_PRICE DESC
+		        		</when>
+		        		<when test="productArray==4">
+		        			PRODUCT_NUM DESC
+		        		</when>
+		        	</choose>
+		         ) B
+		     )
+		<!-- WHERE R between #{startRow} and #{lastRow} -->
+ 	</select>
+ 	
+ 	<resultMap type="ProductDTO" id="categoryResult">
+ 		<id column="product_num" property="product_num"/>
+ 		<result column="category_num" property="category_num"/>
+ 		<result column="id" property="id"/>
+ 		<result column="product_name" property="product_name"/>
+ 		<result column="product_price" property="product_price"/>
+ 		<result column="content" property="content"/>
+ 		<result column="sales" property="sales"/>
+ 		<result column="stock" property="stock"/>
+ 		<result column="hit" property="hit"/>
+ 		<result column="rate" property="rate"/>
+		<association property="productFileDTO" javaType="ProductFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+		<association property="memberDTO" javaType="MemberDTO">
+			<id column="id" property="id"/>
+			<result column="com_name" property="com_name"/>
+		</association>		
+ 	</resultMap>
+ 	
+ 	<select id="category" parameterType="CategoryDTO" resultType="CategoryDTO">
+  		SELECT * FROM CATEGORY ORDER BY CATEGORY_NUM ASC
+ 	</select>
+ 	
+ 	 	<select id="category_name" parameterType="CategoryDTO" resultType="CategoryDTO">
+  		SELECT * FROM CATEGORY WHERE CATEGORY_NUM = #{category_num}
+ 	</select>
+ 	
+ 	<update id="detailHit" parameterType="ProductDTO">
+		UPDATE PRODUCT SET HIT = HIT+1 WHERE PRODUCT_NUM = #{product_num}
+ 	</update>
+
+ 
+ 	<select id="list" parameterType="ProductDTO" resultType="ProductDTO">
+  		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM PRODUCT WHERE 
+		        	PRODUCT_NUM>0 
+		        	and 
+		        	<choose>
+		        		<when test="kind=='col1'">
+		        			PRODUCT_NAME
+		        		</when>
+		        		<when test="kind =='col2'">
+		        			CONTENT
+		        		</when>
+		        		<otherwise>
+		        			ID
+		        		</otherwise>
+		        	</choose>	
+		        	LIKE '%'||#{search}||'%'
+		            ORDER BY PRODUCT_NUM DESC
+		         ) B
+		     )
+		WHERE R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	 	<select id="sellList" parameterType="ProductDTO" resultType="ProductDTO">
+  		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM PRODUCT WHERE 
+		        	PRODUCT_NUM>0 
+		        	and 
+		        	<choose>
+		        		<when test="kind=='col1'">
+		        			PRODUCT_NAME
+		        		</when>
+		        		<when test="kind =='col2'">
+		        			CONTENT
+		        		</when>
+		        		<otherwise>
+		        			ID
+		        		</otherwise>
+		        	</choose>	
+		        	LIKE '%'||#{search}||'%'
+		            ORDER BY PRODUCT_NUM DESC
+		            AND
+		            ID = #{id}
+		         ) B
+		     )
+		WHERE R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	
+	<select id="total" resultType="Long" parameterType="Pager">
+ 		SELECT COUNT(PRODUCT_NUM) FROM PRODUCT
+ 		WHERE
+ 			PRODUCT_NUM>0 
+		    and 	       	
+		     <choose>
+		     	<when test="kind=='col1'">
+		     		PRODUCT_NAME
+		     	</when>
+		     	<when test="kind =='col2'">
+		     		CONTENT
+		     	</when>
+		     	<otherwise>
+		     		ID
+		     	</otherwise>
+		     </choose>	
+        	LIKE '%'||#{search}||'%' 
+ 	</select>
+		
+		<select id="total2" resultType="Long" parameterType="Pager">
+ 		SELECT COUNT(PRODUCT_NUM) FROM PRODUCT
+ 		WHERE
+ 			PRODUCT_NUM>0 
+		    and 	       	
+		     <choose>
+		     	<when test="kind=='col1'">
+		     		PRODUCT_NAME
+		     	</when>
+		     	<when test="kind =='col2'">
+		     		CONTENT
+		     	</when>
+		     	<otherwise>
+		     		ID
+		     	</otherwise>
+		     </choose>	
+        	LIKE '%'||#{search}||'%' 
+        	AND
+        	ID = #{id}
+ 	</select>	
+		
+ 	<update id="update" parameterType="ProductDTO">
+ 		UPDATE PRODUCT SET CATEGORY_NUM=#{category_num}, PRODUCT_NAME=#{product_name}, PRODUCT_PRICE=#{product_price}, STOCK=#{stock}, RATE=#{rate} WHERE PRODUCT_NUM = #{product_num}
+ 	</update>
+
+ 	<delete id="delete" parameterType="ProductDTO">
+ 		DELETE PRODUCT WHERE PRODUCT_NUM=#{product_num}
+ 	</delete>
+
+
+</mapper>

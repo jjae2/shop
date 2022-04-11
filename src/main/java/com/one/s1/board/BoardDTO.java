@@ -12,6 +12,14 @@ public class BoardDTO {
 	private Date md;
 	private Long hit;
 
+	
+	public Long getNum() {
+		return num;
+	}
+	public void setNum(Long num) {
+		this.num = num;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -60,13 +68,6 @@ public class BoardDTO {
 		this.hit = hit;
 	}
 
-	public Long getNum() {
-		return num;
-	}
 
-	public void setNum(Long num) {
-		this.num = num;
-	}
-	
 
 }
