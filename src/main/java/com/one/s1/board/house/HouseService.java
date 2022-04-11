@@ -84,4 +84,10 @@ public class HouseService implements BoardService {
 		return houseDAO.hitCount(boardDTO);
 	}
 
+	@Override
+	public int add(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -22,5 +22,8 @@ public interface BoardService {
 
 	// delete
 	public int delete(BoardDTO boardDTO) throws Exception;
+	
+	
+	int add(BoardDTO boardDTO) throws Exception;
 
 }
