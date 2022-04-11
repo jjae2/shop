@@ -1,13 +1,12 @@
 const scrap = document.querySelector("#scrap");
-const product_nums = document.querySelector("#product_nums");
-const ids = document.querySelector("#ids");
-const product_name = document.querySelector("#product_name");
+const product_nums = document.querySelector("#scrap_product_num");
+const ids = document.querySelector("#scrap_id");
+
 
 scrap.addEventListener("click", function () {
  
     console.log(product_num.value);
     console.log(id.value);
-    console.log(contents.value);
    
     //js에서 요청 객체 생성
     const xhttp = new XMLHttpRequest();
@@ -22,7 +21,7 @@ scrap.addEventListener("click", function () {
     //요청 전송
     //post 요청 시 파라미터
     //send("이름 =값&이름2=값2...")
-    xhttp.send("product_num="+product_nums.value+"&id="+ids.value+"&product_name="+product_name.value );  
+    xhttp.send("product_num="+product_nums.value+"&id="+ids.value );  
     
     //응답처리
     xhttp.onreadystatechange = function () {

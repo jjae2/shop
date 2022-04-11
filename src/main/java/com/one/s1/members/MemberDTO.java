@@ -17,6 +17,7 @@ public class MemberDTO {
 	private String com_name;
 	private String com_address;
 	private MemberFileDTO memberFileDTO;
+	
 	public String getId() {
 		return id;
 	}

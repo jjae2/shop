@@ -16,4 +16,5 @@ public class NoticeDTO extends BoardDTO {
 	}
 
 
+
 }

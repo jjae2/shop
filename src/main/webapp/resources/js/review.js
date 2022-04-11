@@ -1,11 +1,11 @@
 const save = document.querySelector("#save");
-const product_num = document.querySelector("#product_num");
+const product_num = document.querySelector("#review_product_num");
 const rate5 = document.querySelector("#rate5");
-const id = document.querySelector("#id");
-const contents = document.querySelector("#contents");
+const id = document.querySelector("#review_id");
+const contents = document.querySelector("#review_contents");
 const reviewResult = document.querySelector("#reviewResult");
 const del = document.querySelectorAll(".del");
-const point=document.getElementsByName("detail.reviewDTO.review_point")
+const point=document.getElementsByName("dto.reviewDTO.review_point")
 
 
 // update

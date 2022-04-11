@@ -10,7 +10,7 @@ public class BoardDTO {
 	private Date cd;
 	private Date md;
 	private Long hit;
-
+	
 
 	public Long getNum() {
 		return num;
@@ -18,7 +18,6 @@ public class BoardDTO {
 	public void setNum(Long num) {
 		this.num = num;
 	}
-
 	public String getTitle() {
 		return title;
 	}

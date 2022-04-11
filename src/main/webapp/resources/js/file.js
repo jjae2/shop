@@ -1,46 +1,54 @@
 const fileAdd = document.getElementById("fileAdd");
 const fileResult = document.getElementById("fileResult");
 const del = document.getElementsByClassName("del");
-let count = 0;
-let num = 0; //id용도
-fileAdd.addEventListener("click", function () {
-  if (count > 4) {
-    alert("첨부파일은 최대 5개 까지만 가능함");
-    return;
-  }
-  let div = document.createElement("div");
-  div.setAttribute("id", "del" + num);
-  count++;
 
-  let data = document.createElement("input"); //<input>
-  data.setAttribute("type", "file"); // <input type="file"></input>
-  data.setAttribute("name", "files"); // <input type="file" names="files"></input>
+let count=0;
+let num=0; //id용도
 
-  let button = document.createElement("button");
-  button.setAttribute("type", "button");
-  button.className = "del";
-  button.setAttribute("data-num", "del" + num);
-  button.innerHTML = "DEL";
+fileAdd.addEventListener("click", function(){
 
-  div.append(data);
-  div.append(button);
+    
+    count++;
+    if(count>5){
+        alert('첨부파일은 최대 5개 만 가능');
+        count=5;
+        return ;
+    }
 
-  fileResult.append(div);
+    let div = document.createElement('div');   //<div></div>
+    div.setAttribute("id", "del"+num);
+    
+    let file = document.createElement("input"); //<input>
+    file.setAttribute("type", "file");          //<input type="file">
+    file.setAttribute("name", "files");         //<input type="file" name="files">
 
-  num++;
+    let button = document.createElement('button'); //<button></button>
+    button.setAttribute("type", "button");
+    button.className="del";
+    button.setAttribute("data-num", "del"+num);
+    button.innerHTML="DEL";
+
+    div.append(file);
+    div.append(button);
+
+    fileResult.append(div);
+
+    num++;
+
 });
 
-fileResult.addEventListener("click", function (event) {
-  let cn = event.target;
+fileResult.addEventListener("click", function(event){
+    let cn = event.target;
+   
+    if(cn.classList.contains('del')){
+        let delNum = cn.getAttribute("data-num");
+        document.getElementById(delNum).remove();
+        count--;
+    }
 
-  if (cn.classList.contains("del")) {
-    let delNum = cn.getAttribute("data-num");
-    document.getElementById(delNum).remove();
-    count--;
-  }
 });
 
-//--------------
+//---------------------------------------------------
 const fileDeleteBtn = document.querySelectorAll(".fileDeleteBtn");
 const files = document.querySelector("#files");
 
@@ -56,7 +64,7 @@ files.addEventListener("click", function(event){
 
 
         let fileNum = event.target.getAttribute("data-fileNum");
-        
+        // let fileName = event.target.getAttribute("data-fileName");
         //ajax 파라미터 : fileNum, Method :  post, URL : fileDelete, Controller : fileDelete
         let xhttp = new XMLHttpRequest();
 
@@ -65,6 +73,24 @@ files.addEventListener("click", function(event){
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         xhttp.send("fileNum="+fileNum);
+
+        // let blank="";
+        // let df_fileNum= document.querySelector("#df"+fileNum);
+        // console.log(df_fileNum);
+        // console.log("1234678");
+        // df_fileNum.value("");
+        // df_fileNum.setAttribute("value", blank);
+        // console.log(df_fileNum);
+        // df_fileNum.setAttribute("value", fileName);
+        // console.log(df_fileNum);
+        // let df = document.querySelector("#df");
+
+        // let tx = document.createElement('input');
+        // tx.setAttribute("name", "df");
+        // tx.setAttribute("type", "hidden");
+        // tx.value=fileName;
+        // df.append(tx);
+        
 
          //응답 처리
         xhttp.onreadystatechange = function(){

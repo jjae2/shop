@@ -68,6 +68,6 @@ fieldset{
 	 }; 
 	 reader.readAsDataURL(event.target.files[0]); } */
  </script>
- <script type="text/javascript" src="../resources/js/file.js"></script>
+ <script type="text/javascript" src="../resources/js/housefile.js"></script>
 </body>
 </html>
