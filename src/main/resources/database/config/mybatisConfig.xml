@@ -15,5 +15,7 @@
    		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
    		<typeAlias type="com.one.s1.board.qna2.Qna2FileDTO" alias="Qna2FileDTO"/>
    		<typeAlias type="com.one.s1.board.BoardFileDTO" alias="BoardFileDTO"/>
+    	<typeAlias type="com.one.s1.cart.CartDTO" alias="CartDTO"/>
+    	<typeAlias type="com.one.s1.orders.OrderDTO" alias="OrderDTO"/>
     </typeAliases>
   </configuration>
