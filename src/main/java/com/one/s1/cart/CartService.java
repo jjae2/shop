@@ -30,7 +30,7 @@ public class CartService {
 	
 		//등록 에러시 0 반환
 		try {
-			return cartDAO.cartAdd(cartDTO);
+			return cartDAO.add(cartDTO);
 		}catch (Exception e) {
 			return 0;
 		}
