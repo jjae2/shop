@@ -11,7 +11,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>Member Join Page</h1>
-	<form class="frm" action="./join" method="post" id="frm">
+	<form class="frm" action="./join" method="post" id="frm" enctype="multipart/form-data">
 		<fieldset>
 			<legend>ID</legend>
 			<input type="text" name="id" id="id">
@@ -28,6 +28,10 @@
 			<input type="password" id="pw2" name="pw2"
 				placeholder="8글자 이상 12글자 이하로 작성">
 			<div id="pw2Result"></div>
+		</fieldset>
+		<fieldset>
+			<legend>Profile</legend>
+			<input type="file" name="photo" id="photo">
 		</fieldset>
 		<fieldset>
 			<legend>NAME</legend>

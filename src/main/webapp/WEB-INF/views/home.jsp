@@ -22,7 +22,6 @@
 <P>  The time on the server is ${serverTime}. </P>
 <h1>가나다라마바사아자차카타파함</h1>
 
-
 <c:import url="./template/footer.jsp"></c:import>
 
 </body>

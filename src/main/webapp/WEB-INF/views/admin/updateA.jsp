@@ -10,7 +10,9 @@
 </head>
 <body>
 		<form action="./updateA" method="post">
+		<input type="hidden" name = "id" value="${dto.id}">
 		<table class="table-basic">
+			
 			<tr>
 				<th>아이디</th>
 				<td>${dto.id}</td>
@@ -33,7 +35,7 @@
 			</tr>	
 			<tr>
 				<th>회원 등급</th>
-					<td><select name="dto.auth_id">
+					<td><select name="auth_id">
 					<option value ="0">구매자</option>
 					<option value ="1">판매자</option>
 					</select><button type="submit">변경</button></td>	

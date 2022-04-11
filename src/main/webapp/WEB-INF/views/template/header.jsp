@@ -133,7 +133,24 @@
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
-											id="qqt1" href="/s1/admin/list">회원 관리</a>
+											id="qqt1" href="/s1/admin/main">관리자 페이지</a>
+										</li>
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt5" href="/s1/member/logout">로그아웃</a>
+										</li>
+										</c:when>
+										<c:when test="${member.auth_id==1 }">
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt1" href="/s1/member/sellmain">판매자 페이지</a>
+										</li>
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt5" href="/s1/member/logout">로그아웃</a>
 										</li>
 										</c:when>
 										<c:otherwise>
@@ -141,9 +158,6 @@
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt1" href="/s1/member/mypage">마이페이지</a>
-										</li>
-										</c:otherwise>
-										</c:choose>
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
@@ -166,6 +180,10 @@
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt5" href="/s1/member/logout">로그아웃</a>
 										</li>
+										</li>
+										</c:otherwise>
+										</c:choose>
+									
 									</ul>
 								</div>
 							</div>
