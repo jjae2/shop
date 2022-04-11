@@ -1,8 +1,9 @@
 package com.one.s1.board;
 
-import com.one.s1.file.fileDTO;
+import com.one.s1.file.FileDTO;
 
-public class BoardFileDTO extends fileDTO{
+public class BoardFileDTO extends FileDTO
+{
 
 	private Long num;
 

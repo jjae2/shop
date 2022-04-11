@@ -26,7 +26,6 @@
 		DELETE REVIEW WHERE REVIEW_NUMBER=#{review_number}
 	</delete>
 
-</mapper>
 <!-- 리뷰 끝 -->
 	<delete id="fileDelete" parameterType="ProductFileDTO">
  		DELETE PRODUCTFILE WHERE FILENUM=#{fileNum}
@@ -313,4 +312,4 @@
 
 
 </mapper>
->>>>>>> 138dadab5453d31d12a871cc9c9aa9ed8510a04c
+
