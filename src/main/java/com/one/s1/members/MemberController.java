@@ -26,6 +26,12 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+
+	@GetMapping("main")
+	public String main() {
+			
+	return "member/sellmain";
+		}
 	
 
 	@RequestMapping(value = "update", method = RequestMethod.GET)

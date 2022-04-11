@@ -39,7 +39,6 @@
    		<typeAlias type="com.one.s1.product.ProductDTO" alias="ProductDTO"/>	
    		<!-- <typeAlias type="com.one.s1.category.CategoryDTO" alias="CategoryDTO"/> -->
    		<typeAlias type="com.one.s1.product.CategoryDTO" alias="CategoryDTO"/>
-   		<typeAlias type="com.one.s1.cart.CartDTO" alias="CartDTO"/>
    		<typeAlias type="com.one.s1.util.PassingNum" alias="PassingNum"/>
     </typeAliases>
   </configuration>
