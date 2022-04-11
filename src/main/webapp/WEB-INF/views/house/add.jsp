@@ -6,8 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <c:import url="../template/header_css.jsp"></c:import>
+<style type="text/css">
+fieldset{
+      border: 0; 
+}
+</style>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
@@ -32,25 +36,38 @@
 			</select>
 			</label>
 		</fieldset>
-		<fieldset>
-			<input type="text" name="title" placeholder="제목을 입력해주세요.">	
-		</fieldset>
-
-		<fieldset>
-		 <div id="fileResult"></div>
-		 <div id="image_container"></div>
-		 <textarea name="contents" rows="10" cols="30" placeholder="내용을 입력해주세요."></textarea>
-		</fieldset>
-
-	    
-		<button type="button" id="fileAdd">사진 추가</button>
-	   
-
-		<button type="submit">업로드</button>
-	</form>
 	
+	<div>
+	<h1>대표 사진</h1>
+		<div id="fileResult">
+		
+		</div>
+		
+		<button type="button" id="fileAdd">FileAdd </button>
+		<!--  <input type="file"  id="image" onchange="setThumbnail(event);"/> <div id="image_container"></div>  -->
+	</div>
+		<fieldset>
+		 <fieldset>
+		<input type="text" name="title" placeholder="제목을 입력해주세요.">	
+		</fieldset>
+		 <textarea name="contents" placeholder="내용을 입력해주세요."></textarea>
+		</fieldset>
+
+		<button type="submit">글 등록</button>
+	</form>
+
 
 <c:import url="../template/footer.jsp"></c:import>
-<script src="../resources/js/file.js"></script>
+ <script type="text/javascript">
+/*  function setThumbnail(event) { 
+	 let reader = new FileReader(); 
+	   reader.onload = function(event) {
+	   let img = document.createElement("img");
+	  img.setAttribute("src", event.target.result);
+	  document.querySelector("div#image_container").appendChild(img);
+	 }; 
+	 reader.readAsDataURL(event.target.files[0]); } */
+ </script>
+ <script type="text/javascript" src="../resources/js/file.js"></script>
 </body>
 </html>

@@ -125,6 +125,10 @@
 	<delete id="deleteFile" parameterType="HouseFileDTO">
  		DELETE HOUSEFILE WHERE FILENUM=#{fileNum}
  	</delete>
+ 	<update id="hitCount" parameterType="BoardDTO">
+ 	UPDATE HOUSE SET HIT = HIT+1
+	WHERE NUM = #{num}
+ 	</update>
 	
 
 

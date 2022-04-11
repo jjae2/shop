@@ -29,6 +29,7 @@ public class FileManager {
       //path= /resources/upload/*
 	
       String realPath =servletContext.getRealPath(path);
+      System.out.println("Save");
       System.out.println(realPath);
       
       File file =new File(realPath);

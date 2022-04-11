@@ -32,9 +32,15 @@
 			<beans:bean
 				class="com.one.s1.interceptor.WriterInterceptor"></beans:bean>
 		</interceptor>
+			<interceptor>
+			<mapping path="/house/update" />
+			<beans:bean
+				class="com.one.s1.interceptor.WriterInterceptor"></beans:bean>
+		</interceptor>
 		<interceptor>
 			<mapping path="/house/*" />
-			<exclude-mapping path="/house/list" /> <!--list만 제외한다 -->
+			<exclude-mapping path="/house/list" />
+			<exclude-mapping path="/house/detail" />
 			<beans:bean
 				class="com.one.s1.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>

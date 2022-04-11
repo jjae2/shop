@@ -23,7 +23,6 @@
 	<c:forEach items="${dto.fileDTOs}" var="f">
 	<img alt="" src="../resources/upload/house/${f.fileName}">
 	</c:forEach>
-	
 	<h2>Contents::${dto.contents}</h2>
 	</div>
 

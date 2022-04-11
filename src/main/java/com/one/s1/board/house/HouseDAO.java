@@ -71,5 +71,7 @@ public class HouseDAO implements BoardDAO {
 	public HouseFileDTO detailFile(HouseFileDTO houseFileDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "detailFile", houseFileDTO);
 	}
-
+	public int hitCount(BoardDTO boardDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"hitCount",boardDTO);
+	}
 }

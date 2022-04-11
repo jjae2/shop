@@ -34,8 +34,10 @@ public class HouseController {
 
 	@GetMapping("detail")
 	public String detail(HouseDTO houseDTO, Model model) throws Exception {
+		
 		BoardDTO boardDTO = houseService.detail(houseDTO);
 		model.addAttribute("dto", boardDTO);
+		houseService.hitCount(houseDTO);
 		return "house/detail";
 	}
 

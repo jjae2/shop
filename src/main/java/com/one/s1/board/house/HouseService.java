@@ -79,5 +79,8 @@ public class HouseService implements BoardService {
 		}
 		return result;
 	}
+	public int hitCount(BoardDTO boardDTO)throws Exception{
+		return houseDAO.hitCount(boardDTO);
+	}
 
 }
