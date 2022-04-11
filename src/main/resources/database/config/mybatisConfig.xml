@@ -33,5 +33,8 @@
    		<typeAlias type="com.one.s1.product.CategoryDTO" alias="CategoryDTO"/>
    		<typeAlias type="com.one.s1.cart.CartDTO" alias="CartDTO"/>
    		<typeAlias type="com.one.s1.util.PassingNum" alias="PassingNum"/>
+   		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
+   		
+   		
     </typeAliases>
   </configuration>

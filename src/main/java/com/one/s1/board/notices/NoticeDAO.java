@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.one.s1.board.BoardDAO;
 import com.one.s1.board.BoardDTO;
+import com.one.s1.product.ProductDTO;
+import com.one.s1.product.ProductFileDTO;
 import com.one.s1.util.Pager;
 
 @Repository
@@ -22,7 +24,11 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE + "detail", boardDTO);
 	}
-
+	
+	public int detailHit(BoardDTO boardDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "detailHit", boardDTO);
+	}
+	
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {//
 		// TODO Auto-generated method stub
@@ -34,7 +40,11 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE + "add", boardDTO);
 	}
-
+	
+	public int addFile(NoticeFileDTO noticeFileDTO) throws Exception {		
+		return sqlSession.insert(NAMESPACE + "addFile", noticeFileDTO);
+	}
+	
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub

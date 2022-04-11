@@ -1,0 +1,264 @@
+.layoutStart {
+    flex: 0 0 auto;
+}
+
+.css-1b7n61v {
+    padding: 40px 15px 30px;
+    background-color: rgb(247, 249, 250);
+}
+
+.css-1ouw2vm {
+    max-width: 500px;
+    margin: 0px auto;
+}
+
+.css-i0gyub {
+    margin: 0px 0px 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(47, 52, 56);
+}
+
+.css-13l7v01 {
+    margin: 0px 0px 30px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(47, 52, 56);
+    word-break: keep-all;
+}
+
+.css-17j0uda {
+    position: relative;
+    margin: 0px auto 24px;
+    max-width: 500px;
+}
+.css-zjik7 {
+    display: flex;
+}
+
+.css-18pny36 {
+    flex: 1 0 auto;
+}
+
+.css-bjn8wh {
+    position: relative;
+}
+
+.css-bnv4dr {
+    width: 90%;
+    box-sizing: border-box;
+    padding: 9px 15px 9px 47px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgb(47, 52, 56);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(234, 237, 239);
+    box-shadow: rgb(63 71 77 / 5%) 0px 2px 5px;
+    border-radius: 4px;
+    transition: background-color 0.1s ease 0s;
+}
+.searchSubmitBtn{
+	line-height: 25px;
+}
+.css-17tiyxu {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    width: 21px;
+    height: 21px;
+    font-size: 21px;
+    color: rgb(130, 140, 148);
+    pointer-events: none;
+}
+
+/*		============			*/
+
+.css-17z2bnm {
+    max-width: 780px;
+    padding: 0px 15px;
+    margin: 0px auto;
+    box-sizing: border-box;
+}
+
+.css-160s9zb {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+   	padding: 30px 0px 20px;
+    flex-wrap: wrap;
+}
+.css-lz5mig {
+    flex: 0 0 auto;
+    min-width: 0px;
+    display: block;
+}
+
+.css-kwujij {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+}
+
+.css-yvmhua {
+    display: flex;
+    font-size: 10px;
+    line-height: 1;
+    position: absolute;
+    top: 14px;
+    right: 13px;
+    color: rgb(130, 140, 148);
+    
+}
+
+.css-yvmhua::before {
+    font-family: OhouseIcon;
+    vertical-align: top;
+}
+
+.css-a7dsai {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
+    font-size: 16px;
+    line-height: 20px;
+    position: relative;
+    appearance: none;
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #EAEDEF;
+    color: #2F3438;
+    padding-left: 13px;
+    padding-right: 37px;
+}
+
+.css-5pi9f4 {
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+    border: none;
+    background: none rgb(53, 197, 240);
+    font-style: inherit;
+    font-variant: inherit;
+    font-stretch: inherit;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 18px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 0px 16px;
+    color: rgb(255, 255, 255);
+    width: 120px;
+    font-weight: bold;
+    box-sizing: border-box;
+    text-align: center;
+}
+.css-5pi9f4::before {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+
+
+.css-1l14cjb {
+    display: flex;
+    padding: 18px 0px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgb(47, 52, 56);
+
+    transition: opacity 0.1s ease 0s;
+}
+.bbsTitle{
+	width: 100%;
+	display: flex;
+	position : relative;
+    color: rgb(47, 52, 56);
+
+    transition: opacity 0.1s ease 0s;
+	align-items: center;
+    justify-content: space-between;
+}
+
+.css-nsatf2 {
+    padding: 0px;
+    height: 1px;
+    border: none;
+    background-color: rgb(234, 237, 239);
+    margin: 30px 0px;
+}
+
+
+
+.css-1xjrqco {
+    font-size: 12px;
+    padding: 0px 8px;
+    border-radius: 12px;
+    color: rgb(53, 197, 240);
+    background-color: rgb(239, 251, 255);
+    display: inline-block;
+    font-weight: 700;
+    height: 24px;
+    line-height: 24px;
+    flex: 0 0 auto;
+    margin: 1px 10px 0px 0px;
+}
+.css-1xjrqco2 {
+    font-size: 12px;
+    padding: 0px 8px;
+    border-radius: 12px;
+    color: rgb(255, 23, 68);
+    background-color: rgb(255, 189, 213);
+    display: inline-block;
+    font-weight: 700;
+    height: 24px;
+    line-height: 24px;
+    flex: 0 0 auto;
+    margin: 1px 10px 0px 0px;
+}
+.css-1f00cg3 {
+    display : inline-block;
+    position: relative;
+    min-width: 0px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 24px;
+}
+
+.css-1tg86jb {
+    margin: 0px;
+    padding: 0px;
+    height: 1px;
+    border: none;
+    background-color: rgb(234, 237, 239);
+}
+
+.css-11mfvm5 {
+    display: inline-block;
+    margin-right: 8px;
+
+}
+
+.css-11mfvm5:not(:last-child)::after {
+    content: "·";
+    margin-left: 8px;
+}
+.e1amn78m2{
+	position:relative;
+	font-size: 14px;
+    line-height: 16px;
+    color: #828C94;
+}
+
