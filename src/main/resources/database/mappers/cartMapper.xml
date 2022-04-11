@@ -6,10 +6,42 @@
     
 <mapper namespace="com.one.s1.cart.CartDAO">
 
+<!-- 	<insert id="add" parameterType="CartDTO">
+		INSERT INTO CART(CART_NUM, PRODUCT_NUM, ID, CART_COUNT)
+		VALUES(CART_SEQ.NEXTVAL, #{product_num}, #{id}, #{cart_count})
+	</insert> -->
 
-  	<insert id="cartAdd" parameterType="CartDTO">
+	<delete id="delete" parameterType="CartDTO">
+		DELETE CART WHERE CART_NUM=#{cart_num}
+	</delete>
+	
+	<update id="update" parameterType="CartDTO">
+		UPDATE CART SET PRODUCT_NUM=#{product_num}, CART_COUNT=#{cart_count} WHERE CART_NUM=#{cart_num}
+	</update>
+	
+	<select id="list" resultType="CartDTO">
+<!-- 		SELECT *
+		FROM CART
+		ORDER BY CART_NUM DESC -->
+		
+		
+		SELECT m.id, m.com_name, p.product_num, p.rate, product_price, product_name, cart_num, cart_count, c.adddate
+		FROM members m, product p, cart c
+		WHERE m.id=c.id AND p.product_num=c.product_num
+
+	
+	</select>
+	
+	<select id="checkCart" resultType="com.one.s1.cart.CartDTO">
+		SELECT * FROM CART
+		WHERE ID = #{id} and PRODUCT_NUM=#{product_num}
+	</select>
+
+
+  	<insert id="add" parameterType="CartDTO">
 		INSERT INTO CART (CART_NUM, PRODUCT_NUM, ID, CART_COUNT)
 		VALUES(CART_SEQ.NEXTVAL, #{product_num}, #{id}, #{cart_count})
  	</insert>
+
 
 </mapper>

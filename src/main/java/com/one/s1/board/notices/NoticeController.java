@@ -56,6 +56,7 @@ public class NoticeController {
 	public ModelAndView add(NoticeDTO noticeDTO, MultipartFile [] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = noticeService.add(noticeDTO, files);
+
 		mv.setViewName("redirect:./list");
 		return mv;
 	}

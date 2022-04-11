@@ -6,6 +6,28 @@
     
 <mapper namespace="com.one.s1.product.ProductDAO">
 
+<!-- 리뷰 끝 -->
+		
+	<insert id="addReview" parameterType="ReviewDTO">
+		INSERT INTO REVIEW (REVIEW_NUMBER,PRODUCT_NUM,ID,REVIEW_POINT,CONTENTS,CD,MD)
+		VALUES (REVIEW_SEQ.NEXTVAL,#{product_num},#{id},#{review_point},#{contents},sysdate,null)
+	</insert>
+	
+	<select id="listReview" parameterType="ProductDTO"	resultType="ReviewDTO">
+		SELECT * FROM REVIEW
+		WHERE PRODUCT_NUM=#{product_num}
+		ORDER BY REVIEW_NUMBER DESC
+	</select>
+	
+	<update id="updateReview" parameterType="ReviewDTO">
+		UPDATE REVIEW SET CONTENTS=#{contents},MD=sysdate WHERE REVIEW_NUMBER=#{review_number}
+	</update>
+	
+	<delete id="deleteReview" parameterType="ReviewDTO">
+		DELETE REVIEW WHERE REVIEW_NUMBER=#{review_number}
+	</delete>
+
+<!-- 리뷰 끝 -->
 	<delete id="fileDelete" parameterType="ProductFileDTO">
  		DELETE PRODUCTFILE WHERE FILENUM=#{fileNum}
  	</delete>

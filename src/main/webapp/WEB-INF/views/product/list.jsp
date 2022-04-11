@@ -73,5 +73,6 @@
 <script src="../resources/js/productList.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -10,9 +10,13 @@
 <script type="text/javascript"></script>
 
 <style type="text/css">
+#scrap{
+color:#35c5f0;
+}
+
 </style>
 
-
+<link href="../resources/css/point.css" rel="styleSheet" />
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
@@ -100,8 +104,18 @@
 							<div class="product_selling_header_title_name-wrap">
 								<span class="product_selling_header_title_name" >${dto.product_name}  </span>
 								<div class="product_selling_header_action">
-									<button
-										class="product_selling_header_action_button product_selling_header_action_button-scrap"
+								<!--  스크랩 부분 -->
+	<input type="hidden" name="product_num" value="${detail.product_num}" id="scrap_product_num">  
+	<input type="hidden" name="id" value="${member.id}" id="scrap_id">
+
+	
+	 <c:if test="${not empty member.id}"> 
+	<button id="scrap">스크랩 하기</button>
+	<button><a href="../scrap/deleteScrap?product_num=${dto.product_num}&id=${member.id}">스크랩 취소</a></button>
+	 </c:if> 
+	 <!--  스크랩 끝 -->
+									<!--<button
+										 class="product_selling_header_action_button product_selling_header_action_button-scrap"
 										type="button">
 										<svg class="icon--stroke" aria-label="스크랩" width="24"
 											height="24" fill="currentColor" stroke="currentColor"
@@ -110,7 +124,7 @@
 											<path
 												d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z"></path></svg>
 										<span class="count">2,122</span>
-									</button>
+									</button> -->
 									<div class="drop-down1">
 										<button class="product_selling_header_action_button" id="productUrl"
 											type="button" style="cursor: pointer;">
@@ -471,7 +485,29 @@
 						<!--============== 리뷰 ==============-->
 						<!--============== 리뷰 ==============-->
 						<!-- 397 - 987 -->
-
+							      <h1>리뷰 쓰기</h1>
+  <p class="">-----상품 내용----</p>
+<form name="myform" id="myform" action="./addReview" method="post">
+     <fieldset>
+        <legend>별점 평가</legend>별점을 선택해 주세요.
+        만족도
+        <input type="radio" name="dto.reviewDTO.review_point" value="5" id="rate1"><label for="rate1">⭐</label>
+        <input type="radio" name="dto.reviewDTO.review_point" value="4" id="rate2"><label for="rate2">⭐</label>
+        <input type="radio" name="dto.reviewDTO.review_point" value="3" id="rate3"><label for="rate3">⭐</label>
+        <input type="radio" name="dto.reviewDTO.review_point" value="2" id="rate4"><label for="rate4">⭐</label>
+        <input type="radio" name="dto.reviewDTO.review_point" value="1" id="rate5"><label for="rate5">⭐</label>
+    </fieldset>
+  	<div>
+		<input type="hidden" name="product_num" value="${dto.product_num}" id="review_product_num">  
+		<input type="hidden" readonly name="id" value="${member.id}" id="review_id">
+		<textarea rows="" cols="30" name="contents" id="review_contents"></textarea>
+		<button type="button" id="save">리뷰 등록</button>
+	</div>
+  </form>
+	<hr>
+	<hr>
+	<table id="reviewResult">
+	</table>
 
 
 
@@ -786,5 +822,6 @@
 	<script src="../resources/js/productDetail.js"></script>
 	<c:import url="../template/footer.jsp"></c:import>
 
+>>>>>>> 138dadab5453d31d12a871cc9c9aa9ed8510a04c
 </body>
 </html>

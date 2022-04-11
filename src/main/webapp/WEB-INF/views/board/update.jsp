@@ -16,7 +16,7 @@
 	<form action="./update" method="post">
 		<input type="hidden" name="num" value="${dto.num}">
 		<input type="text" name="title" value="${dto.title}">
-		<input type="text" name="writer" value="${dto.writer}" disabled>
+		<input type="text" name="id" value="${dto.id}" disabled>
 		<textarea rows="" cols="" name="contents">${dto.contents}</textarea>
 		<button type="submit">UPDATE</button>
 	</form>

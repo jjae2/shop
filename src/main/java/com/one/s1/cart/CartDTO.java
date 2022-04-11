@@ -1,12 +1,51 @@
 package com.one.s1.cart;
 
+import java.sql.Date;
+
 public class CartDTO {
 
 	private Long cart_num;
 	private Long product_num;
 	private String id;
+	//상품수량
 	private Long cart_count;
+	private Date adddate;
 	
+	//product
+	private String product_name;
+	//상품원가
+	private Long product_price;
+	//상품할인율
+	private Double rate;
+	
+	//할인
+	//상품할인가
+	private int salePrice;
+	//상품총가격
+	private Long totalPrice;
+	
+	
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	
+	public Long getProduct_price() {
+		return product_price;
+	}
+	public void setProduct_price(Long product_price) {
+		this.product_price = product_price;
+	}
+	
+	public Double getRate() {
+		return rate;
+	}
+	public void setRate(Double rate) {
+		this.rate = rate;
+	}
+
 	public Long getCart_num() {
 		return cart_num;
 	}
@@ -31,7 +70,41 @@ public class CartDTO {
 	public void setCart_count(Long cart_count) {
 		this.cart_count = cart_count;
 	}
+	public Date getAdddate() {
+		return adddate;
+	}
+	public void setAdddate(Date adddate) {
+		this.adddate = adddate;
+	}
 	
 	
+	public int getSalePrice() {
+		return salePrice;
+	}
+	public void setSalePrice(int salePrice) {
+		this.salePrice = salePrice;
+	}
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public void initSaleTotal() {
+		this.salePrice= (int) (this.product_price * (1-this.rate));
+		this.totalPrice = this.salePrice*this.cart_count;
+		System.out.println("salePrice: " + this.salePrice);
+		System.out.println("totalPrice :" + this.totalPrice);
+
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "CartDTO [cart_num="+cart_num +", id="+id+", product_num="+product_num+", cart_count="+cart_count+", adddate="+adddate+", product_name="+product_name+", product_price="+product_price+", rate="+rate+", salePrice="+salePrice+", totalPrice="+totalPrice+"]";
+	}
+
+	
+
 	
 }

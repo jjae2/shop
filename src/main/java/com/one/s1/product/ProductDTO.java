@@ -1,5 +1,7 @@
 package com.one.s1.product;
-
+import java.util.List;
+import com.one.s1.review.ReviewDTO;
+import com.one.s1.scrapbook.ScrapBookDTO;
 import java.sql.Date;
 import java.util.List;
 
@@ -22,7 +24,21 @@ public class ProductDTO {
 	private List<ProductFileDTO> productFileDTOs;
 	private MemberDTO memberDTO;
 	public Long totalPrice;
+	private List<ReviewDTO> reviewDTO;
+	private List<ScrapBookDTO> scrapBookDTO;
 	
+	public List<ScrapBookDTO> getScrapBookDTO() {
+		return scrapBookDTO;
+	}
+	public void setScrapBookDTO(List<ScrapBookDTO> scrapBookDTO) {
+		this.scrapBookDTO = scrapBookDTO;
+	}
+	public List<ReviewDTO> getReviewDTO() {
+		return reviewDTO;
+	}
+	public void setReviewDTO(List<ReviewDTO> reviewDTO) {
+		this.reviewDTO = reviewDTO;
+	}
 	public Long getTotalPrice() {		
 		return Math.round(this.product_price * (1-(this.rate*0.01)));
 	}
@@ -117,3 +133,4 @@ public class ProductDTO {
 	
 
 }
+

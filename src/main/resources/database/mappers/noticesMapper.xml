@@ -25,7 +25,8 @@
 	</insert>
 	
  	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notices where num = #{num}
+		select * from notices where notice_num = #{num}
+		
  	</select>
  	<update id="detailHit" parameterType="NoticeDTO">
 		UPDATE NOTICES SET HIT = HIT+1 WHERE NUM = #{num}
@@ -70,11 +71,11 @@
  	</select>
 		
  	<update id="update" parameterType="NoticeDTO">
- 		update notices set title=#{title}, contents=#{contents} where num=#{num}
+ 		update notices set title=#{title}, contents=#{contents} where notice_num=#{num}
  	</update>
  	
  	<delete id="delete" parameterType="NoticeDTO">
- 		delete notices where num=#{num}
+ 		delete notices where notice_num=#{num}
  	</delete>
 
 

@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardService;
@@ -85,7 +86,7 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int add(BoardDTO boardDTO) throws Exception {
+	public int add(BoardDTO boardDTO,MultipartFile[] files) throws Exception {
 		int result=qnaDAO.add(boardDTO);
 		
 		return result;
@@ -97,5 +98,13 @@ public class QnaService implements BoardService {
 		
 		return result;
 	}
+
+	@Override
+	public int add(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 
 }

@@ -8,8 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardService;
-import com.one.s1.product.ProductDTO;
-import com.one.s1.product.ProductFileDTO;
+
+import com.one.s1.board.house.HouseFileDTO;
+
 import com.one.s1.util.FileManager;
 import com.one.s1.util.Pager;
 
@@ -20,8 +21,7 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	@Autowired
 	private FileManager fileManager;
-	
-	
+
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
 
@@ -41,33 +41,25 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int add(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		// long num = noticeDAO.seqNum();
-		// boardDTO.setNum(num);
-		int result = noticeDAO.add(boardDTO);
-
-		return result;
-	}
-	
-	public int add(BoardDTO boardDTO, MultipartFile [] photos) throws Exception {
-		int result = noticeDAO.add(boardDTO);
-		//1. 파일을 HDD에 저장
-		for(int i=0;i<photos.length;i++) {
-			if(photos[i].isEmpty()) {
-			 //files[i].getSize()==0
+	public int add(BoardDTO boardDTO,MultipartFile[] files) throws Exception {
+		int result= noticeDAO.add(boardDTO);
+		//1.HDD에 저장
+		for(int i=0;i<files.length;i++) {
+			if(files[i].isEmpty()) {
 				continue;
-			}			
-			String fileName = fileManager.save(photos[i], "resources/upload/notice/");
-			//2. 정보를 DB에 저장
-			NoticeFileDTO noticeFileDTO = new NoticeFileDTO();
-			noticeFileDTO.setFileName(fileName);
+			}
+			String fileName=fileManager.save(files[i], "resources/upload/notice");
+		//2.DB에 저장
+			NoticeFileDTO noticeFileDTO =new NoticeFileDTO();
 			noticeFileDTO.setNum(boardDTO.getNum());
-			noticeFileDTO.setOriName(photos[i].getOriginalFilename());
-			result = noticeDAO.addFile(noticeFileDTO);
+			noticeFileDTO.setFileName(fileName);
+			noticeFileDTO.setOriName(files[i].getOriginalFilename());
+			result=noticeDAO.addFile(noticeFileDTO);
 		}
 		return result;
 	}
+	
+
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
@@ -81,6 +73,12 @@ public class NoticeService implements BoardService {
 
 		int result = noticeDAO.delete(boardDTO);
 		return result;
+	}
+
+	@Override
+	public int add(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
