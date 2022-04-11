@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/header_css.jsp"></c:import>
 <link href="../resources/css/house.css" rel="styleSheet" />
 </head>
 <body>

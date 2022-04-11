@@ -50,6 +50,7 @@ public class HouseService implements BoardService {
 			if(files[i].isEmpty()) {
 				continue;
 			}
+			
 			String fileName=fileManager.save(files[i], "resources/upload/house/");
 		//2.DB에 저장
 			HouseFileDTO houseFileDTO = new HouseFileDTO();

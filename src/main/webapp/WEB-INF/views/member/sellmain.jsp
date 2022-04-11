@@ -13,15 +13,14 @@
 	<c:import url="../template/header.jsp"></c:import>
 
 <nav class="shopnav">
-<h1>관리자 메뉴</h1>
+<h1>판매자 메뉴</h1>
 <ul class="shopmenu">
-  <li><a href="../board/list">공지사항 관리</a></li>
-  <li><a href="./list">회원 관리</a></li>
+  <li><a href="#">상품관리</a></li>
+  <li><a href="#">배송관리</a></li>
+  <li><a href="#">상품문의</a></li>
 </ul>
 </nav>
-<div>
-<h1>관리자 입니다.</h1>
-</div>
+
 
 <c:import url="../template/footer.jsp"></c:import>
 

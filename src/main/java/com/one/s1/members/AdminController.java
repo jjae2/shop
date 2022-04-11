@@ -59,12 +59,20 @@ public class AdminController {
 	}
 	
 	@GetMapping("updateA")
-	public void updateA(MemberDTO memberDTO, Model model) throws Exception {
+	public ModelAndView updateA(MemberDTO memberDTO,ModelAndView mv) throws Exception {
+		 
 		memberDTO = memberService.detail(memberDTO);
-		model.addAttribute("dto", memberDTO);
+		System.out.println(memberDTO.getId());
+		mv.addObject("dto", memberDTO);
+		mv.setViewName("admin/updateA");
+		return mv;
+		
+		
 	}
 	@PostMapping("updateA")
 	public String updateA(MemberDTO memberDTO) throws Exception {
+		System.out.println(memberDTO.getAuth_id());
+		
 		int result = memberService.updateA(memberDTO);
 		return "redirect:./list";
 	}

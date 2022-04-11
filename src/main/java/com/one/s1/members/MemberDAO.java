@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+
+
 @Repository
 public class MemberDAO {
 
@@ -17,8 +20,14 @@ public class MemberDAO {
 	public int update(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "update", memberDTO);
 	}
+	public int updatePw(MemberDTO memberDTO) throws Exception {
+		return sqlSession.update(NAMESPACE + "updatePw", memberDTO);
+	}
 	public int updateA(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "updateA", memberDTO);
+	}
+	public int addFile(MemberFileDTO memberFileDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "addFile", memberFileDTO);
 	}
 	
 	// join 회원가입 폼

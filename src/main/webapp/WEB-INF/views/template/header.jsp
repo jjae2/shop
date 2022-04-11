@@ -145,7 +145,7 @@
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
-											id="qqt1" href="/s1/admin/main">판매자 페이지</a>
+											id="qqt1" href="/s1/member/sellmain">판매자 페이지</a>
 										</li>
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">

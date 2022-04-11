@@ -14,13 +14,23 @@
 	<h1>My Page</h1>
 	<hr>
 	<div>
-		<h3>이름 : ${dto.name}</h3>
-		<h3>ID : ${dto.id}</h3>
-		<h3>PW : ${dto.pw}</h3>
-		<h3>PHONE : ${dto.phone}</h3>
-		<h3>EMAIL : ${dto.email}</h3>
+		
+		<h3>프로필 :
+		
+		<img alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}"> </h3>
+		<h3>ID : ${member.id}</h3>
+		<h3>이름 : ${member.name}</h3>
+		<h3>성별 : ${member.gender}</h3>
+		<h3>나이 : ${member.age}</h3>
+		<h3>이메일 : ${member.email}</h3>
+		<h3>주소 : ${member.address}</h3>
+		<h3>번호 : ${member.phone}</h3>
+		<h3>가입일 : ${member.enrolldate}</h3>
+		<h3>회사이름 : ${member.com_name}</h3>
+		<h3>회사주소 : ${member.com_address}</h3>
 	</div>
-	<a href="./update?id=${dto.id}">Update</a>
+	<a href="./update?id=${member.id}">회원정보 수정</a>
+	<a href="./updatePw?id=${member.id}">비밀번호 수정</a>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

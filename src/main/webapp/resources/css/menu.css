@@ -1,0 +1,28 @@
+
+.shopnav{
+	width:200px;
+	background: #eee;
+	border-right:5px solid #35c5f0;
+	position:fixed;
+	height:100%;
+}
+h1{
+	font-size:18px;
+	padding:20px;
+}
+.shopmenu{}
+.shopmenu li{}
+.shopmenu li a {
+	list-style:none;
+	height:30px;
+	line-height:30px;
+	display:block;
+	padding:0 20px;
+	font-size:18px;
+	font-weight:700;
+	color:#555;
+}
+.shopmenu li a:hover{
+  background-color:white;
+  color:#35c5f0;
+}

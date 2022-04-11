@@ -43,6 +43,11 @@
 			<beans:bean
 				class="com.one.s1.interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>
+		<interceptor>
+			<mapping path="/member/sellmain" />
+			<beans:bean
+				class="com.one.s1.interceptor.SellInterceptor"></beans:bean>
+		</interceptor>
 	</interceptors>
 
 

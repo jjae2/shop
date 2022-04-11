@@ -15,28 +15,22 @@
 
 	<form action="./update" method="post">
 		<div>
-			ID<input type="text" readonly name="id" value="${dto.id}">
+			NAME<input type="text" name="name" value="${member.name}">
 		</div>
 		<div>
-			PW<input type="password" name="pw" value="${dto.pw}">
+			GENDER<input type="text" name="gender" value="${member.gender}">
 		</div>
 		<div>
-			NAME<input type="text" name="name" value="${dto.name}">
+			AGE<input type="text" name="age" value="${member.age}">
 		</div>
 		<div>
-			GENDER<input type="text" name="gender" value="${dto.gender}">
+			EMAIL<input type="text" name="email" value="${member.email}">
 		</div>
 		<div>
-			AGE<input type="text" name="age" value="${dto.age}">
+			ADDRESS<input type="text" name="address" value="${member.address}">
 		</div>
 		<div>
-			EMAIL<input type="text" name="email" value="${dto.email}">
-		</div>
-		<div>
-			ADDRESS<input type="text" name="address" value="${dto.address}">
-		</div>
-		<div>
-			PHONE<input type="text" name="phone" value="${dto.phone}">
+			PHONE<input type="text" name="phone" value="${member.phone}">
 		</div>
 		<button type="submit">제출</button>
 	</form>
