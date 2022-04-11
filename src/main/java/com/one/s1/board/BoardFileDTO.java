@@ -4,6 +4,7 @@ import com.one.s1.file.FileDTO;
 
 public class BoardFileDTO extends FileDTO{
 
+
 	private Long num;
 
 	public Long getNum() {
@@ -16,3 +17,5 @@ public class BoardFileDTO extends FileDTO{
 	
 
 }
+
+

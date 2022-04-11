@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import com.one.s1.review.ReviewDTO;
 import com.one.s1.members.MemberDTO;
 import com.one.s1.product.CategoryDTO;
 import com.one.s1.util.Pager;
@@ -17,8 +17,20 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.one.s1.product.ProductDAO.";
-
-	
+	//리뷰 부분
+	public int addReview(ReviewDTO reviewDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"addReview",reviewDTO);		
+	}
+	public List<ReviewDTO> listReview(ProductDTO productDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"listReview", productDTO);
+	}
+	public int updateReview(ReviewDTO reviewDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"updateReview",reviewDTO);		
+	}
+	public int deleteReview(ReviewDTO reviewDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"deleteReview",reviewDTO);		
+	}
+	//리뷰 끝
 	// categoryList 상품 목록
 	public List<ProductDTO> categoryList(PassingNum passingNum) throws Exception {
 //		System.out.println("DAO.categoryList");

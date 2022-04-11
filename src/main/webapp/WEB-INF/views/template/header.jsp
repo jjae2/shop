@@ -129,11 +129,36 @@
 									id="user_icon_menu">
 									<ul class="navigation_top_content_right_icon_user_menu ppp"
 										id="qqt0">
+										<c:choose>
+										<c:when test="${member.auth_id==2 }">
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt1" href="/s1/admin/main">관리자 페이지</a>
+										</li>
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt5" href="/s1/member/logout">로그아웃</a>
+										</li>
+										</c:when>
+										<c:when test="${member.auth_id==1 }">
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt1" href="/s1/member/sellmain">판매자 페이지</a>
+										</li>
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt5" href="/s1/member/logout">로그아웃</a>
+										</li>
+										</c:when>
+										<c:otherwise>
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt1" href="/s1/member/mypage">마이페이지</a>
-										</li>
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
@@ -156,6 +181,10 @@
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt5" href="/s1/member/logout">로그아웃</a>
 										</li>
+										</li>
+										</c:otherwise>
+										</c:choose>
+									
 									</ul>
 								</div>
 							</div>
@@ -309,7 +338,7 @@
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item6" href="/s1/community">홈</a>
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item7" href="#">집들이</a>
+								id="navigation_bot_content_menu_item7" href="/s1/house/list">집들이</a>
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item8" href="#">질문과답변</a>
 							<a class="navigation_bot_content_menu_item ppp"

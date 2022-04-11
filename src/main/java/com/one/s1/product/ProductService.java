@@ -1,16 +1,16 @@
 package com.one.s1.product;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.one.s1.review.ReviewDTO;
 import com.one.s1.members.MemberDTO;
 import com.one.s1.product.CategoryDTO;
 import com.one.s1.util.FileManager;
 import com.one.s1.util.Pager;
 import com.one.s1.util.PassingNum;
+
 
 @Service
 public class ProductService {
@@ -19,8 +19,21 @@ public class ProductService {
 	private ProductDAO productDAO;
 	@Autowired
 	private FileManager fileManager;
-	
-	
+//리뷰 부분
+	public int addReview(ReviewDTO reviewDTO)throws Exception{
+		return productDAO.addReview(reviewDTO);		
+
+	}
+	public List<ReviewDTO> listReview(ProductDTO productDTO)throws Exception{
+		return productDAO.listReview(productDTO);
+	}
+	public int updateReview(ReviewDTO reviewDTO)throws Exception{
+		return productDAO.updateReview(reviewDTO);	
+	}
+	public int deleteReview(ReviewDTO reviewDTO)throws Exception{
+		return productDAO.deleteReview(reviewDTO);	
+	}
+//리뷰 끝
 
 	/*
 	 * public int cart(ProductDTO productDTO)throws Exception{
