@@ -1,6 +1,9 @@
 package com.one.s1.product;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.one.s1.members.MemberDTO;
 
 public class ProductDTO {
 
@@ -15,7 +18,33 @@ public class ProductDTO {
 	private Long hit;
 	private Long date;
 	private Long rate;
-	ProductFileDTO productFileDTO;
+	private ProductFileDTO productFileDTO;
+	private List<ProductFileDTO> productFileDTOs;
+	private MemberDTO memberDTO;
+	public Long totalPrice;
+	
+	public Long getTotalPrice() {		
+		return Math.round(this.product_price * (1-(this.rate*0.01)));
+	}
+	
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
+	public ProductFileDTO getProductFileDTO() {
+		return productFileDTO;
+	}
+	public void setProductFileDTO(ProductFileDTO productFileDTO) {
+		this.productFileDTO = productFileDTO;
+	}
+	public List<ProductFileDTO> getProductFileDTOs() {
+		return productFileDTOs;
+	}
+	public void setProductFileDTOs(List<ProductFileDTO> productFileDTOs) {
+		this.productFileDTOs = productFileDTOs;
+	}
 	public Long getProduct_num() {
 		return product_num;
 	}
@@ -82,12 +111,7 @@ public class ProductDTO {
 	public void setRate(Long rate) {
 		this.rate = rate;
 	}
-	public ProductFileDTO getProductFileDTO() {
-		return productFileDTO;
-	}
-	public void setProductFileDTO(ProductFileDTO productFileDTO) {
-		this.productFileDTO = productFileDTO;
-	}
+
 
 
 	

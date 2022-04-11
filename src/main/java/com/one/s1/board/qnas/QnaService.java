@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardService;
 import com.one.s1.util.Pager;
+import com.one.s1.util.Pager2;
 @Service
 public class QnaService implements BoardService {
 	
@@ -16,11 +17,25 @@ public class QnaService implements BoardService {
 
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
-		pager.makeRow();
+		Pager2 pager2 = (Pager2)pager;
 		
-		pager.makeNum(qnaDAO.total(pager));
+		return qnaDAO.list(pager2);
+	}
+	
+	public List<BoardDTO> replyList(Pager2 pager) throws Exception {
 		
-		return qnaDAO.list(pager);
+		return qnaDAO.replyList(pager);
+	}
+	
+	
+	public Long total(Pager pager) throws Exception {
+		Pager2 pager2 = (Pager2)pager;
+		pager2.makeRow();
+		
+		Long total = qnaDAO.total(pager2);
+		pager2.makeNum(total);
+		
+		return total;
 	}
 
 	@Override

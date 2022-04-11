@@ -6,7 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.one.s1.members.MemberDTO;
+import com.one.s1.product.CategoryDTO;
 import com.one.s1.util.Pager;
+import com.one.s1.util.PassingNum;
 
 @Repository
 public class ProductDAO {
@@ -15,6 +18,45 @@ public class ProductDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.one.s1.product.ProductDAO.";
 
+	
+	// categoryList 상품 목록
+	public List<ProductDTO> categoryList(PassingNum passingNum) throws Exception {
+//		System.out.println("DAO.categoryList");
+		return sqlSession.selectList(NAMESPACE + "categoryList", passingNum);
+	}
+	
+	public int categoryListTotal(PassingNum passingNum) throws Exception {
+//		System.out.println("DAO.categoryList1");
+		return sqlSession.selectOne(NAMESPACE + "categoryListTotal", passingNum);
+	}
+	
+	
+	
+	public List<CategoryDTO> category()throws Exception{
+		return sqlSession.selectList(NAMESPACE+"category");
+	}
+	
+	public CategoryDTO category_name(CategoryDTO categoryDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"category_name", categoryDTO);
+	}
+	
+	
+	public int fileDelete(ProductFileDTO productFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"fileDelete", productFileDTO);
+	}
+	
+	public List<ProductFileDTO> listFile(ProductDTO productDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"listFile", productDTO);
+	}
+	
+	public ProductFileDTO detailFile(ProductFileDTO productFileDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"detailFile", productFileDTO);
+	}		
+	
+	public int addFile(ProductFileDTO productFileDTO) throws Exception {		
+		return sqlSession.insert(NAMESPACE + "addFile", productFileDTO);
+	}
+	
 	// update 상품 수정
 	public int update(ProductDTO productDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "update", productDTO);
@@ -38,6 +80,10 @@ public class ProductDAO {
 	// detail 상품 상세내용
 	public ProductDTO detail(ProductDTO productDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "detail", productDTO);
+	}
+	
+	public MemberDTO sellerInfo(ProductDTO productDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "sellerInfo", productDTO);
 	}
 	
 	public int detailHit(ProductDTO productDTO) throws Exception {

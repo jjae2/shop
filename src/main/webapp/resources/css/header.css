@@ -6,19 +6,21 @@
 }
 
 .navigation_top {
-	position: relative;
-	height: 80px;
-	border-bottom: 1px solid #ededed;
-	transition: top .1s;
-	background-color: #fff;
-	z-index: 502;
+	height: 81px;
 }
 
 .navigation_top_content {
+	
+
+	background-color: #fff;
+    border-bottom: 1px solid #ededed;
+    z-index: 502;
+}
+
+.navigation_top_content2 {
 	height: 80px;
 	padding: 10px 60px;
 	display: flex;
-	-webkit-box-align: start;
 	align-items: flex-start;
 	position: relative;
 	box-sizing: border-box;

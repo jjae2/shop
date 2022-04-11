@@ -13,7 +13,7 @@
 <h1>
 	product list입니다. 
 </h1>
-
+<input type="hidden" value="${member.id}" id="id">
 	<div class="table-container">
 		<h1>${board} List page</h1>
 		<!-- 검색 창-->
@@ -34,7 +34,7 @@
 		
 		
 		
-			<table class="table-basic">
+			<table class="table-basic" id="table-basic">
 				<tr>
 					<td>product_num</td><td>상품이름</td><td>판매자</td><td>상품가격</td><td>할인율</td><td>Hit</td>
 				</tr>
@@ -45,7 +45,7 @@
 						<td>${dto.id}</td>
 						<td>${dto.product_price}</td>
 						<td>${dto.rate}</td>
-						<td>${dto.hit}</td>
+						<td>${dto.hit} <a href="./update?product_num=${dto.product_num}" class="update" id="up${dto.product_num}" data-num="${dto.product_num}" style="line-height: 20px;">update</a><a href="./delete?product_num=${dto.product_num}" class="delete" id="del${dto.product_num}" data-num="${dto.product_num}" style="line-height: 20px;">Delete</a></td>
 					</tr>				
 				</c:forEach>	
 			</table>
@@ -70,7 +70,7 @@
 	</div>
 
 
-
+<script src="../resources/js/productList.js"></script>
 <c:import url="../template/footer.jsp"></c:import>
 
 </body>

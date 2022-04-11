@@ -11,8 +11,9 @@
 		style="position: absolute; width: 100%; height: 135px;"></div>
 	<div class="navigation_wrap">
 
-		<div class="navigation_top">
-			<div class="navigation_top_content">
+		<div class="navigation_top"><!-- style="position: fixed; transition: top 0.1s ease 0s; top: 0px; left: 0px; right: 0px;" -->
+		<div class="navigation_top_content" >
+			<div class="navigation_top_content2">
 				<div class="navigation_top_content_left">
 					<a class="navigation_top_content_left_logo" aria-label="오늘의집"
 						href="/s1"> <svg class="icon" width="74" height="30"
@@ -319,6 +320,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </header>
 
 

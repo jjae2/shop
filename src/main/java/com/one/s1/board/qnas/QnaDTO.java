@@ -1,5 +1,7 @@
 package com.one.s1.board.qnas;
 
+import java.util.ArrayList;
+
 import com.one.s1.board.BoardDTO;
 
 public class QnaDTO extends BoardDTO {
@@ -11,7 +13,14 @@ public class QnaDTO extends BoardDTO {
 	private Long qna_ref;
 	private Long qna_step;
 	private Long qna_depth;
+	private Long qna_type;
 
+	public Long getQna_type() {
+		return qna_type;
+	}
+	public void setQna_type(Long qna_type) {
+		this.qna_type = qna_type;
+	}
 	public Long getProduct_num() {
 		return product_num;
 	}

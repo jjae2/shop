@@ -23,7 +23,7 @@
  
   	<insert id="add" parameterType="QnaDTO">
 	    INSERT INTO QNAS (NUM, PRODUCT_NUM, ID, TITLE, CONTENTS, QNA_TYPE, QNA_BUY, CD, QNA_REPLY, QNA_SECRET, QNA_REF, QNA_STEP, QNA_DEPTH )
-        VALUES (QNAS_seq.nextval, 222, #{id}, #{title}, #{contents}, 2, 0, SYSDATE, 0, 0, qnas_seq.currval, 0, 0)  
+        VALUES (QNAS_seq.nextval, #{product_num}, #{id}, 1, #{contents}, #{qna_type}, 0, SYSDATE, 0, #{qna_secret}, qnas_seq.currval, 0, 0)  
  	</insert>
  	
  	<select id="detail" parameterType="QnaDTO" resultType="QnaDTO">
@@ -36,42 +36,29 @@
 		    (SELECT rownum R, B.* FROM 
 		        (SELECT * FROM qnas WHERE 
 		        	NUM>0 
-		        	and 
-		        	<choose>
-		        		<when test="kind=='col1'">
-		        			TITLE
-		        		</when>
-		        		<when test="kind =='col2'">
-		        			CONTENTS
-		        		</when>
-		        		<otherwise>
-		        			ID
-		        		</otherwise>
-		        	</choose>	
-		        	LIKE '%'||#{search}||'%'
+				AND
+					PRODUCT_NUM = #{product_num} 
+				AND 
+					QNA_STEP = 0
 		            ORDER BY QNA_REF DESC, QNA_STEP ASC
 		         ) B
 		     )
 		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
+ 	<select id="replyList" parameterType="Pager2" resultType="QnaDTO">
+				SELECT * FROM qnas 
+				WHERE NUM>0 AND PRODUCT_NUM = #{product_num} AND QNA_STEP = 1 AND QNA_REF IN
+				<foreach item="item" index="index" collection="numArr" open="(" separator="," close=")">#{item}</foreach>			 
+		        ORDER BY QNA_REF DESC, QNA_STEP ASC
+ 	</select>
+ 	
 	<select id="total" resultType="Long" parameterType="Pager">
  		SELECT COUNT(NUM) FROM qnas
  		WHERE
  			NUM>0 
-		    and 	       	
-		     <choose>
-		     	<when test="kind=='col1'">
-		     		TITLE
-		     	</when>
-		     	<when test="kind =='col2'">
-		     		CONTENTS
-		     	</when>
-		     	<otherwise>
-		     		ID
-		     	</otherwise>
-		     </choose>	
-        	LIKE '%'||#{search}||'%' 
+		AND
+			PRODUCT_NUM = #{product_num} 
  	</select>
 		
  	<update id="update" parameterType="QnaDTO">
