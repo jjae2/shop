@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+
 import com.one.s1.util.Pager;
 
 public interface BoardService {
@@ -22,5 +23,7 @@ public interface BoardService {
 
 	// delete
 	public int delete(BoardDTO boardDTO) throws Exception;
+
+	
 
 }

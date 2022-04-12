@@ -2,6 +2,7 @@ package com.one.s1.board;
 
 import java.util.List;
 
+
 import com.one.s1.util.Pager;
 
 public interface BoardDAO {

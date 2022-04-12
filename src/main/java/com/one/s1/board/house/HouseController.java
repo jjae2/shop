@@ -27,7 +27,9 @@ public class HouseController {
 	public ModelAndView list(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> ar = houseService.list(pager);
+		
 		mv.addObject("list", ar);
+		
 		mv.setViewName("house/list");
 		return mv;
 	}

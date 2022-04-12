@@ -2,6 +2,8 @@ package com.one.s1.board;
 
 import java.sql.Date;
 
+
+
 public class BoardDTO {
 	private Long num;
 	private String title;
@@ -11,7 +13,6 @@ public class BoardDTO {
 	private Date md;
 	private Long hit;
 	
-
 	public Long getNum() {
 		return num;
 	}
