@@ -7,33 +7,52 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header_css.jsp"></c:import>
-
+<link href="../resources/css/mypage.css" rel="styleSheet" />
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<h1>My Page</h1>
-	<hr>
-	<div>
-		
-		<h3>프로필 :
-		
-		<img alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}"> </h3>
-		<h3>ID : ${member.id}</h3>
-		<h3>이름 : ${member.name}</h3>
-		<h3>성별 : ${member.gender}</h3>
-		<h3>나이 : ${member.age}</h3>
-		<h3>이메일 : ${member.email}</h3>
-		<h3>주소 : ${member.address}</h3>
-		<h3>번호 : ${member.phone}</h3>
-		<h3>가입일 : ${member.enrolldate}</h3>
-		<h3>회사이름 : ${member.com_name}</h3>
-		<h3>회사주소 : ${member.com_address}</h3>
+
+	
+	       <section class="css-tbdbun e1y3odo25"><h1 class="css-1pmd5bp e1y3odo24">마이페이지</h1></section>
+        <div class="css-5bso4y e1y3odo23">
+            <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">프로필</label>
+                <img width=360px height=360px alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
+            <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">아이디</label>
+                 <h2 class="css-1pmd5bp e1y3odo24">${member.id}</h2></div>
+            <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">이름</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.name}</h2></div>
+                  <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">성별</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.gender}</h2></div>
+                  <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">나이</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.age}</h2></div>
+                  <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">이메일</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.email}</h2></div>
+                     <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">주소</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.address}</h2></div>    
+                  <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">번호</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.phone}</h2></div>
+                 <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">가입일</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.enrolldate}</h2></div>
+                 <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">회사이름</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.com_name}</h2></div>
+                 <div class="css-1kfo0kb euhjq6q3">
+                <label class="css-ef7ez6 euhjq6q2">회사주소</label>
+                <h2 class="css-1pmd5bp e1y3odo24">${member.com_address}</h2></div>
+
+	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="../scrap/listScrap?id=${dto.id}">스크랩 북</a></button>
+	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./update?id=${member.id}">회원정보 수정</a></button>
+	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./updatePw?id=${member.id}">비밀번호 수정</a></button>
 	</div>
-
-	<a href="../scrap/listScrap?id=${dto.id}">스크랩 북</a>
-	<a href="./update?id=${member.id}">회원정보 수정</a>
-	<a href="./updatePw?id=${member.id}">비밀번호 수정</a>
-
-	<c:import url="../template/footer.jsp"></c:import>
+	
 </body>
 </html>

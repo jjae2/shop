@@ -14,6 +14,7 @@
 <c:forEach items="${scrap}" var="s" varStatus="i">
 
 <div>상품번호:${s.product_num}</div>
+<div>카테고리 번호:${s.category_num}</div>
 <div>상품이름:${s.product_name}</div>
 </c:forEach>
 

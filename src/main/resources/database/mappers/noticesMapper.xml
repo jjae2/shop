@@ -25,7 +25,7 @@
 	</insert>
 	
  	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notices where notice_num = #{num}
+		select * from notices where num = #{num}
 		
  	</select>
  	<update id="detailHit" parameterType="NoticeDTO">

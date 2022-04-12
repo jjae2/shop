@@ -146,6 +146,11 @@
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
+											id="qqt1" href="/s1/member/mypage">마이페이지</a>
+										</li>
+										<li
+											class="navigation_top_content_right_icon_user_menu_item-wrap">
+											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt1" href="/s1/member/sellmain">판매자 페이지</a>
 										</li>
 										<li
@@ -159,6 +164,7 @@
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt1" href="/s1/member/mypage">마이페이지</a>
+										</li>
 										<li
 											class="navigation_top_content_right_icon_user_menu_item-wrap">
 											<a class="navigation_top_content_right_icon_user_menu_item"
@@ -181,7 +187,7 @@
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt5" href="/s1/member/logout">로그아웃</a>
 										</li>
-										</li>
+										
 										</c:otherwise>
 										</c:choose>
 									
@@ -202,7 +208,7 @@
 									href="/s1/member/login">로그인</a> <a
 									class="navigation_top_content_right_login_item ppp"
 									id="navigation_top_content_right_login_item2"
-									href="/s1/member/joinCheck">회원가입</a>
+									href="/s1/member/join">회원가입</a>
 							</div>
 						</c:when>
 						<c:otherwise>
@@ -213,7 +219,7 @@
 									href="/s1/member/login">로그인</a> <a
 									class="navigation_top_content_right_login_item"
 									id="navigation_top_content_right_login_item2"
-									href="/s1/member/joinCheck">회원가입</a>
+									href="/s1/member/join">회원가입</a>
 							</div>
 							<a class="navigation_top_content_right_icon ppp"
 								id="navigation_top_content_right_icon1" title="스크랩북"
