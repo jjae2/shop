@@ -5,18 +5,6 @@
   
   <configuration>
   	<typeAliases>
-<!--   		<typeAlias type="com.iu.s1.bankbook.BankBookDTO" alias="BankBookDTO"/>
-  		<typeAlias type="java.lang.Long" alias="Long"/>
-   		<typeAlias type="com.iu.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
-   		<typeAlias type="com.iu.s1.member.MemberDTO" alias="MemberDTO"/>
-   		<typeAlias type="com.iu.s1.util.Pager" alias="Pager"/>
-   		<typeAlias type="com.iu.s1.board.BoardDTO" alias="BoardDTO"/>
-   		<typeAlias type="com.iu.s1.board.qna.QnaDTO" alias="QnaDTO"/>
-   		<typeAlias type="com.iu.s1.member.MemberFileDTO" alias="MemberFileDTO"/>
-   		<typeAlias type="com.iu.s1.board.BoardFileDTO" alias="BoardFileDTO"/>
-   		<typeAlias type="com.iu.s1.board.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
-   		<typeAlias type="com.iu.s1.board.qna.QnaFileDTO" alias="QnaFileDTO"/>
-   		<typeAlias type="java.util.List" alias="List"/> -->
    		<typeAlias type="com.one.s1.product.ProductFileDTO" alias="ProductFileDTO"/>
    		<typeAlias type="com.one.s1.members.MemberDTO" alias="MemberDTO"/>
    		<typeAlias type="com.one.s1.util.Pager" alias="Pager"/>
@@ -25,9 +13,13 @@
    		<typeAlias type="java.util.List" alias="List"/>
    		<typeAlias type="java.lang.Long" alias="Long"/>
    		<typeAlias type="com.one.s1.board.BoardDTO" alias="BoardDTO"/>
-   		<typeAlias type="com.one.s1.board.BoardFileDTO" alias="BoardFileDTO"/>
-   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/> 
+   		<typeAlias type="com.one.s1.board.notices.NoticeDTO" alias="NoticeDTO"/>
+   		<typeAlias type="com.one.s1.board.qna2.Qna2DTO" alias="Qna2DTO"/> 
    		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
+   		<typeAlias type="com.one.s1.board.qna2.Qna2FileDTO" alias="Qna2FileDTO"/>
+   		<typeAlias type="com.one.s1.board.BoardFileDTO" alias="BoardFileDTO"/>
+    	<typeAlias type="com.one.s1.cart.CartDTO" alias="CartDTO"/>
+    	<typeAlias type="com.one.s1.orders.OrderDTO" alias="OrderDTO"/>
    		<typeAlias type="com.one.s1.board.house.HouseDTO" alias="HouseDTO"/>
    		<typeAlias type="com.one.s1.board.house.HouseFileDTO" alias="HouseFileDTO"/>
    		<typeAlias type="com.one.s1.members.MemberFileDTO" alias="MemberFileDTO"/>
@@ -40,5 +32,8 @@
    		<!-- <typeAlias type="com.one.s1.category.CategoryDTO" alias="CategoryDTO"/> -->
    		<typeAlias type="com.one.s1.product.CategoryDTO" alias="CategoryDTO"/>
    		<typeAlias type="com.one.s1.util.PassingNum" alias="PassingNum"/>
+   		<typeAlias type="com.one.s1.board.notices.NoticeFileDTO" alias="NoticeFileDTO"/>
+   		
+   		
     </typeAliases>
   </configuration>

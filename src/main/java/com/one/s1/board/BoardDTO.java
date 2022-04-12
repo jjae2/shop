@@ -5,6 +5,7 @@ import java.sql.Date;
 
 
 public class BoardDTO {
+
 	private Long num;
 	private String title;
 	private String id;
@@ -12,7 +13,7 @@ public class BoardDTO {
 	private Date cd;
 	private Date md;
 	private Long hit;
-	
+
 	public Long getNum() {
 		return num;
 	}
@@ -66,5 +67,7 @@ public class BoardDTO {
 	public void setHit(Long hit) {
 		this.hit = hit;
 	}
+
+
 
 }

@@ -2,8 +2,8 @@ package com.one.s1.board;
 
 import com.one.s1.file.FileDTO;
 
-public class BoardFileDTO extends FileDTO
-{
+public class BoardFileDTO extends FileDTO{
+
 
 	private Long num;
 
@@ -14,5 +14,8 @@ public class BoardFileDTO extends FileDTO
 	public void setNum(Long num) {
 		this.num = num;
 	}
+	
+
 }
+
 

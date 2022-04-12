@@ -8,7 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardService;
+
 import com.one.s1.board.house.HouseFileDTO;
+
 import com.one.s1.util.FileManager;
 import com.one.s1.util.Pager;
 
@@ -33,6 +35,8 @@ public class NoticeService implements BoardService {
 	@Override
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
+		int result = noticeDAO.detailHit(boardDTO);
+		
 		return noticeDAO.detail(boardDTO);
 	}
 
@@ -54,6 +58,7 @@ public class NoticeService implements BoardService {
 		}
 		return result;
 	}
+	
 
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
@@ -68,6 +73,12 @@ public class NoticeService implements BoardService {
 
 		int result = noticeDAO.delete(boardDTO);
 		return result;
+	}
+
+	@Override
+	public int add(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

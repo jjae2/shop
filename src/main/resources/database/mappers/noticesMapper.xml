@@ -12,32 +12,35 @@
  	</select> -->
  
   	<insert id="add" parameterType="NoticeDTO">
-	    INSERT INTO NOTICES (NUM, ID, TITLE, CONTENTS, CD, MD, HIT)
-	    VALUES (notices_seq.nextval, #{id}, #{title}, #{contents}, sysdate, sysdate, 0)
+  	  	<selectKey keyProperty="num" order="BEFORE" resultType="Long">
+  			SELECT notices_seq.nextval FROM DUAL
+  		</selectKey>
+	    INSERT INTO NOTICES (NUM, ID, TITLE, CONTENTS, CD, MD, HIT, TYPE)
+	    VALUES (#{num}, #{id}, #{title}, #{contents}, sysdate, sysdate, 0, #{type})
  	</insert>
  	
+ 	<insert id="addFile" parameterType="NoticeFileDTO">
+		INSERT INTO NOTICEFILE (FILENUM, NUM, FILENAME, ORINAME)
+		VALUES (FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	</insert>
+	
  	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notices where num = #{num}
+		select * from notices where notice_num = #{num}
+		
  	</select>
- 	
+ 	<update id="detailHit" parameterType="NoticeDTO">
+		UPDATE NOTICES SET HIT = HIT+1 WHERE NUM = #{num}
+ 	</update>
  
  	<select id="list" parameterType="NoticeDTO" resultType="NoticeDTO">
   		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
 		        (SELECT * FROM NOTICES WHERE 
-		        	NUM>0 
+		        	NUM>0
+		        	<if test="category_num=='1'">AND TYPE = 0</if>
+					<if test="category_num=='2'">AND TYPE = 1</if> 
 		        	and 
-		        	<choose>
-		        		<when test="kind=='col1'">
-		        			TITLE
-		        		</when>
-		        		<when test="kind =='col2'">
-		        			CONTENTS
-		        		</when>
-		        		<otherwise>
-		        			ID
-		        		</otherwise>
-		        	</choose>	
+					TITLE	
 		        	LIKE '%'||#{search}||'%'
 		            ORDER BY NUM DESC
 		         ) B
@@ -49,8 +52,9 @@
  		SELECT COUNT(NUM) FROM NOTICES
  		WHERE
  			NUM>0 
-		    and 	       	
-		     <choose>
+			<if test="category_num=='1'">AND TYPE = 0</if>
+			<if test="category_num=='2'">AND TYPE = 1</if>
+<!-- 		<choose>
 		     	<when test="kind=='col1'">
 		     		TITLE
 		     	</when>
@@ -60,16 +64,18 @@
 		     	<otherwise>
 		     		ID
 		     	</otherwise>
-		     </choose>	
+		     </choose> -->		
+		    and       	
+			TITLE
         	LIKE '%'||#{search}||'%' 
  	</select>
 		
  	<update id="update" parameterType="NoticeDTO">
- 		update notices set title=#{title}, contents=#{contents} where num=#{num}
+ 		update notices set title=#{title}, contents=#{contents} where notice_num=#{num}
  	</update>
  	
  	<delete id="delete" parameterType="NoticeDTO">
- 		delete notices where num=#{num}
+ 		delete notices where notice_num=#{num}
  	</delete>
 
 

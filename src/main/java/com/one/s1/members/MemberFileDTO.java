@@ -3,7 +3,7 @@ package com.one.s1.members;
 import com.one.s1.file.FileDTO;
 
 public class MemberFileDTO extends FileDTO{
-	
+
 
 
 	private String id;
@@ -16,7 +16,4 @@ public class MemberFileDTO extends FileDTO{
 		this.id = id;
 	}
 }
-
-	
-
 

@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.one.s1.board.BoardDTO;
+import com.one.s1.product.ProductDTO;
 import com.one.s1.util.Pager;
 
 @Controller
@@ -21,6 +22,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 
+	
+	
 	@ModelAttribute("board")
 	public String board() {
 		return "notice";
@@ -50,9 +53,10 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView add(NoticeDTO noticeDTO,MultipartFile[] files) throws Exception {
+	public ModelAndView add(NoticeDTO noticeDTO, MultipartFile [] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.add(noticeDTO,files);
+		int result = noticeService.add(noticeDTO, files);
+
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
@@ -61,7 +65,7 @@ public class NoticeController {
 	public ModelAndView add() throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("board/add");
+		mv.setViewName("notice/noticeAdd");
 		return mv;
 	}
 
@@ -81,7 +85,7 @@ public class NoticeController {
 		List<BoardDTO> ar = noticeService.list(pager);
 
 		mv.addObject("list", ar);
-		mv.setViewName("board/list");
+		mv.setViewName("notice/noticeList");
 		return mv;
 	}
 

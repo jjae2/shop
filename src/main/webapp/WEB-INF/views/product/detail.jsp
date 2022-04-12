@@ -16,7 +16,7 @@ color:#35c5f0;
 
 </style>
 
-<link href="../resources/css/point.css" rel="styleSheet" />
+<!-- <link href="../resources/css/point.css" rel="styleSheet" /> -->
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
