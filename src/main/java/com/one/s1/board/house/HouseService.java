@@ -89,5 +89,8 @@ public class HouseService implements BoardService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	public List<HouseDTO> photolist(MultipartFile photo) throws Exception{
+		return houseDAO.photolist();
+	}
 
 }
