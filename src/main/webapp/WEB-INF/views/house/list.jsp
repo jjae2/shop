@@ -16,23 +16,18 @@
 	<h1>집들이 페이지</h1>
 	
  <div class="table-container">
-		<div class="search-form">
-			<form action="./list" method="get">
-				<fieldset>
-					<select name="kind">
-						<option value="col1">주거 형태</option>
-						<option value="col2">평 수</option>
-						<option value="col3">인테리어 스타일</option>
-					</select> <input type="text" name="search" value="${pager.search}">
-					<button type="submit">검색</button>
-				</fieldset>
-			</form>
-			<div>
+ 
+
+			<%-- <div>
 			<c:if test="${not empty member}">
 			<a href="./add">집들이 글쓰기</a>
 			</c:if>
-			</div>
-		</div>
+			</div> --%>
+	
+	<c:forEach items="${pl.houseFileDTO}" var="pl">	
+	사진<img alt="" src="../resources/upload/house/${pl.fileName}">
+	</c:forEach> 
+			
 		
  		<table class="table-basic">
 			<tr>

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.one.s1.board.BoardDAO;
 import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardFileDTO;
+import com.one.s1.product.ProductDTO;
+import com.one.s1.scrapbook.ScrapBookDTO;
 import com.one.s1.util.Pager;
 
 @Repository
@@ -73,5 +75,8 @@ public class HouseDAO implements BoardDAO {
 	}
 	public int hitCount(BoardDTO boardDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"hitCount",boardDTO);
+	}
+	public List<HouseDTO> photolist() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"photolist");
 	}
 }

@@ -1,5 +1,6 @@
 package com.one.s1.board.house;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,13 @@ public class HouseController {
 	private HouseService houseService;
 
 	@GetMapping("list")
-	public ModelAndView list(Pager pager) throws Exception {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView list(MultipartFile photo,Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();	
 		List<BoardDTO> ar = houseService.list(pager);
-		
+		List<HouseDTO> ar2 = houseService.photolist(photo);
+		/* System.out.println(ar2.get(0).getFileDTOs(0).get); */
 		mv.addObject("list", ar);
-		
+		mv.addObject("pl", ar2);
 		mv.setViewName("house/list");
 		return mv;
 	}

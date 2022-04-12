@@ -13,7 +13,14 @@ public class HouseDTO extends BoardDTO {
 	private Long house_space;
 	private String house_style;
 	private List<HouseFileDTO> fileDTOs;
+	private HouseFileDTO houseFileDTO;
 	
+	public HouseFileDTO getHouseFileDTO() {
+		return houseFileDTO;
+	}
+	public void setHouseFileDTO(HouseFileDTO houseFileDTO) {
+		this.houseFileDTO = houseFileDTO;
+	}
 	public List<HouseFileDTO> getFileDTOs() {
 		return fileDTOs;
 	}

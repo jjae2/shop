@@ -49,6 +49,34 @@
 		</choose>
 		LIKE '%'||#{search}||'%'
 	</select>
+	<select id="photolist" resultMap="listResult">
+		SELECT H.*,HF.*
+		FROM HOUSE H
+		LEFT JOIN
+		HOUSEFILE HF
+		ON (H.NUM =HF.NUM)
+	</select>
+	<resultMap type="HouseDTO" id="listResult">
+     	<id column="num" property="num" />
+		<result column="order_num" property="order_num" />
+		<result column="cart_num" property="cart_num" />
+		<result column="product_num" property="product_num" />
+		<result column="title" property="title" />
+		<result column="id" property="id" />
+		<result column="contents" property="contents" />
+		<result column="cd" property="cd" />
+		<result column="md" property="md" />
+		<result column="hit" property="hit" />
+		<result column="house_type" property="house_type" />
+		<result column="house_space" property="house_space" />
+		<result column="house_style" property="house_style" />  
+       
+       <association property="houseFileDTO" javaType="HouseFileDTO">   
+          <id column="fileNum" property="fileNum"/>
+          <result column="fileName" property="fileName"/>
+          <result column="oriName" property="oriName"/>
+       </association>
+    </resultMap>
 
 	<select id="detail" parameterType="HouseDTO"
 		resultMap="detailResult">
