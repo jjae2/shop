@@ -24,6 +24,7 @@
 		VALUES (FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
 	
+
 	<delete id="fileDelete" parameterType="NoticeFileDTO">
  		DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
  	</delete>

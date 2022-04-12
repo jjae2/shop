@@ -8,7 +8,7 @@
 
 	<insert id="addScrap" parameterType="ScrapBookDTO">
 		INSERT INTO SCRAPBOOK(SCRAP_NUM,PRODUCT_NUM,CATEGORY_NUM,ID)
-		VALUES(SCRAP_SEQ.NEXTVAL,#{product_num},0,#{id})
+		VALUES(SCRAP_SEQ.NEXTVAL,#{product_num},#{category_num},#{id})
 	</insert>
 
 	<delete id="deleteScrap" parameterType="ScrapBookDTO">
@@ -26,11 +26,18 @@
 	</select>
 	<resultMap type="ProductDTO" id="listResult">
 		<id column="product_num" property="product_num" />
+		<result column="category_num" property="category_num" />
 		<result column="id" property="id" />
 		<result column="product_name" property="product_name" />
-		<result column="writer" property="writer" />
-		<result column="regDate" property="regDate" />
+		<result column="product_price" property="product_price" />
+		<result column="contents" property="contents" />
 		<result column="hit" property="hit" />
+		<result column="sales" property="sales" />
+		<result column="stock" property="stock" />
+		<result column="date" property="date" />
+		<result column="rate" property="rate" />
+		<result column="totalprice" property="totalprice" />
+		
 
 		<collection property="scrapBookDTO" javaType="List"
 			ofType="ScrapBookDTO">

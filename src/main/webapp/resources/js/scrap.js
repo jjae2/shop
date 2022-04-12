@@ -1,7 +1,7 @@
 const scrap = document.querySelector("#scrap");
-const product_nums = document.querySelector("#scrap_product_num");
-const ids = document.querySelector("#scrap_id");
-
+const product_nums = document.querySelector("#product_num");
+const ids = document.querySelector("#purchaser");
+const category_num = document.querySelector("#category_nums");
 
 scrap.addEventListener("click", function () {
  
@@ -21,7 +21,7 @@ scrap.addEventListener("click", function () {
     //요청 전송
     //post 요청 시 파라미터
     //send("이름 =값&이름2=값2...")
-    xhttp.send("product_num="+product_nums.value+"&id="+ids.value );  
+    xhttp.send("product_num="+product_nums.value+"&id="+ids.value+"&category_num="+category_num.value);  
     
     //응답처리
     xhttp.onreadystatechange = function () {
@@ -32,7 +32,7 @@ scrap.addEventListener("click", function () {
           alert("스크랩 되었습니다.");
          
         } else {
-          alert("중복된 스크랩입니다.");
+          alert("이미 스크랩 하셨습니다.");
         }
         
       }

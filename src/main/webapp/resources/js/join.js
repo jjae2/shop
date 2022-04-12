@@ -13,11 +13,16 @@ const btn = document.getElementById("btn");
 const name = document.getElementById("name");
 const phone = document.getElementById("phone");
 const email = document.getElementById("email");
+const age = document.getElementById("age");
+const address = document.getElementById("address");
 
 let idCheck;
 let pwCheck;
 let pw2Check;
 let nameCheck;
+let ageCheck;
+
+let addressCheck;
 let phoneCheck;
 let emailCheck;
 
@@ -27,7 +32,7 @@ btn.addEventListener("click", function () {
   console.log(phoneCheck);
   console.log(emailCheck);
 
-  if (idCheck && pwCheck && pw2Check && nameCheck && phoneCheck && emailCheck) {
+  if (idCheck && pwCheck && pw2Check && nameCheck && phoneCheck && emailCheck && ageCheck && addressCheck) {
     frm.submit();
   } else {
     alert("필수요건을 확인하세요");
@@ -101,5 +106,23 @@ email.onblur = function () {
     emailCheck = false;
   } else {
     emailCheck = true;
+  }
+};
+age.onblur = function () {
+  let length = age.value.length;
+
+  if (length == 0) {
+    ageCheck = false;
+  } else {
+    ageCheck = true;
+  }
+};
+address.onblur = function () {
+  let length = address.value.length;
+
+  if (length == 0) {
+    addressCheck = false;
+  } else {
+    addressCheck = true;
   }
 };

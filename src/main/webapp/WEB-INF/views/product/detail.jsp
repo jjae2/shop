@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
 <title>detail</title>
+<link href="../resources/css/point.css" rel="styleSheet" />
 <link href="../resources/css/productDetail.css" rel="styleSheet" />
 <c:import url="../template/header_css.jsp"></c:import>
 <style type="text/css">
@@ -14,7 +16,6 @@ color:#35c5f0;
 
 </style>
 
-<!-- <link href="../resources/css/point.css" rel="styleSheet" /> -->
 </head>
 <body>
 
@@ -104,10 +105,8 @@ color:#35c5f0;
 								<span class="product_selling_header_title_name" >${dto.product_name}  </span>
 								<div class="product_selling_header_action">
 								<!--  스크랩 부분 -->
-	<input type="hidden" name="product_num" value="${detail.product_num}" id="scrap_product_num">  
-	<input type="hidden" name="id" value="${member.id}" id="scrap_id">
 
-	
+	<input type="hidden" value="${dto.category_num}" id="category_nums">
 	 <c:if test="${not empty member.id}"> 
 	<button id="scrap">스크랩 하기</button>
 	<button><a href="../scrap/deleteScrap?product_num=${dto.product_num}&id=${member.id}">스크랩 취소</a></button>
@@ -485,21 +484,22 @@ color:#35c5f0;
 						<!--============== 리뷰 ==============-->
 						<!-- 397 - 987 -->
 							      <h1>리뷰 쓰기</h1>
-  <p class="">-----상품 내용----</p>
+  
 <form name="myform" id="myform" action="./addReview" method="post">
-     <fieldset>
-        <legend>별점 평가</legend>별점을 선택해 주세요.
+     <div class="pointdiv">
+        <legend class="pointlegend">별점 평가</legend>
+        <legend class="pointlegend">닉네임:${member.id}</legend>
         만족도
         <input type="radio" name="dto.reviewDTO.review_point" value="5" id="rate1"><label for="rate1">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="4" id="rate2"><label for="rate2">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="3" id="rate3"><label for="rate3">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="2" id="rate4"><label for="rate4">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="1" id="rate5"><label for="rate5">⭐</label>
-    </fieldset>
-  	<div>
+    </div>
+  	<div class="pointdiv">
 		<input type="hidden" name="product_num" value="${dto.product_num}" id="review_product_num">  
 		<input type="hidden" readonly name="id" value="${member.id}" id="review_id">
-		<textarea rows="" cols="30" name="contents" id="review_contents"></textarea>
+		<textarea rows="10" cols="40" name="contents" id="review_contents"></textarea>
 		<button type="button" id="save">리뷰 등록</button>
 	</div>
   </form>
@@ -817,10 +817,10 @@ color:#35c5f0;
 		<div class="product_question_wrap_close" id="product_question_wrap_close"></div>
 		
 	</div>
-	
+	<script src="../resources/js/scrap.js"></script>
+	<script src="../resources/js/review.js"></script>
 	<script src="../resources/js/productDetail.js"></script>
 	<c:import url="../template/footer.jsp"></c:import>
 
->>>>>>> 138dadab5453d31d12a871cc9c9aa9ed8510a04c
 </body>
 </html>

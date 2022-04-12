@@ -15,7 +15,7 @@
 	<div class="all">
 	<h1>집들이 페이지</h1>
 	
-	<div class="table-container">
+ <div class="table-container">
 		<div class="search-form">
 			<form action="./list" method="get">
 				<fieldset>
@@ -33,6 +33,7 @@
 			</c:if>
 			</div>
 		</div>
+		
  		<table class="table-basic">
 			<tr>
 				<td>번호</td>
@@ -69,7 +70,9 @@
 			</c:if>
 		</div>
 		
-	</div>
+	</div> 
+
+	
 	</div>
 <c:import url="../template/footer.jsp"></c:import>
 </body>
