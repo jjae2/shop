@@ -1,4 +1,8 @@
+
+
+
 const mainImg = document.getElementById("mainImg");
+//const mainImg = document.querySelector("#mainImg");
 //const candidate = document.querySelector("#candi"+num);
 //let num=event.target.getAttribute('data-index');
 const candiList = document.querySelector("#candiList");
@@ -118,8 +122,8 @@ cart_order.addEventListener("click", function(event){
     }
 });
 */
-const id = document.querySelector("#purchaser");
-const product_num = document.querySelector("#product_num");
+const id1 = document.querySelector("#purchaser");
+const product_num1 = document.querySelector("#product_num");
 const product_name = document.querySelector("#product_name");
 
 
@@ -130,8 +134,8 @@ const product_name = document.querySelector("#product_name");
 cart_order.addEventListener("click", function(event){
     
     //console에 id, product_num, quantity 출력
-    console.log(id.value);
-    console.log(product_num.value);
+    console.log(id1.value);
+    console.log(product_num1.value);
     console.log(quantity.value);
     console.log("==========");
     if(event.target.classList.contains('button--color-blue-inverted')){
@@ -153,7 +157,7 @@ cart_order.addEventListener("click", function(event){
         //요청 전송
         //post 요청시 파라미터
         //send("이름=값&이름2=값2...")
-        xhttp.send("id="+id.value+"&product_num="+product_num.value+"&cart_count="+quantity.value);
+        xhttp.send("id="+id1.value+"&product_num="+product_num1.value+"&cart_count="+quantity.value);
 
         //응답 처리
         xhttp.onreadystatechange = function(){
@@ -248,8 +252,8 @@ qnaAddResult.addEventListener("click", function(event){
     if(event.target.classList.contains("product_question_wrap_buttons_submit")){
         console.log("완료1");
         //console.log(qnaTypeResult.getAttribute("value"));
-        console.log(product_num.value);
-        console.log(id.value);
+        console.log(product_num1.value);
+        console.log(id1.value);
 
         let qnaType = event.target.parentNode.parentNode.childNodes[7].lastElementChild.value;
         let qnaContents =event.target.parentNode.parentNode.childNodes[15].value;
@@ -262,7 +266,7 @@ qnaAddResult.addEventListener("click", function(event){
     
         xhttp3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        xhttp3.send("id="+id.value+"&product_num="+product_num.value+"&contents="+qnaContents+"&qna_type="+qnaType+"&qna_secret="+qna_secret);
+        xhttp3.send("id="+id1.value+"&product_num="+product_num1.value+"&contents="+qnaContents+"&qna_type="+qnaType+"&qna_secret="+qna_secret);
     
         
         //setTimeout(function(){
@@ -297,7 +301,7 @@ function getList(){
     console.log("getList 시작");
     const xhttp1 = new XMLHttpRequest();
     
-    xhttp1.open("GET", "../qnas/list?product_num="+product_num.value+"&page="+"");
+    xhttp1.open("GET", "../qnas/list?product_num="+product_num1.value+"&page="+"");
     xhttp1.send();
 
     xhttp1.onreadystatechange = function(){
@@ -331,7 +335,7 @@ qnaListResult.addEventListener("click", function(event){
 
         const xhttp4 = new XMLHttpRequest();
     
-        xhttp4.open("GET", "../qnas/list?product_num="+product_num.value+"&page="+page);
+        xhttp4.open("GET", "../qnas/list?product_num="+product_num1.value+"&page="+page);
         xhttp4.send();
     
         xhttp4.onreadystatechange = function(){
@@ -377,7 +381,7 @@ qnaListResult.addEventListener("click", function(event){
 
         const xhttp2 = new XMLHttpRequest();
     
-        xhttp2.open("GET", "../qnas/add?product_num="+product_num.value+"&product_name="+product_name.value+"&id="+id.value);
+        xhttp2.open("GET", "../qnas/add?product_num="+product_num1.value+"&product_name="+product_name.value+"&id="+id1.value);
         xhttp2.send();
     
         xhttp2.onreadystatechange = function(){
@@ -401,12 +405,12 @@ qnaListResult.addEventListener("click", function(event){
 
 
 
-const category_num = document.querySelector("#category_num");
+const category_num1 = document.querySelector("#category_num");
 
 
-category_num.addEventListener("click", function(){
+category_num1.addEventListener("click", function(){
 
-    category_num
+    //category_num1
 
 
 });
