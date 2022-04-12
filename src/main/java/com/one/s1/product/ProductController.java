@@ -73,6 +73,30 @@ public class ProductController {
 	
 	
 	
+	@RequestMapping(value = "feed", method = RequestMethod.GET)
+	public ModelAndView feed(Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<ProductDTO> ar = productService.feedProduct(pager);
+		Long result = productService.feedProductTotal(pager);
+		
+		mv.addObject("result", result);
+		mv.addObject("pager", pager);
+		mv.addObject("list", ar);
+		mv.setViewName("product/feed");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "homeProduct", method = RequestMethod.GET)
+	public ModelAndView homeProduct() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<ProductDTO> ar = productService.homeProduct();
+		mv.addObject("list", ar);
+		mv.setViewName("common/homeProductList");
+		return mv;
+	}
+	
+	
 	//상품 수정
 	@RequestMapping(value = "cart", method = RequestMethod.POST)
 	public ModelAndView update(ProductDTO productDTO) throws Exception {
@@ -96,7 +120,7 @@ public class ProductController {
 		
 		
 		List<ProductDTO> ar = productService.categoryList(passingNum, pager);
-		int result = productService.categoryListTotal(passingNum, pager);
+		int result = productService.categoryListTotal(passingNum, pager);			
 
 //		mv.addObject("pager", pager);	
 //		mv.addObject("category", ar1);		
@@ -145,7 +169,7 @@ public class ProductController {
 //		for(int i=0;i<df.length;i++) {
 //			System.out.println(df[i].getFileName());
 //		}
-		
+
 		
 		
 		

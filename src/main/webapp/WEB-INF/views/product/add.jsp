@@ -8,6 +8,13 @@
 <c:import url="../template/header_css.jsp"></c:import>
 </head>
 <body>
+<input type="hidden" id="fileAdd">
+<input type="hidden" id="fileResult">
+<input type="hidden" id="files">
+
+
+
+
 
 	<c:import url="../template/header.jsp"></c:import>
 	<h1>${board} Add Page</h1>

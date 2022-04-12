@@ -41,6 +41,8 @@ public class ProductService {
 	 * return productDAO.cart(productDTO); }
 	 */
 	
+	
+	
 	public int fileDelete(ProductFileDTO productFileDTO)throws Exception{
 		
 		return productDAO.fileDelete(productFileDTO);
@@ -141,6 +143,21 @@ public class ProductService {
 		return productDAO.list(pager);
 	}
 	
+	public List<ProductDTO> homeProduct() throws Exception {
+
+		return productDAO.homeProduct();
+	}
+	public List<ProductDTO> feedProduct(Pager pager) throws Exception {
+		pager.makeRow();
+
+		pager.makeNum(productDAO.total2(pager));
+		return productDAO.feedProduct(pager);
+	}	
+	
+	public Long feedProductTotal(Pager pager) throws Exception {	
+		return productDAO.feedProductTotal(pager);
+	}
+	
 	public List<ProductDTO> categoryList(PassingNum passingNum, Pager pager) throws Exception {
 		pager.makeRow();
 
@@ -156,12 +173,14 @@ public class ProductService {
 		return productDAO.category();
 	}
 	
+/*
 	public List<ProductDTO> sellList(Pager pager) throws Exception {
 		pager.makeRow();
 
 		pager.makeNum(productDAO.total2(pager));
 		return productDAO.sellList(pager);
 	}
+*/
 	
 	public ProductDTO detail(ProductDTO productDTO) throws Exception {
 		int result = productDAO.detailHit(productDTO);

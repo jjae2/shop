@@ -10,7 +10,8 @@ import com.one.s1.board.BoardDAO;
 import com.one.s1.board.BoardDTO;
 
 import com.one.s1.board.BoardFileDTO;
-
+import com.one.s1.product.ProductDTO;
+import com.one.s1.product.ProductFileDTO;
 import com.one.s1.util.Pager;
 
 @Repository
@@ -34,6 +35,14 @@ public class NoticeDAO implements BoardDAO {
 	public List<BoardDTO> list(Pager pager) throws Exception {//
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + "list", pager);//
+	}
+	
+	public int fileDelete(NoticeFileDTO noticeFileDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"fileDelete", noticeFileDTO);
+	}
+	
+	public List<NoticeFileDTO> listFile(BoardDTO boardDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"listFile", boardDTO);
 	}
 
 	@Override

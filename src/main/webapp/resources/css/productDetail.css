@@ -1205,6 +1205,7 @@ textarea.form-control {
     transition: background-color .1s,color .1s;
 }
 .list-paginator__page.selected {
+	
     background-color: #35c5f0;
     color: #fff;
     text-decoration: none;

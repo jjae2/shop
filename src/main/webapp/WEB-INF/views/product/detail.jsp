@@ -7,8 +7,6 @@
 <title>detail</title>
 <link href="../resources/css/productDetail.css" rel="styleSheet" />
 <c:import url="../template/header_css.jsp"></c:import>
-<script type="text/javascript"></script>
-
 <style type="text/css">
 #scrap{
 color:#35c5f0;
@@ -19,6 +17,7 @@ color:#35c5f0;
 <!-- <link href="../resources/css/point.css" rel="styleSheet" /> -->
 </head>
 <body>
+
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="product_selling">
@@ -524,7 +523,7 @@ color:#35c5f0;
 
 						<a id="production-selling-question"></a>
 						<div id="qnaListResult">
-
+							
 						</div>
 
 						<!--============== 문의 끝 ==============-->

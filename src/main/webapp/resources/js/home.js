@@ -316,7 +316,8 @@ navigation_bot_content_menu_item9.addEventListener("mouseenter", function(){
     navigation_bot_content_menu_item9.className= 'navigation_bot_content_menu_item_active';
 });
 
-headerrange.addEventListener("mouseleave", function(){
+headerrange.addEventListener("mouseleave", function(event){
+    
     console.log('headrrange');
     navigation_bot_content_menu_item1.className= navigation_bot_content_menu_item11;
     navigation_bot_content_menu_item2.className= navigation_bot_content_menu_item22;
@@ -333,6 +334,8 @@ headerrange.addEventListener("mouseleave", function(){
     notice.className= notice2;
 
 });
+
+
 
 navigation_top_content_right_icon1.addEventListener("mouseenter", function(){
     console.log('스크랩in');
