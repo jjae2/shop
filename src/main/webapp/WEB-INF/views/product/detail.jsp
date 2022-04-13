@@ -501,14 +501,15 @@ color:#35c5f0;
 <form name="myform" id="myform" action="./addReview" method="post">
      <div class="pointdiv">
         <legend class="pointlegend">별점 평가</legend>
-        <legend class="pointlegend">닉네임:${member.id}</legend>
+        <legend class="pointlegend">아이디:${member.id}</legend>
+        <fieldset class="pointfieldset">
         만족도
         <input type="radio" name="dto.reviewDTO.review_point" value="5" id="rate1"><label for="rate1">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="4" id="rate2"><label for="rate2">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="3" id="rate3"><label for="rate3">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="2" id="rate4"><label for="rate4">⭐</label>
         <input type="radio" name="dto.reviewDTO.review_point" value="1" id="rate5"><label for="rate5">⭐</label>
-    </div>
+    </div></fieldset>
   	<div class="pointdiv">
 		<input type="hidden" name="product_num" value="${dto.product_num}" id="review_product_num">  
 		<input type="hidden" readonly name="id" value="${member.id}" id="review_id">

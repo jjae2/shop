@@ -71,7 +71,7 @@ reviewResult.addEventListener("click", function (event) {
       if (this.readyState == 4 && this.status == 200) {
         if (this.responseText.trim() == "1") {
           alert("삭제 성공");
-          getList();
+          getListR();
         } else {
           alert("삭제 실패");
         }
@@ -80,9 +80,9 @@ reviewResult.addEventListener("click", function (event) {
   }
 });
 
-getList();
+getListR();
 
-function getList() {
+function getListR() {
   const xhttp2 = new XMLHttpRequest();
 
   xhttp2.open("GET", "../product/listReview?product_num=" + product_num.value);
@@ -116,7 +116,7 @@ save.addEventListener("click", function () {
   //send("이름 =값&이름2=값2...")
   for(p of point){
     if(p.checked){
-        review_point = p.getAttribute("value");
+         review_point = p.getAttribute("value");
     }
   }
  
@@ -129,7 +129,7 @@ save.addEventListener("click", function () {
       let result = this.responseText.trim();
       if (result == "1") {
         alert("리뷰 등록 되었습니다");
-        getList();
+        getListR();
       } else {
         alert("리뷰 등록 실패");
       }

@@ -44,6 +44,7 @@
                 ${pl.house_space}평
             </span>
         </footer>
+        <span class="project-feed__item__writer__name">조회수${pl.hit}</span></a></address>
     </article>
 </div>
 </c:forEach>
