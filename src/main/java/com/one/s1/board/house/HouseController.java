@@ -54,9 +54,9 @@ public class HouseController {
 	}
 
 	@PostMapping("add")
-	public ModelAndView add(HouseDTO houseDTO,MultipartFile[] files) throws Exception {
+	public ModelAndView add(HouseDTO houseDTO,MultipartFile photo) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = houseService.add(houseDTO,files);
+		int result = houseService.add(houseDTO,photo);
 		mv.setViewName("redirect:./list");
 		return mv;
 	}

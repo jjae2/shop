@@ -67,9 +67,10 @@
     word-break: keep-all;
     overflow-wrap: break-word;
     color: #2f3438;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 700;
     line-height: 24px;
+    text-align: center;
 }.content-detail-header__bottom {
     display: -webkit-box;
     display: -webkit-flex;
@@ -100,7 +101,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 12px;
+    font-size: 18px;
+    margin:0 auto;
 }a * {
     border: none;
 }.project-detail-metadata {
