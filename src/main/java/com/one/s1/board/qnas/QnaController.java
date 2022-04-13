@@ -19,6 +19,7 @@ import com.one.s1.members.MemberDTO;
 import com.one.s1.product.ProductDTO;
 import com.one.s1.util.Pager;
 import com.one.s1.util.Pager2;
+import com.one.s1.util.Pager3;
 
 @Controller
 @RequestMapping("/qnas/**")
@@ -89,6 +90,26 @@ public class QnaController {
 		mv.setViewName("common/ajaxResult");
 		return mv;
 	}
+
+	
+	@RequestMapping(value = "sellAdd", method=RequestMethod.GET)
+	public ModelAndView sellAdd(QnaDTO qnaDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("qnas/sellAdd");
+		return mv;
+	}
+	
+	@RequestMapping(value = "sellAdd", method=RequestMethod.POST)
+	public ModelAndView sellAdd1(QnaDTO qnaDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = qnaService.sellAdd(qnaDTO);
+		mv.addObject("result", result);
+		mv.setViewName("member/sellmain");
+		return mv;
+	}
+	
+	
 	
 	@RequestMapping(value = "detail", method=RequestMethod.GET)
 	public String detail(QnaDTO qnaDTO, Model model)throws Exception{
@@ -126,4 +147,19 @@ public class QnaController {
 		
 		return "common/qnaList";
 	}
+	
+	
+	//list
+	@RequestMapping(value="sellList", method=RequestMethod.GET)
+	public ModelAndView sellList(Pager3 pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+			
+		List<BoardDTO> ar = qnaService.sellList(pager);
+
+		mv.addObject("list", ar);		
+		mv.addObject("pager", pager);
+		mv.setViewName("common/sellmainQnaList");
+		return mv;
+	}
+	
 }

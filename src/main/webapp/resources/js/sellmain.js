@@ -102,14 +102,14 @@ function getQnaList(){
                 
             }
 
-            product_selling_navigation_item_count.innerText= qnaListResult.firstElementChild.firstElementChild.firstElementChild.lastElementChild.innerText;
+            //product_selling_navigation_item_count.innerText= qnaListResult.firstElementChild.firstElementChild.firstElementChild.lastElementChild.innerText;
 
         }
     }
 }
 
 
-
+/*
 productListResult.addEventListener("click", function(event){
     console.log(event.target);
     if(event.target.classList.contains('qnaListPage1')){
@@ -132,4 +132,4 @@ productListResult.addEventListener("click", function(event){
             }
         }
     }
-});
+});*/

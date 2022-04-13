@@ -14,10 +14,7 @@
 <h1>${dto1.contents}</h1>
 <h1>${dto1.qna_step}</h1>
 </c:forEach> --%>
-
-
-
-
+<input>  </input>
 <section class="product_selling_section">
 	<header class="product_selling_section_header">
 		<h1 class="product_selling_section_title">

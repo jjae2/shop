@@ -85,7 +85,7 @@
 						<c:when test="${not empty member}">
 							<a class="navigation_top_content_right_icon"
 								id="navigation_top_content_right_icon1" title="스크랩북"
-								aria-label="스크랩북" href="#"> <svg class="icon" width="24"
+								aria-label="스크랩북" href="/s1/scrap/listScrap?id=${member.id}"> <svg class="icon" width="24"
 									height="24" stroke="currentColor" viewBox="0 0 24 24"
 									preserveAspectRatio="xMidYMid meet">
 									<path fill="none" stroke-width="2"
@@ -234,7 +234,7 @@
 							</div>
 							<a class="navigation_top_content_right_icon ppp"
 								id="navigation_top_content_right_icon1" title="스크랩북"
-								aria-label="스크랩북" href="#"> </a>
+								aria-label="스크랩북" href="/s1/scrap/listScrap?id=${member.id}"> </a>
 							<a class="navigation_top_content_right_icon ppp"
 								id="navigation_top_content_right_icon2" title="장바구니"
 								aria-label="장바구니" href="#"></a>
@@ -319,12 +319,12 @@
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item1" href="/s1">스토어홈</a>
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item2" href="/s1/product/list">카테고리</a>
+								id="navigation_bot_content_menu_item2" href="/s1/store/category">카테고리</a>
 							<!-- ?category=0&amp;order=popular -->
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item3" href="#">베스트</a>
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item4" href="#">오늘의딜</a>
+								id="navigation_bot_content_menu_item4" href="/s1/product/list">오늘의딜</a>
 							<!-- ?special_feed=true -->
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item5" href="/s1/notices/list?category_num=2">세일공지</a>
@@ -332,9 +332,9 @@
 								class="navigation_bot_content_menu_item navigation_bot_content_menu_item_active under"
 								id="navigation_bot_content_menu_item6" href="/s1/community">홈</a>
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item7" href="#">집들이</a>
+								id="navigation_bot_content_menu_item7" href="/s1/house/list">집들이</a>
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item8" href="#">질문과답변</a>
+								id="navigation_bot_content_menu_item8" href="/s1/qna2/list">질문과답변</a>
 							<a class="navigation_bot_content_menu_item"
 								id="navigation_bot_content_menu_item9" href="/s1/notices/list?category_num=1">공지사항</a>
 						</c:when>
@@ -343,12 +343,12 @@
 								class="navigation_bot_content_menu_item navigation_bot_content_menu_item_active under"
 								id="navigation_bot_content_menu_item1" href="/s1">스토어홈</a>
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item2" href="/s1/product/list">카테고리</a>
+								id="navigation_bot_content_menu_item2" href="/s1/store/category">카테고리</a>
 							<!-- ?category=0&amp;order=popular -->
 							<a class="navigation_bot_content_menu_item"
 								id="navigation_bot_content_menu_item3" href="#">베스트</a>
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item4" href="#">오늘의딜</a>
+								id="navigation_bot_content_menu_item4" href="/s1/product/list">오늘의딜</a>
 							<!-- ?special_feed=true -->
 							<a class="navigation_bot_content_menu_item"
 								id="navigation_bot_content_menu_item5" href="/s1/notices/list?category_num=2">세일공지</a>
@@ -357,7 +357,7 @@
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item7" href="/s1/house/list">집들이</a>
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item8" href="#">질문과답변</a>
+								id="navigation_bot_content_menu_item8" href="/s1/qna2/list">질문과답변</a>
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item9" href="/s1/notices/list?category_num=1">공지사항</a>
 						</c:otherwise>

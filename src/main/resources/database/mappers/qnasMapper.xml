@@ -26,6 +26,11 @@
         VALUES (QNAS_seq.nextval, #{product_num}, #{id}, 1, #{contents}, #{qna_type}, 0, SYSDATE, 0, #{qna_secret}, qnas_seq.currval, 0, 0)  
  	</insert>
  	
+ 	<insert id="sellAdd" parameterType="QnaDTO">
+	    INSERT INTO QNAS (NUM, PRODUCT_NUM, ID, TITLE, CONTENTS, QNA_TYPE, QNA_BUY, CD, QNA_REPLY, QNA_SECRET, QNA_REF, QNA_STEP, QNA_DEPTH )
+        VALUES (QNAS_seq.nextval, #{product_num}, #{id}, 1, #{contents}, 0, 0, SYSDATE, 0, 0, #{num}, 1, 0)  
+ 	</insert>
+ 	
  	<select id="detail" parameterType="QnaDTO" resultType="QnaDTO">
 		select * from qnas where num = #{num}
  	</select>
@@ -46,6 +51,18 @@
 		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
+ 	 <select id="sellList" resultType="QnaDTO" parameterType="Pager3"> 
+		
+		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT q.* FROM qnas q, product p 
+                WHERE NUM>0 AND q.product_num = p.product_num AND q.qna_step=0 AND p.id = #{id} 
+                order by qna_ref desc, qna_step asc) B
+		     )
+		WHERE R between #{startRow} and #{lastRow}  		
+ 	</select>
+ 	
+ 	
  	<select id="replyList" parameterType="Pager2" resultType="QnaDTO">
 				SELECT * FROM qnas 
 				WHERE NUM>0 AND PRODUCT_NUM = #{product_num} AND QNA_STEP = 1 AND QNA_REF IN
@@ -59,6 +76,12 @@
  			NUM>0 
 		AND
 			PRODUCT_NUM = #{product_num} 
+ 	</select>
+ 	
+ 	<select id="sellListTotal" resultType="Long" parameterType="Pager">
+ 		SELECT count(rownum) FROM qnas q, product p
+ 		WHERE
+        q.product_num = p.product_num and qna_step=0 and p.id = 's1' order by qna_ref desc, qna_step asc			
  	</select>
 		
  	<update id="update" parameterType="QnaDTO">

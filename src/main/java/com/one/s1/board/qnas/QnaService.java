@@ -9,6 +9,7 @@ import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardService;
 import com.one.s1.util.Pager;
 import com.one.s1.util.Pager2;
+import com.one.s1.util.Pager3;
 @Service
 public class QnaService implements BoardService {
 	
@@ -22,6 +23,16 @@ public class QnaService implements BoardService {
 		
 		return qnaDAO.list(pager2);
 	}
+	
+	
+	public List<BoardDTO> sellList(Pager3 pager) throws Exception {
+		
+		pager.makeRow();
+		pager.makeNum(qnaDAO.sellListTotal(pager));
+		return qnaDAO.sellList(pager);
+	}
+	
+	
 	
 	public List<BoardDTO> replyList(Pager2 pager) throws Exception {
 		
@@ -88,6 +99,12 @@ public class QnaService implements BoardService {
 	@Override
 	public int add(BoardDTO boardDTO,MultipartFile[] files) throws Exception {
 		int result=qnaDAO.add(boardDTO);
+		
+		return result;
+	}
+	
+	public int sellAdd(BoardDTO boardDTO) throws Exception {
+		int result=qnaDAO.sellAdd(boardDTO);
 		
 		return result;
 	}

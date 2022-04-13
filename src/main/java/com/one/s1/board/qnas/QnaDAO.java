@@ -11,6 +11,7 @@ import com.one.s1.board.BoardDTO;
 import com.one.s1.board.BoardFileDTO;
 import com.one.s1.util.Pager;
 import com.one.s1.util.Pager2;
+import com.one.s1.util.Pager3;
 
 @Repository
 public class QnaDAO implements BoardDAO {
@@ -41,6 +42,11 @@ public class QnaDAO implements BoardDAO {
 		return sqlSession.selectList(NAMESPACE+"list", pager);
 	}
 	
+	public List<BoardDTO> sellList(Pager3 pager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE+"sellList", pager);
+	}
+	
 	public List<BoardDTO> replyList(Pager2 pager) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -53,6 +59,10 @@ public class QnaDAO implements BoardDAO {
 	public int add(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"add", boardDTO);
+	}
+	public int sellAdd(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE+"sellAdd", boardDTO);
 	}
 
 	@Override
@@ -73,6 +83,12 @@ public class QnaDAO implements BoardDAO {
 		return sqlSession.selectOne(NAMESPACE+"total", pager);
 	}
 
+	public Long sellListTotal(Pager3 pager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"sellListTotal", pager);
+	}
+	
+	
 	@Override
 	public int addFile(BoardFileDTO boardFileDTO) throws Exception {
 		// TODO Auto-generated method stub
