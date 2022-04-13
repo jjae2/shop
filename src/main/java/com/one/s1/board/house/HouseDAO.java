@@ -79,4 +79,7 @@ public class HouseDAO implements BoardDAO {
 	public List<HouseDTO> photolist() throws Exception{
 		return sqlSession.selectList(NAMESPACE+"photolist");
 	}
+	public Long count() throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "count");
+	}
 }

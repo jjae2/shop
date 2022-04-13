@@ -77,7 +77,9 @@
           <result column="oriName" property="oriName"/>
        </association>
     </resultMap>
-
+	<select id="count" resultType="Long">
+	select count(num)  from house
+	</select>
 	<select id="detail" parameterType="HouseDTO"
 		resultMap="detailResult">
 		SELECT H.*,HF.*

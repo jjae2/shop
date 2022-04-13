@@ -92,5 +92,8 @@ public class HouseService implements BoardService {
 	public List<HouseDTO> photolist(MultipartFile photo) throws Exception{
 		return houseDAO.photolist();
 	}
+	public Long count()throws Exception{
+		return houseDAO.count();
+	}
 
 }

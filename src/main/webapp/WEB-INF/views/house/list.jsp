@@ -11,64 +11,46 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
+	<c:if test="${not empty member}">
+	<button class="w-btn w-btn-blue"><a href="./add">집들이 글쓰기</a></button>
+	</c:if>
+	<div class="container">
+    <div class="project-feed">
+    <div class="project-feed__count">
+        전체 ${count}
+    </div>
+    
+    <div class="virtualized-list row" style="padding-top: 0px; padding-bottom: 0px; transform: translateY(0px);">
+        <c:forEach items="${pl}" var="pl">
+        <div class="col-12 col-md-4">
+            <article class="project-feed__item">
+                <a class="project-feed__item__link" href="./detail?num=${pl.num}"></a>
+                <div class="project-feed__item__image">
+                    <img class="image" alt="" src="../resources/upload/house/${pl.houseFileDTO.fileName}">
+        </div><h1 class="project-feed__item__title">${pl.title}</h1>
+        <address class="project-feed__item__writer-wrap">
+        <a class="project-feed__item__writer" href="./detail?num=${pl.num}">
+        <span class="project-feed__item__writer__name">${pl.id}</span></a></address>
+        <footer class="project-feed__item__status">
+            <span class="entry">
+                ${pl.house_type}
+                &nbsp;
+            </span>
+            <span class="entry">
+                ${pl.house_style}
+                &nbsp;
+            </span>
+            <span class="entry">
+                ${pl.house_space}평
+            </span>
+        </footer>
+    </article>
+</div>
+</c:forEach>
+</div> 
+</div>
+</div>
 	
-	<div class="all">
-	<h1>집들이 페이지</h1>
-	
- <div class="table-container">
- 
-
-			<%-- <div>
-			<c:if test="${not empty member}">
-			<a href="./add">집들이 글쓰기</a>
-			</c:if>
-			</div> --%>
-	
-	<c:forEach items="${pl.houseFileDTO}" var="pl">	
-	사진<img alt="" src="../resources/upload/house/${pl.fileName}">
-	</c:forEach> 
-			
-		
- 		<table class="table-basic">
-			<tr>
-				<td>번호</td>
-				<td>제목</td>
-				<td>내용</td>
-				<td>ID</td>
-				<td>주거 형태</td>
-				<td>평 수</td>
-				<td>인테리어 스타일</td>
-				<td>조회 수</td>
-			</tr>
-			<c:forEach items="${list}" var="h">
-				<tr>
-					<td>${h.num }</td>
-					<td><a href="./detail?num=${h.num}">${h.title}</a></td>
-					<td>${h.contents}</td>
-					<td>${h.id}</td>
-					<td>${h.house_type}</td>
-					<td>${h.house_space}</td>
-					<td>${h.house_style}</td>
-					<td>${h.hit}</td>
-				</tr>
-			</c:forEach>
-		</table> 
-		<div>
-			<c:if test="${pager.pre}">
-				<a href="./list?page=${pager.startNum-1}">이전</a>
-			</c:if>
-			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<a href="./list?page=${i}">${i}</a>
-			</c:forEach>
-			<c:if test="${pager.next}">
-				<a href="./list?page=${pager.lastNum+1}">다음</a>
-			</c:if>
-		</div>
-		
-	</div> 
-
-	
-	</div>
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
