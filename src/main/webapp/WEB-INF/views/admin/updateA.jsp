@@ -6,9 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/house.css" rel="styleSheet" />
+<c:import url="../template/header_css.jsp"></c:import>
+<link href="../resources/css/table.css" rel="styleSheet" />
+
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
 		<form action="./updateA" method="post">
 		<input type="hidden" name = "id" value="${dto.id}">
 		<table class="table-basic">
@@ -42,5 +45,6 @@
 			</tr>					
 		</table>
 		</form>	
+		<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
