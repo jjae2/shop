@@ -77,9 +77,11 @@
           <result column="oriName" property="oriName"/>
        </association>
     </resultMap>
-
+	<select id="count" resultType="Long">
+	select count(num)  from house
+	</select>
 	<select id="detail" parameterType="HouseDTO"
-		resultMap="detailResult">
+		resultMap="listResult">
 		SELECT H.*,HF.*
 		FROM HOUSE H
 		LEFT JOIN
@@ -87,7 +89,7 @@
 		ON (H.NUM =HF.NUM)
 		WHERE H.NUM=#{num}
 	</select>
-	<resultMap type="HouseDTO" id="detailResult">
+<!-- 	<resultMap type="HouseDTO" id="detailResult">
 		<id column="num" property="num" />
 		<result column="order_num" property="order_num" />
 		<result column="cart_num" property="cart_num" />
@@ -105,12 +107,12 @@
 
 		<collection property="fileDTOs" javaType="List"
 			ofType="HouseFileDTO">
-			<id column="fileNum" property="fileNum" /> 		<!-- num은 위에서 써줬기 때문에 안써줘도 된다 -->
+			<id column="fileNum" property="fileNum" /> 		num은 위에서 써줬기 때문에 안써줘도 된다
 			<result column="fileName" property="fileName" />
 			<result column="oriName" property="oriName" />
-		</collection>
+		</collection></resultMap> -->
 
-	</resultMap>
+	
 	<update id="update" parameterType="HouseDTO">
 		UPDATE HOUSE SET
 		TITLE=#{title},CONTENTS=#{contents},HOUSE_TYPE=#{house_type},HOUSE_SPACE=#{house_space},HOUSE_STYLE=#{house_style}

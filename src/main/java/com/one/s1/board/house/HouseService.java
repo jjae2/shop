@@ -42,26 +42,20 @@ public class HouseService implements BoardService {
 		return houseDAO.detail(boardDTO);
 	}
 
-	@Override
-	public int add(BoardDTO boardDTO,MultipartFile[] files) throws Exception {
+	
+	public int add(BoardDTO boardDTO,MultipartFile photo) throws Exception {
 		int result= houseDAO.add(boardDTO);
-		//1.HDD에 저장
-		for(int i=0;i<files.length;i++) {
-			if(files[i].isEmpty()) {
-				continue;
-			}
-			
-			String fileName=fileManager.save(files[i], "resources/upload/house/");
+		String fileName=fileManager.save(photo, "resources/upload/house/");
 		//2.DB에 저장
 			HouseFileDTO houseFileDTO = new HouseFileDTO();
 			houseFileDTO.setNum(boardDTO.getNum());
 			houseFileDTO.setFileName(fileName);
-			houseFileDTO.setOriName(files[i].getOriginalFilename());
+			houseFileDTO.setOriName(photo.getOriginalFilename());
 			result=houseDAO.addFile(houseFileDTO);
-			System.out.println(result);
-		}
+			System.out.println("사진 add:"+result);
 		return result;
-	}
+		}
+
 
 	@Override
 	public int update(BoardDTO boardDTO) throws Exception {
@@ -91,6 +85,15 @@ public class HouseService implements BoardService {
 	}
 	public List<HouseDTO> photolist(MultipartFile photo) throws Exception{
 		return houseDAO.photolist();
+	}
+	public Long count()throws Exception{
+		return houseDAO.count();
+	}
+
+	@Override
+	public int add(BoardDTO boardDTO, MultipartFile[] files) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
