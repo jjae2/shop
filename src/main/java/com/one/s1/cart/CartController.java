@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.one.s1.members.MemberDTO;
+import com.one.s1.util.PassingNum;
 
 @Controller
 @RequestMapping("/cart/**")
@@ -29,13 +30,13 @@ public class CartController {
 	private CartService cartService;
 	
 	@GetMapping("list")
-	public String list(String id , Model model)throws Exception{
+	public ModelAndView list(ModelAndView mv, CartDTO cartDTO, HttpSession session, PassingNum passingNum)throws Exception{
 //		return "cart/list";
 //		model.addAttribute("cartList", cartService.list(id));
 //		model.addAttribute("list", ar);
 //		return "cart/list";
 //	}
-		model.addAttribute("cartList", cartService.list(id));
+//		model.addAttribute("cartList", cartService.list(id));
 //		HttpSession session = request.getSession();
 //		session.setAttribute("id", session);
 //		String id = (String)session.getAttribute("id");
@@ -60,9 +61,33 @@ public class CartController {
 //		
 //		}
 //		return mv;
+//		
+//		return "cart/list";
 		
-		return "cart/list";
 		
+//		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//		PassingNum passingNum =(PassingNum)session.getAttribute("member");
+		
+//		String id = memberDTO.getId();
+		String id = passingNum.getId();
+		System.out.println(id);
+		
+		List<CartDTO> cartList = cartService.list(cartDTO, passingNum);
+		Long total_payment = 0L;
+		Long total_product_price = 0L;
+		Long total_sale_price = 0L;
+		
+		for(int i=0;i<cartList.size();i++) {
+			total_product_price += cartList.get(i).getProduct_price()*cartList.get(i).getCart_count();
+			total_sale_price += cartList.get(i).getProduct_price()*cartList.get(i).getCart_count()-(cartList.get(i).getSalePrice()*cartList.get(i).getCart_count());
+			total_payment += (cartList.get(i).getSalePrice()*cartList.get(i).getCart_count());
+		}		
+		mv.addObject("total_product_price", total_product_price);
+		mv.addObject("total_sale_price", total_sale_price);
+		mv.addObject("total_payment", total_payment);
+		mv.addObject("cartList", cartList);
+		mv.setViewName("cart/list");
+		return mv;
 }
 	
 

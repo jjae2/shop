@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.one.s1.members.MemberDTO;
 import com.one.s1.product.ProductDAO;
 import com.one.s1.util.FileManager;
+import com.one.s1.util.PassingNum;
 
 @Service
 public class CartService {
@@ -50,11 +52,10 @@ public class CartService {
 	}
 	
 	
-	public List<CartDTO> list(String id) throws Exception{
-		List<CartDTO> cartlist = cartDAO.list(id);
-		for(CartDTO cartDTO : cartlist) {
-		
-			cartDTO.initSaleTotal();
+	public List<CartDTO> list(CartDTO cartDTO, PassingNum passingNum) throws Exception{
+		List<CartDTO> cartlist = cartDAO.list(passingNum);
+		for(CartDTO dto : cartlist) {
+			dto.initSaleTotal();
 		}
 		System.out.println("service: "+cartlist);
 		return cartlist;

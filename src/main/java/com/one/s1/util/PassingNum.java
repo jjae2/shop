@@ -14,9 +14,26 @@ public class PassingNum {
 	
 	private Long productArray;
 	
+	private String id;
+	private Long product_num;
 	
 	
 	
+	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public Long getProduct_num() {
+		return product_num;
+	}
+	public void setProduct_num(Long product_num) {
+		this.product_num = product_num;
+	}
 	public Long getProductArray() {
 		if(this.productArray==null) {
 			return 1L;

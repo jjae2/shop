@@ -10,6 +10,7 @@ public class CartDTO {
 	//상품수량
 	private Long cart_count;
 	private Date adddate;
+	private String com_name;
 	
 	//product
 	private String product_name;
@@ -90,6 +91,13 @@ public class CartDTO {
 	public void setTotalPrice(Long totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	public String getCom_name() {
+		return com_name;
+	}
+	public void setCom_name(String com_name) {
+		this.com_name = com_name;
+	}
 	public void initSaleTotal() {
 		this.salePrice= (int) (this.product_price * (1-this.rate));
 		this.totalPrice = this.salePrice*this.cart_count;
@@ -101,7 +109,7 @@ public class CartDTO {
 	
 	@Override
 	public String toString() {
-		return "CartDTO [cart_num="+cart_num +", id="+id+", product_num="+product_num+", cart_count="+cart_count+", adddate="+adddate+", product_name="+product_name+", product_price="+product_price+", rate="+rate+", salePrice="+salePrice+", totalPrice="+totalPrice+"]";
+		return "CartDTO [cart_num="+cart_num +", id="+id+", product_num="+product_num+",com_name="+com_name+", cart_count="+cart_count+", adddate="+adddate+", product_name="+product_name+", product_price="+product_price+", rate="+rate+", salePrice="+salePrice+", totalPrice="+totalPrice+"]";
 	}
 
 	
