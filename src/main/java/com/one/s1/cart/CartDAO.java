@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.one.s1.members.MemberDTO;
+import com.one.s1.util.PassingNum;
+
 @Repository
 public class CartDAO {
 	
@@ -29,8 +32,8 @@ public class CartDAO {
 	}
 	
 	//list 목록
-	public List<CartDTO> list(String id) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"list");
+	public List<CartDTO> list(PassingNum passingNum) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"list", passingNum);
 	}
 	
 	//cart 확인

@@ -12,6 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.one.s1.MyJunitTest;
+import com.one.s1.members.MemberDTO;
+import com.one.s1.util.PassingNum;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -55,11 +57,9 @@ public class CartTest extends MyJunitTest {
 	
 	//목록보기
 	//@Test
-	public void listCartTest() throws Exception{
-		String id = "daaaru";
-		
-		List<CartDTO> ar = cartDAO.list(id);
-		for(CartDTO cartDTO : ar) {
+	public void listCartTest(CartDTO cartDTO, PassingNum passingNum) throws Exception{
+		List<CartDTO> ar = cartDAO.list(passingNum);
+		for(int i=0;i<ar.size();i++) {
 			System.out.println(cartDTO);
 			System.out.println("init cart :" +cartDTO);
 		}
