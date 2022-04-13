@@ -7,6 +7,7 @@
 	<link href="../resources/css/table.css" rel="styleSheet" />
 <link href="../resources/css/category.css" rel="styleSheet" />
 <c:import url="../template/header_css.jsp"></c:import>
+
 <script type="text/javascript"></script>
 
 </head>

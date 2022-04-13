@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/house.css" rel="styleSheet" />
+<c:import url="../template/header_css.jsp"></c:import>
 <style type="text/css">
          h1{
             text-align: center;
@@ -57,7 +58,7 @@
   <tbody>
   <tr>
     <th scope="row">${s.product_num}</th>
-    <td>${s.product_name}</td>
+    <td><a href="../product/detail?product_num=${s.product_num}">${s.product_name}</a></td>
   </tr>
   </tbody>
 </table>

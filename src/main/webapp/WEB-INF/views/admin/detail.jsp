@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="../resources/css/house.css" rel="styleSheet" />
+
+<c:import url="../template/header_css.jsp"></c:import>
+<link href="../resources/css/table.css" rel="styleSheet" />
 </head>
 <body>
-		
+<c:import url="../template/header.jsp"></c:import>
 		<table class="table-basic">
 			<tr>
 				<th>아이디</th>
@@ -69,8 +71,8 @@
 		</table>
 		<div>
 		<a href="./updateA?id=${detail.id}">등급 변경</a>
-		<button>쿠폰 주기</button>
+		<!-- <button>쿠폰 주기</button> -->
 		</div>
-		
+		<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

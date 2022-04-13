@@ -49,7 +49,7 @@
                 <label class="css-ef7ez6 euhjq6q2">회사주소</label>
                 <h2 class="css-1pmd5bp e1y3odo24">${member.com_address}</h2></div>
 
-	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="../scrap/listScrap?id=${dto.id}">스크랩 북</a></button>
+	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="../scrap/listScrap?id=${member.id}">스크랩 북</a></button>
 	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./update?id=${member.id}">회원정보 수정</a></button>
 	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./updatePw?id=${member.id}">비밀번호 수정</a></button>
 	</div>

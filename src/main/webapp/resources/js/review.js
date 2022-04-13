@@ -118,8 +118,8 @@ save.addEventListener("click", function () {
     if(p.checked){
         review_point = p.getAttribute("value");
     }
-}
-console.log(review_point);
+  }
+ 
   xhttp.send("review_point="+review_point+"&product_num="+product_num.value+"&id="+id.value+"&contents="+contents.value );  
 
   //응답처리
