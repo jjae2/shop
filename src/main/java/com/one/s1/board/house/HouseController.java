@@ -29,7 +29,8 @@ public class HouseController {
 		ModelAndView mv = new ModelAndView();	
 		List<BoardDTO> ar = houseService.list(pager);
 		List<HouseDTO> ar2 = houseService.photolist(photo);
-		/* System.out.println(ar2.get(0).getFileDTOs(0).get); */
+		Long result= houseService.count();
+		mv.addObject("count", result);
 		mv.addObject("list", ar);
 		mv.addObject("pl", ar2);
 		mv.setViewName("house/list");

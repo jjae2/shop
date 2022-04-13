@@ -5,7 +5,7 @@ let count = 0;
 let num = 0; //id용도
 fileAdd.addEventListener("click", function () {
   if (count > 4) {
-    alert("첨부파일은 최대 5개 까지만 가능함");
+    alert("첨부파일은 최대 1개 까지만 가능함");
     return;
   }
   let div = document.createElement("div");

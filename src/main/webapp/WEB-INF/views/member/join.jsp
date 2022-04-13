@@ -66,9 +66,9 @@
         <input type="hidden" name="com_name" value="">
         <input type="hidden" name="com_address" value="">
         </form>
-    
+        
     <p class="css-frl1s e1y3odo21">이미 아이디가 있으신가요?<a href="./login" class="css-i9fa3q e1y3odo20">로그인</a></p></div></section>
-</div>
+
 
 	<script type="text/javascript" src="../resources/js/join.js"></script>
 </body>
