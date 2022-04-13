@@ -44,7 +44,7 @@ public class CartDTO {
 		return rate;
 	}
 	public void setRate(Double rate) {
-		this.rate = rate;
+		this.rate = rate*0.01;
 	}
 
 	public Long getCart_num() {

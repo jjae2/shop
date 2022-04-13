@@ -44,7 +44,7 @@
 				<table class="cart_table">
 					<caption>표 내용 부분</caption>
 					<tbody>
-						<c:forEach items="${cartList}" var="list">
+						<c:forEach items="${cartList}" var="list" varStatus="i">
 							<tr>
 								<td class="td_width_1 cart_info"></td>
 									<input type="checkbox" class="cart_checkbox input_size_20" checked="checked">
@@ -78,6 +78,7 @@
 								</td>
 								<td class="td_width_4 table_text_align_center"><button class=" delete_btn">삭제</button></td>
 							</tr>
+							
 						</c:forEach>
 					</tbody>
 				</table>

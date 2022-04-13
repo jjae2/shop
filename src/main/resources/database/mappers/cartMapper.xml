@@ -36,6 +36,19 @@
 				ON m.id = c.id
 		WHERE c.id = #{id} -->
 		
+		
+<!-- 	수정전	 -->
+<!-- 		SELECT ROW_NUMBER() OVER(ORDER BY c.cart_num DESC) AS num, c.cart_num, m.id, m.com_name, p.product_num, p.rate, p.product_price, p.product_name, c.cart_count, c.adddate, pf.filenum, pf.filename, pf.oriname, pf.filesection
+		FROM CART c
+			INNER JOIN product P
+				ON c.product_num = p.product_num
+			INNER JOIN productfile Pf
+				ON pf.product_num = p.product_num
+			INNER JOIN members M 
+				ON m.id = c.id
+		WHERE c.id = #{id} AND pf.product_num = #{product_num} -->
+		
+<!-- 수정후 -->
 		SELECT ROW_NUMBER() OVER(ORDER BY c.cart_num DESC) AS num, c.cart_num, m.id, m.com_name, p.product_num, p.rate, p.product_price, p.product_name, c.cart_count, c.adddate, pf.filenum, pf.filename, pf.oriname, pf.filesection
 		FROM CART c
 			INNER JOIN product P
@@ -44,8 +57,7 @@
 				ON pf.product_num = p.product_num
 			INNER JOIN members M 
 				ON m.id = c.id
-		WHERE c.id = #{id} AND pf.product_num = #{product_num}
-
+		WHERE c.id = #{id} AND pf.product_num = #{product_num} and (pf.PRODUCT_NUM, pf.FILENUM) in (select PRODUCT_NUM, MIN(FILENUM) as FILENUM from PRODUCTFILE WHERE FILESECTION = 0 group by PRODUCT_NUM)
 	</select>
 	
 	
