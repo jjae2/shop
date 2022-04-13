@@ -313,7 +313,7 @@
 				</div>
 
 
-				<div class="category-list__prev" id="category_prev">
+				<div class="category-list__prev prenext-close" id="category_prev">
 					<button type="button">
 						<svg width="32" height="32" viewBox="0 0 32 32"
 							preserveAspectRatio="xMidYMid meet">

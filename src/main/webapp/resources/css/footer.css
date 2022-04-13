@@ -1,0 +1,162 @@
+.layout-footer {
+    margin-top: auto;
+    display: block;
+    background-color: #fafafa;
+}
+
+.layout-footer > *{
+	flex: 0 0 auto;
+}
+
+.layout-footer__content {
+    display: block;
+    max-width: 1256px;
+    margin: 0 auto;
+    padding: 30px 60px 40px;
+    box-sizing: border-box;
+}
+
+.layout-footer__top {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+}
+
+.layout-footer__cs {
+    margin: 0 0 25px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.layout-footer__cs__link {
+    display: inline-block;
+    font-weight: 700;
+    color: #424242;
+}
+
+.layout-footer__cs__link>.icon {
+    margin-left: 1px;
+    vertical-align: -1px;
+    font-size: 11px;
+}
+
+.layout-footer__cs__tel {
+    display: inline-block;
+    margin: 2px 0 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #424242;
+    line-height: 36px;
+}
+
+.layout-footer__cs__time {
+    color: #757575;
+}
+
+.layout-footer__outbound {
+    margin: -3px -7px 25px;
+}
+
+.layout-footer__outbound__item {
+    display: inline-block;
+    padding: 3px;
+    margin: 0 4px;
+}
+
+.layout-footer__shortcut {
+    margin: 0 -5px 10px;
+}
+.layout-footer__shortcut>li {
+    display: inline;
+}
+.layout-footer__shortcut__item {
+    display: inline-block;
+    margin: 0 3px;
+    padding: 2px;
+    font-size: 10px;
+    font-weight: 400;
+    color: #424242;
+    line-height: 16px;
+}
+
+.layout-footer__info {
+    display: block;
+    margin: 0 -5px;
+    font-size: 10px;
+    color: #757575;
+    line-height: 16px;
+}
+
+.layout-footer__info__item {
+    display: inline-block;
+    margin: 0 3px;
+    padding: 2px;
+}
+
+.layout-footer__info__item dd, .layout-footer__info__item dt {
+    display: inline;
+}
+.layout-footer__info__item dt:after {
+    content: " : ";
+}
+
+.layout-footer__copyright {
+    margin: 10px 0 0;
+    font-size: 10px;
+    color: #424242;
+    line-height: 16px;
+}
+
+.css-v1pw39 {
+    margin-top: 26px;
+}
+
+.css-v1pw39 {
+
+    display: flex;
+
+    align-items: center;
+    margin-top: 32px;
+}
+
+.css-9fythf {
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    margin-right: 20px;
+}
+
+.css-68x97p {
+    width: 32px;
+    height: 32px;
+}
+
+.css-gqy9zz {
+    font-size: 10px;
+    line-height: 14px;
+    color: #828c94;
+    margin-left: 8px;
+}
+
+.css-9fythf:last-of-type {
+    margin-right: 0;
+}
+
+.css-9fythf {
+
+    flex: 0 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    margin-right: 20px;
+}
+

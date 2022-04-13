@@ -35,9 +35,9 @@
 					<div
 						class="input-group select-input product_question_wrap_option-select_input">
 						<input type="text" disabled id="product_name_sub_title"
-							value="${productDTO.product_name}"> <input type="text"
+							value="${productDTO.product_name}"> <input type="hidden"
 							readonly id="product_num_sub_title"
-							value="${productDTO.product_num}"> <input type="text"
+							value="${productDTO.product_num}"> <input type="hidden"
 							readonly id="id_sub_title" value="${qnaDTO.id}">
 					</div>
 				</div>

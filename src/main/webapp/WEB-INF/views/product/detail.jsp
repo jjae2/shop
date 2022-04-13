@@ -475,7 +475,14 @@ color:#35c5f0;
 						<div
 							class="production-selling-description production-selling-description--notice production-selling-description--open">
 							<div class="production-selling-description__content">
-								<img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/deals/descriptions/1_1644919184150_T8HUqZ3i.jpg?gif=1&amp;w=720">
+<!-- 상품이미지태그 -->							
+<%-- 								<c:forEach items="${dto.productFileDTOs}" var="f">
+									<c:if test="${f.fileSection eq 1}">
+										<img src="../resources/upload/product/${f.fileName}">
+									</c:if>	
+								</c:forEach> --%>							
+<!-- 상품 고정이미지 -->								
+ 							<img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/deals/descriptions/1_1644919184150_T8HUqZ3i.jpg?gif=1&amp;w=720">
 								<img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/deals/descriptions/2_1644919184197_egWgoU.jpg?gif=1&amp;w=720">
 								<img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/deals/descriptions/1_1648432365826_kFOoGrM.jpg?gif=1&amp;w=720">
 								<img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/deals/descriptions/2_1648432365892_e.jpg?gif=1&amp;w=720">
@@ -490,7 +497,7 @@ color:#35c5f0;
 						<!--============== 리뷰 ==============-->
 						<!-- 397 - 987 -->
 							      <h1>리뷰 쓰기</h1>
-  
+  						<a id="production-selling-review"></a>
 <form name="myform" id="myform" action="./addReview" method="post">
      <div class="pointdiv">
         <legend class="pointlegend">별점 평가</legend>
@@ -657,7 +664,7 @@ color:#35c5f0;
 												</tr>
 												<tr>
 													<th>사업자 등록번호</th>
-													<td>119-86-91245  DTO 생성해야됨</td>
+													<td>119-86-91245</td><!--   DTO 생성해야됨 -->
 												</tr>
 											</tbody>
 										</table>
