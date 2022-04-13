@@ -261,4 +261,63 @@
     line-height: 16px;
     color: #828C94;
 }
+/**/
+.list-paginator {
+    text-align: center;
+}
+
+.list-paginator__page.sm {
+    display: block;
+}
+
+.list-paginator__page {
+/*     display: none; */
+    min-width: 26px;
+    margin: 0 2px;
+    padding: 5.5px 5px;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    color: #424242;
+    transition: background-color .1s,color .1s;
+    
+}
+.list-paginator-wrap{
+	cursor: pointer;
+}
+
+.list-paginator__page.selected {
+    background-color: #35c5f0;
+    color: #fff;
+    text-decoration: none;
+}
+
+.list-paginator>li {
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 0;
+}
+
+.list-paginator__prev .list-paginator__next {
+    margin-right: 25px;
+}
+
+.list-paginator__end, .list-paginator__next, .list-paginator__prev, .list-paginator__start {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 0;
+    transition: opacity .1s;
+}
+
+
+
+
+
 

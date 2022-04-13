@@ -28,6 +28,126 @@
 	</delete>
 
 <!-- 리뷰 끝 -->
+
+ 	<select id="feedProductTotal" parameterType="Pager" resultType="Long">
+  		SELECT COUNT(R) FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM  		        
+		        (SELECT P.*, PF.FILENAME, PF.FILENUM, PF.ORINAME, M.COM_NAME FROM PRODUCT P, (select *
+				from PRODUCTFILE
+				where (PRODUCT_NUM, FILENUM) in (
+				select PRODUCT_NUM, MIN(FILENUM) as FILENUM
+				from PRODUCTFILE WHERE FILESECTION = 0 group by PRODUCT_NUM)) PF, MEMBERS M WHERE P.PRODUCT_NUM = PF.PRODUCT_NUM AND P.ID = M.ID)	        
+		        WHERE 
+		        	PRODUCT_NUM>0 
+		        	AND 
+		        	PRODUCT_NAME LIKE '%'||#{search}||'%'
+		            ORDER BY HIT DESC
+		         ) B
+		     )
+ 	</select>
+
+ 	<select id="feedProduct" parameterType="Pager" resultMap="feedProductResult">
+  		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM  		        
+		        (SELECT P.*, PF.FILENAME, PF.FILENUM, PF.ORINAME, M.COM_NAME FROM PRODUCT P, (select *
+				from PRODUCTFILE
+				where (PRODUCT_NUM, FILENUM) in (
+				select PRODUCT_NUM, MIN(FILENUM) as FILENUM
+				from PRODUCTFILE WHERE FILESECTION = 0 group by PRODUCT_NUM)) PF, MEMBERS M WHERE P.PRODUCT_NUM = PF.PRODUCT_NUM AND P.ID = M.ID)	        
+		        WHERE 
+		        	PRODUCT_NUM>0 
+		        	AND 
+		        	PRODUCT_NAME LIKE '%'||#{search}||'%'
+<!-- 		        AND
+		        	RATE != #{filterSale}
+		        	AND 
+		        	COM_NAME LIKE '%'||#{filterBrand}||'%'
+		        	AND
+		        	PRODUCT_PRICE BETWEEN #{filterStartPrice} AND #{filterLastPrice} -->
+		            ORDER BY HIT DESC
+<!-- 					<choose>
+		        		<when test="productArray==1">
+		        			HIT DESC
+		        		</when>
+		        		<when test="productArray==2">
+		        			PRODUCT_PRICE ASC
+		        		</when>
+		        		<when test="productArray==3">
+		        			PRODUCT_PRICE DESC
+		        		</when>
+		        		<when test="productArray==4">
+		        			PRODUCT_NUM DESC
+		        		</when>
+		        	</choose> -->
+		         ) B
+		     )
+		WHERE R between #{startRow} and #{lastRow}
+ 	</select>
+ 	
+ 	<resultMap type="ProductDTO" id="feedProductResult">
+ 		<id column="product_num" property="product_num"/>
+ 		<result column="category_num" property="category_num"/>
+ 		<result column="id" property="id"/>
+ 		<result column="product_name" property="product_name"/>
+ 		<result column="product_price" property="product_price"/>
+ 		<result column="content" property="content"/>
+ 		<result column="sales" property="sales"/>
+ 		<result column="stock" property="stock"/>
+ 		<result column="hit" property="hit"/>
+ 		<result column="rate" property="rate"/>
+		<association property="productFileDTO" javaType="ProductFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+		<association property="memberDTO" javaType="MemberDTO">
+			<id column="id" property="id"/>
+			<result column="com_name" property="com_name"/>
+		</association>		
+ 	</resultMap>
+
+ 	<select id="homeProduct" resultMap="homeProductResult">
+  		SELECT * FROM
+		    (SELECT rownum R, B.* FROM 
+		        (SELECT * FROM  		        
+		        (SELECT P.*, PF.FILENAME, PF.FILENUM, PF.ORINAME, M.COM_NAME FROM PRODUCT P, (select *
+				from PRODUCTFILE
+				where (PRODUCT_NUM, FILENUM) in (
+				select PRODUCT_NUM, MIN(FILENUM) as FILENUM
+				from PRODUCTFILE WHERE FILESECTION = 0 group by PRODUCT_NUM)) PF, MEMBERS M WHERE P.PRODUCT_NUM = PF.PRODUCT_NUM AND P.ID = M.ID)	        
+		        WHERE 
+		        	PRODUCT_NUM>0 	        	
+		            ORDER BY HIT DESC
+		         ) B
+		     )
+		WHERE R between 1 and 12
+ 	</select>
+ 	
+ 	<resultMap type="ProductDTO" id="homeProductResult">
+ 		<id column="product_num" property="product_num"/>
+ 		<result column="category_num" property="category_num"/>
+ 		<result column="id" property="id"/>
+ 		<result column="product_name" property="product_name"/>
+ 		<result column="product_price" property="product_price"/>
+ 		<result column="content" property="content"/>
+ 		<result column="sales" property="sales"/>
+ 		<result column="stock" property="stock"/>
+ 		<result column="hit" property="hit"/>
+ 		<result column="rate" property="rate"/>
+		<association property="productFileDTO" javaType="ProductFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+		<association property="memberDTO" javaType="MemberDTO">
+			<id column="id" property="id"/>
+			<result column="com_name" property="com_name"/>
+		</association>		
+ 	</resultMap>
+	
+
 	<delete id="fileDelete" parameterType="ProductFileDTO">
  		DELETE PRODUCTFILE WHERE FILENUM=#{fileNum}
  	</delete>
@@ -287,7 +407,8 @@
  		WHERE
  			PRODUCT_NUM>0 
 		    and 	       	
-		     <choose>
+<!-- 		     <choose>
+		     
 		     	<when test="kind=='col1'">
 		     		PRODUCT_NAME
 		     	</when>
@@ -297,10 +418,8 @@
 		     	<otherwise>
 		     		ID
 		     	</otherwise>
-		     </choose>	
-        	LIKE '%'||#{search}||'%' 
-        	AND
-        	ID = #{id}
+		     </choose>	 -->
+        	PRODUCT_NAME LIKE '%'||#{search}||'%' 
  	</select>	
 		
  	<update id="update" parameterType="ProductDTO">

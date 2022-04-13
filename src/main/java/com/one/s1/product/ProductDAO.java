@@ -17,6 +17,20 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.one.s1.product.ProductDAO.";
+	
+	
+	public List<ProductDTO> homeProduct() throws Exception {
+		return sqlSession.selectList(NAMESPACE + "homeProduct");
+	}
+	public List<ProductDTO> feedProduct(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "feedProduct", pager);
+	}	
+	
+	public Long feedProductTotal(Pager pager) throws Exception {
+//		System.out.println("DAO.categoryList1");
+		return sqlSession.selectOne(NAMESPACE + "feedProductTotal", pager);
+	}
+	
 	//리뷰 부분
 	public int addReview(ReviewDTO reviewDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"addReview",reviewDTO);		

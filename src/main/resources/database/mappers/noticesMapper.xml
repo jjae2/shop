@@ -24,21 +24,54 @@
 		VALUES (FILE_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
 	</insert>
 	
- 	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notices where num = #{num}
-		
+
+	<delete id="fileDelete" parameterType="NoticeFileDTO">
+ 		DELETE NOTICEFILE WHERE FILENUM=#{fileNum}
+ 	</delete>
+	
+ 	<select id="listFile" parameterType="NoticeDTO" resultType="NoticeFileDTO">
+ 		SELECT * FROM NoticeFILE
+ 		WHERE NUM=#{num}
+ 	</select>	
+	
+ 	<select id="detail" parameterType="NoticeDTO" resultMap="detailResult">
+		SELECT N.*, NF.* 
+		FROM 
+		NOTICES N
+			LEFT OUTER JOIN
+		NOTICEFILE NF
+			ON N.NUM = NF.NUM
+		WHERE N.NUM = #{num}
  	</select>
+ 	
+ 	<resultMap type="NoticeDTO" id="detailResult">
+ 		<id column="num" property="num"/>
+ 		<result column="id" property="id"/>
+ 		<result column="title" property="title"/>
+ 		<result column="contents" property="contents"/>
+ 		<result column="cd" property="cd"/>
+ 		<result column="md" property="md"/>
+ 		<result column="hit" property="hit"/>
+ 		<result column="type" property="type"/>
+		<collection property="noticeFileDTOs" javaType="List" ofType="NoticeFileDTO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</collection>
+ 	</resultMap> 		
+ 	
+ 	
  	<update id="detailHit" parameterType="NoticeDTO">
 		UPDATE NOTICES SET HIT = HIT+1 WHERE NUM = #{num}
  	</update>
  
- 	<select id="list" parameterType="NoticeDTO" resultType="NoticeDTO">
+ 	<select id="list" parameterType="Pager" resultType="NoticeDTO">
   		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
 		        (SELECT * FROM NOTICES WHERE 
 		        	NUM>0
-		        	<if test="category_num=='1'">AND TYPE = 0</if>
-					<if test="category_num=='2'">AND TYPE = 1</if> 
+		        	<if test='category_num == "1"'>AND TYPE = 0</if>
+					<if test='category_num == "2"'>AND TYPE = 1</if> 
 		        	and 
 					TITLE	
 		        	LIKE '%'||#{search}||'%'
@@ -52,8 +85,8 @@
  		SELECT COUNT(NUM) FROM NOTICES
  		WHERE
  			NUM>0 
-			<if test="category_num=='1'">AND TYPE = 0</if>
-			<if test="category_num=='2'">AND TYPE = 1</if>
+			<if test='category_num == "1"'>AND TYPE = 0</if>
+			<if test='category_num == "2"'>AND TYPE = 1</if>
 <!-- 		<choose>
 		     	<when test="kind=='col1'">
 		     		TITLE
@@ -71,11 +104,11 @@
  	</select>
 		
  	<update id="update" parameterType="NoticeDTO">
- 		update notices set title=#{title}, contents=#{contents} where notice_num=#{num}
+ 		update notices set title=#{title}, contents=#{contents} where num=#{num}
  	</update>
  	
  	<delete id="delete" parameterType="NoticeDTO">
- 		delete notices where notice_num=#{num}
+ 		delete notices where num=#{num}
  	</delete>
 
 

@@ -24,6 +24,7 @@ public class ProductDTO {
 	private List<ProductFileDTO> productFileDTOs;
 	private MemberDTO memberDTO;
 	public Long totalPrice;
+
 	private List<ReviewDTO> reviewDTO;
 	private List<ScrapBookDTO> scrapBookDTO;
 	

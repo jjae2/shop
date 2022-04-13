@@ -9,8 +9,6 @@
 <link href="../resources/css/point.css" rel="styleSheet" />
 <link href="../resources/css/productDetail.css" rel="styleSheet" />
 <c:import url="../template/header_css.jsp"></c:import>
-<script type="text/javascript"></script>
-
 <style type="text/css">
 #scrap{
 color:#35c5f0;
@@ -20,6 +18,7 @@ color:#35c5f0;
 
 </head>
 <body>
+
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="product_selling">
@@ -108,10 +107,16 @@ color:#35c5f0;
 								<!--  스크랩 부분 -->
 
 	<input type="hidden" value="${dto.category_num}" id="category_nums">
-	 <c:if test="${not empty member.id}"> 
-	<button id="scrap">스크랩 하기</button>
-	<button><a href="../scrap/deleteScrap?product_num=${dto.product_num}&id=${member.id}">스크랩 취소</a></button>
-	 </c:if> 
+	
+	<c:choose>
+		<c:when test="${not empty member.id}">
+			<button id="scrap">스크랩 하기</button>
+			<button><a href="../scrap/deleteScrap?product_num=${dto.product_num}&id=${member.id}">스크랩 취소</a></button>
+		</c:when>
+		<c:otherwise>
+			<input type="hidden" id="scrap">
+		</c:otherwise>	
+	</c:choose>
 	 <!--  스크랩 끝 -->
 									<!--<button
 										 class="product_selling_header_action_button product_selling_header_action_button-scrap"
@@ -524,7 +529,7 @@ color:#35c5f0;
 
 						<a id="production-selling-question"></a>
 						<div id="qnaListResult">
-
+							
 						</div>
 
 						<!--============== 문의 끝 ==============-->

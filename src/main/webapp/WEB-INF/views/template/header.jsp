@@ -7,8 +7,7 @@
 
 
 <header class="header">
-	<div class="headerrange" id="headerrange"
-		style="position: absolute; width: 100%; height: 135px;"></div>
+	<div class="headerrange" id="headerrange" style="position: absolute; width: 100%; height: 30px;"></div>
 	<div class="navigation_wrap">
 
 		<div class="navigation_top"><!-- style="position: fixed; transition: top 0.1s ease 0s; top: 0px; left: 0px; right: 0px;" -->
@@ -62,11 +61,9 @@
 									class="navigation_top_content_right_search_combobox"
 									role="combobox" aria-haspopup="listbox" aria-expanded="false">
 									<div class="navigation_top_content_right_search_input">
-										<input type="text"
-											class="navigation_top_content_right_search_input_text"
-											value="" autocomplete="off" size="1" id="id-1-input"
-											aria-autocomplete="list" placeholder="오늘의집 통합검색"
-											aria-label="오늘의집 통합검색">
+									
+										<form action="/s1/product/feed?search=" method="get">
+										<input type="text" name="search" onKeypress="javascript:if(event.keyCode==13) {search_onclick_submit}" class="navigation_top_content_right_search_input_text" value="" autocomplete="off" size="1" id="id-1-input" aria-autocomplete="list" placeholder="스토어 검색" aria-label="스토어 검색">
 										<svg class="navigation_top_content_right_search_input_icon"
 											width="24" height="24" viewBox="0 0 24 24" fill="none"
 											stroke="currentColor" stroke-width="2"
@@ -75,6 +72,8 @@
 											<circle cx="11" cy="11" r="8">
 											</circle>
 										</svg>
+										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -141,6 +140,11 @@
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt5" href="/s1/member/logout">로그아웃</a>
 										</li>
+										<li>
+											<input type="hidden" id="qqt2">
+											<input type="hidden" id="qqt3">
+											<input type="hidden" id="qqt4">
+										</li>
 										</c:when>
 										<c:when test="${member.auth_id==1 }">
 										<li
@@ -158,6 +162,13 @@
 											<a class="navigation_top_content_right_icon_user_menu_item"
 											id="qqt5" href="/s1/member/logout">로그아웃</a>
 										</li>
+										
+										<li>
+											<input type="hidden" id="qqt2">
+											<input type="hidden" id="qqt3">
+											<input type="hidden" id="qqt4">
+										</li>
+										
 										</c:when>
 										<c:otherwise>
 										<li
@@ -316,7 +327,7 @@
 								id="navigation_bot_content_menu_item4" href="#">오늘의딜</a>
 							<!-- ?special_feed=true -->
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item5" href="/s1/notices/list">세일공지</a>
+								id="navigation_bot_content_menu_item5" href="/s1/notices/list?category_num=2">세일공지</a>
 							<a
 								class="navigation_bot_content_menu_item navigation_bot_content_menu_item_active under"
 								id="navigation_bot_content_menu_item6" href="/s1/community">홈</a>
@@ -325,7 +336,7 @@
 							<a class="navigation_bot_content_menu_item"
 								id="navigation_bot_content_menu_item8" href="#">질문과답변</a>
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item9" href="/s1/notices/list">공지사항</a>
+								id="navigation_bot_content_menu_item9" href="/s1/notices/list?category_num=1">공지사항</a>
 						</c:when>
 						<c:otherwise>
 							<a
@@ -340,7 +351,7 @@
 								id="navigation_bot_content_menu_item4" href="#">오늘의딜</a>
 							<!-- ?special_feed=true -->
 							<a class="navigation_bot_content_menu_item"
-								id="navigation_bot_content_menu_item5" href="/s1/notices/list">세일공지</a>
+								id="navigation_bot_content_menu_item5" href="/s1/notices/list?category_num=2">세일공지</a>
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item6" href="/s1/community">홈</a>
 							<a class="navigation_bot_content_menu_item ppp"
@@ -348,7 +359,7 @@
 							<a class="navigation_bot_content_menu_item ppp"
 								id="navigation_bot_content_menu_item8" href="#">질문과답변</a>
 							<a class="navigation_bot_content_menu_item ppp"
-								id="navigation_bot_content_menu_item9" href="/s1/notices/list">공지사항</a>
+								id="navigation_bot_content_menu_item9" href="/s1/notices/list?category_num=1">공지사항</a>
 						</c:otherwise>
 					</c:choose>
 				</nav>
