@@ -7,11 +7,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header_css.jsp"></c:import>
+<link href="../resources/css/menu.css" rel="styleSheet" />
 <link href="../resources/css/table.css" rel="styleSheet" />
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-		
+<nav class="shopnav">
+<h1>관리자 메뉴</h1>
+<ul class="shopmenu">
+  <li><a href="../board/list">공지사항 관리</a></li>
+  <li><a href="./list">회원 관리</a></li>
+</ul>
+</nav>
+		<div class="contents">
 		<table class="table-basic">
 			<tr>
 				<td>아이디</td>
@@ -48,6 +56,7 @@
 					</c:choose></td>				
 			</c:forEach>
 		</table>
-<c:import url="../template/footer.jsp"></c:import>
+		</div>
+
 </body>
 </html>

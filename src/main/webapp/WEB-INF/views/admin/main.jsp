@@ -15,15 +15,13 @@
 <nav class="shopnav">
 <h1>관리자 메뉴</h1>
 <ul class="shopmenu">
-  <li><a href="../board/list">공지사항 관리</a></li>
+  <li><a href="#">공지사항 관리</a></li>
   <li><a href="./list">회원 관리</a></li>
 </ul>
 </nav>
-<div>
-<h1>관리자 입니다.</h1>
-</div>
+<div class="contents">
+        <h1>관리자 입니다.</h1></div>
 
-<c:import url="../template/footer.jsp"></c:import>
 
 </body>
 </html>

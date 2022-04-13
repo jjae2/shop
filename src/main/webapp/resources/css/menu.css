@@ -1,4 +1,3 @@
-
 .shopnav{
 	width:200px;
 	background: #eee;
@@ -26,3 +25,7 @@ h1{
   background-color:white;
   color:#35c5f0;
 }
+.contents{
+    position: relative;
+    left: 200px;
+  }
