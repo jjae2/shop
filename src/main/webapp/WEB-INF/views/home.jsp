@@ -62,7 +62,7 @@
 			<!-- 사진밑에 한글 배너  -->
 			<div class="featured-quick-navigation container">
 				<ul class="featured-quick-navigation__list" id="bannerBot_selector">
-					<li class="featured-quick-navigation__item" role="button"><div
+					<li class="featured-quick-navigation__item featured-quick-navigation__item--selected" role="button"><div
 							class="featured-quick-navigation__item__content">
 							<span class="bannerBot" data-num="1">종료 임박!</span>
 						</div></li>
@@ -71,8 +71,7 @@
 							<span class="bannerBot" data-num="2">멍냥 필수템</span>
 						</div></li>
 					<li
-						class="featured-quick-navigation__item featured-quick-navigation__item--selected"
-						role="button"><div
+						class="featured-quick-navigation__item" role="button"><div
 							class="featured-quick-navigation__item__content">
 							<span class="bannerBot" data-num="3">홈오피스 꾸미기</span>
 						</div></li>

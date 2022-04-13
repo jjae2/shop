@@ -15,7 +15,7 @@
 <nav class="shopnav">
 <h1>관리자 메뉴</h1>
 <ul class="shopmenu">
-  <li><a href="../board/list">공지사항 관리</a></li>
+  <li><a href="../notices/list">공지사항 관리</a></li>
   <li><a href="./list">회원 관리</a></li>
 </ul>
 </nav>

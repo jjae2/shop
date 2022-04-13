@@ -319,8 +319,8 @@ function getList(){
             // qnaListResult.firstElementChild.lastElementChild.firstElementChild.childNodes[5].lastElementChild.lastElementChild.lastElementChild.prepend(product_name.value);
             // qnaListResult.firstElementChild.lastElementChild.firstElementChild.childNodes[7].lastElementChild.lastElementChild.lastElementChild.prepend(product_name.value);
             // qnaListResult.firstElementChild.lastElementChild.firstElementChild.childNodes[9].lastElementChild.lastElementChild.lastElementChild.prepend(product_name.value);
-            console.log(qnaListResult);
-            product_selling_navigation_item_count.innerText= qnaListResult.firstElementChild.firstElementChild.firstElementChild.lastElementChild.innerText;
+ //           console.log(qnaListResult.firstElementChild.value);
+ //           product_selling_navigation_item_count.innerText= qnaListResult.firstElementChild.value;
 
         }
     }
