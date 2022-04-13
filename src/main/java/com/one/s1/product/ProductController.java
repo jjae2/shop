@@ -17,6 +17,7 @@ import com.one.s1.members.MemberDTO;
 import com.one.s1.product.CategoryDTO;
 import com.one.s1.review.ReviewDTO;
 import com.one.s1.util.Pager;
+import com.one.s1.util.Pager3;
 import com.one.s1.util.PassingNum;
 
 
@@ -249,7 +250,21 @@ public class ProductController {
 		mv.setViewName("product/list");
 		return mv;
 	}
+	//판매자 상품 리스트
+	@RequestMapping(value = "sellList", method = RequestMethod.GET)
+	public ModelAndView list(Pager3 pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<ProductDTO> ar = productService.sellList(pager);
 
+		if(ar.isEmpty()) {
+			System.out.println("null");
+		}
+		
+		mv.addObject("pager", pager);
+		mv.addObject("list", ar);
+		mv.setViewName("common/sellmainProductList");
+		return mv;
+	}
 	
 	
 	

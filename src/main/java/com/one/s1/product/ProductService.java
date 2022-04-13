@@ -9,6 +9,7 @@ import com.one.s1.members.MemberDTO;
 import com.one.s1.product.CategoryDTO;
 import com.one.s1.util.FileManager;
 import com.one.s1.util.Pager;
+import com.one.s1.util.Pager3;
 import com.one.s1.util.PassingNum;
 
 
@@ -173,14 +174,14 @@ public class ProductService {
 		return productDAO.category();
 	}
 	
-/*
-	public List<ProductDTO> sellList(Pager pager) throws Exception {
+
+	public List<ProductDTO> sellList(Pager3 pager) throws Exception {
 		pager.makeRow();
 
-		pager.makeNum(productDAO.total2(pager));
+		pager.makeNum(productDAO.sellProductListTotal(pager));
 		return productDAO.sellList(pager);
 	}
-*/
+
 	
 	public ProductDTO detail(ProductDTO productDTO) throws Exception {
 		int result = productDAO.detailHit(productDTO);

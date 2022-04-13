@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.one.s1.product.ProductDAO;
+import com.one.s1.product.ProductDTO;
 import com.one.s1.util.FileManager;
+import com.one.s1.util.Pager;
 
 
 @Service
@@ -16,6 +19,22 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	@Autowired
 	private FileManager fileManager;
+	@Autowired
+	private ProductDAO productDAO;
+	
+	
+	
+	//판매자탭입니다.
+	
+	/*
+	 * public List<ProductDTO> list(Pager pager) throws Exception { pager.makeRow();
+	 * 
+	 * pager.makeNum(productDAO.total(pager)); return productDAO.list(pager); }
+	 */
+	
+	//(끝)판매자탭입니다.
+	
+	
 	
 	
 	public int update(MemberDTO memberDTO) throws Exception {

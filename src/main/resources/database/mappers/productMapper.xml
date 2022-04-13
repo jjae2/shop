@@ -356,27 +356,17 @@
 		WHERE R between #{startRow} and #{lastRow}
  	</select>
  	
- 	 	<select id="sellList" parameterType="ProductDTO" resultType="ProductDTO">
+ 	 	<select id="sellList" parameterType="pager" resultType="ProductDTO">
   		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
 		        (SELECT * FROM PRODUCT WHERE 
 		        	PRODUCT_NUM>0 
 		        	and 
-		        	<choose>
-		        		<when test="kind=='col1'">
-		        			PRODUCT_NAME
-		        		</when>
-		        		<when test="kind =='col2'">
-		        			CONTENT
-		        		</when>
-		        		<otherwise>
-		        			ID
-		        		</otherwise>
-		        	</choose>	
-		        	LIKE '%'||#{search}||'%'
-		            ORDER BY PRODUCT_NUM DESC
+					PRODUCT_NAME LIKE '%'||#{search}||'%'
 		            AND
 		            ID = #{id}
+		            ORDER BY PRODUCT_NUM DESC
+
 		         ) B
 		     )
 		WHERE R between #{startRow} and #{lastRow}
@@ -402,7 +392,7 @@
         	LIKE '%'||#{search}||'%' 
  	</select>
 		
-		<select id="total2" resultType="Long" parameterType="Pager">
+	<select id="total2" resultType="Long" parameterType="Pager">
  		SELECT COUNT(PRODUCT_NUM) FROM PRODUCT
  		WHERE
  			PRODUCT_NUM>0 
@@ -420,6 +410,17 @@
 		     	</otherwise>
 		     </choose>	 -->
         	PRODUCT_NAME LIKE '%'||#{search}||'%' 
+ 	</select>
+ 	
+ 	
+ 	<select id="sellProductListTotal" resultType="Long" parameterType="Pager3">
+ 		SELECT count(rownum) FROM PRODUCT
+ 		WHERE
+ 			PRODUCT_NUM>0 
+ 			and
+ 			ID = #{id}
+		    and
+			PRODUCT_NAME LIKE '%'||#{search}||'%' 
  	</select>	
 		
  	<update id="update" parameterType="ProductDTO">

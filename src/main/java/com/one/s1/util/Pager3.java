@@ -227,7 +227,39 @@ public class Pager3 extends Pager{
 		this.sale = sale;
 	}
 
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 	
+	private String search;
+	private String kind;
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getSearch() {
+		// 검색어가 없으면 search=null
+		if (this.search == null) {
+			this.search = "";
+		}
+//		this.search="%"+this.search+"%";
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}	
 	
 	
 

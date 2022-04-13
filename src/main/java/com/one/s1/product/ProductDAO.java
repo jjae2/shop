@@ -9,6 +9,7 @@ import com.one.s1.review.ReviewDTO;
 import com.one.s1.members.MemberDTO;
 import com.one.s1.product.CategoryDTO;
 import com.one.s1.util.Pager;
+import com.one.s1.util.Pager3;
 import com.one.s1.util.PassingNum;
 
 @Repository
@@ -99,7 +100,7 @@ public class ProductDAO {
 	}
 
 	// sellList 판매자 상품 목록
-	public List<ProductDTO> sellList(Pager pager) throws Exception {
+	public List<ProductDTO> sellList(Pager3 pager) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "sellList", pager);
 	}
 
@@ -129,6 +130,9 @@ public class ProductDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE + "total2", pager);
 	}
-	
+	public Long sellProductListTotal(Pager3 pager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + "sellProductListTotal", pager);
+	}
 	
 }

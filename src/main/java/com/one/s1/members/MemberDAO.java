@@ -6,6 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.one.s1.product.ProductDTO;
+import com.one.s1.util.Pager;
+
 
 
 
@@ -16,6 +19,19 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.one.s1.members.MemberDAO.";
 
+	
+	//판매자탭입니다
+	
+	/*
+	 * public List<ProductDTO> list(Pager pager) throws Exception { return
+	 * sqlSession.selectList(NAMESPACE + "list", pager); }
+	 */
+	
+	
+	
+	
+	//(끝) 판매자탭입니다
+	
 	// UPDATE
 	public int update(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "update", memberDTO);

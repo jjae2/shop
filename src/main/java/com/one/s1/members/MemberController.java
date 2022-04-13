@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.one.s1.util.Pager;
+
 @Controller
 @RequestMapping(value = "/member/*")
 public class MemberController {
@@ -33,7 +35,13 @@ public class MemberController {
 	return "member/sellmain";
 		}
 	
-
+	@RequestMapping(value = "sellmain", method = RequestMethod.GET)
+	public 	String sellmain(MemberDTO memberDTO, ModelAndView mv) throws Exception {
+		
+		
+		
+		return "./member/sellmain";
+	}
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public 	String update(MemberDTO memberDTO, ModelAndView mv) throws Exception {
 		return "./member/update";
