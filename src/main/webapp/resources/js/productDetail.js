@@ -2,9 +2,6 @@
 
 
 const mainImg = document.getElementById("mainImg");
-//const mainImg = document.querySelector("#mainImg");
-//const candidate = document.querySelector("#candi"+num);
-//let num=event.target.getAttribute('data-index');
 const candiList = document.querySelector("#candiList");
 
 function thousands_separators(num)
@@ -35,7 +32,7 @@ const stock_hidden = document.querySelector("#stock_hidden");
 
 //주문 갯수 조절
 quantity_wrap.addEventListener("click", function(event){
-    if(event.target.classList.contains('up')){
+    if(event.target.classList.contlains('up')){
         if(quantity.value>=(Number)(stock_hidden.value)){
             quantity.value =(Number)(stock_hidden.value);
             alert("재고가 부족합니다.");

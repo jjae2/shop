@@ -40,8 +40,8 @@
 <div class="pointdiv">수정 날짜:${R.md}</div>
 
 <c:if test="${member.id eq R.id}">	
-<button class="update" type="button" data-index="${R.review_number}">댓글 수정</button>
-<button class="del" type="button" data-num="${R.review_number}">댓글 삭제</button>
+<button class="update" type="button" data-index="${R.review_number}">리뷰 수정</button>
+<button class="del" type="button" data-num="${R.review_number}">리뷰 삭제</button>
 </c:if>
 <hr>
 

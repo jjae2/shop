@@ -54,6 +54,13 @@
 			<beans:bean
 				class="com.one.s1.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>
+			<interceptor>
+			<mapping path="/member/*" />
+			<exclude-mapping path="/member/join" />
+			<exclude-mapping path="/member/login" />
+			<beans:bean
+				class="com.one.s1.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
 		<interceptor>
 			<mapping path="/admin/*" />
 			<beans:bean

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.one.s1.board.BoardDTO;
 import com.one.s1.util.Pager;
 
-
 @Controller
 @RequestMapping("house/*")
 public class HouseController {
@@ -25,11 +24,11 @@ public class HouseController {
 	private HouseService houseService;
 
 	@GetMapping("list")
-	public ModelAndView list(MultipartFile photo,Pager pager) throws Exception {
-		ModelAndView mv = new ModelAndView();	
+	public ModelAndView list(MultipartFile photo, Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> ar = houseService.list(pager);
 		List<HouseDTO> ar2 = houseService.photolist(photo);
-		Long result= houseService.count();
+		Long result = houseService.count();
 		mv.addObject("count", result);
 		mv.addObject("list", ar);
 		mv.addObject("pl", ar2);
@@ -39,7 +38,7 @@ public class HouseController {
 
 	@GetMapping("detail")
 	public String detail(HouseDTO houseDTO, Model model) throws Exception {
-		
+
 		BoardDTO boardDTO = houseService.detail(houseDTO);
 		model.addAttribute("dto", boardDTO);
 		houseService.hitCount(houseDTO);
@@ -54,9 +53,9 @@ public class HouseController {
 	}
 
 	@PostMapping("add")
-	public ModelAndView add(HouseDTO houseDTO,MultipartFile photo) throws Exception {
+	public ModelAndView add(HouseDTO houseDTO, MultipartFile photo) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		int result = houseService.add(houseDTO,photo);
+		int result = houseService.add(houseDTO, photo);
 		mv.setViewName("redirect:./list");
 		return mv;
 	}
@@ -82,13 +81,14 @@ public class HouseController {
 
 		return "redirect:./list";
 	}
-	//filedelete
+
+	// filedelete
 	@PostMapping("deleteFile")
-	public ModelAndView fileDelete(HouseFileDTO houseFileDTO)throws Exception{
+	public ModelAndView fileDelete(HouseFileDTO houseFileDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(houseFileDTO.getFileNum());
 		int result = houseService.deleteFile(houseFileDTO);
-		
+
 		mv.setViewName("common/ajaxResult");
 		mv.addObject("result", result);
 		return mv;

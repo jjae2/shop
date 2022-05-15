@@ -41,6 +41,8 @@
                     <input type="hidden" name="id" value="">
                     <input type="hidden" name="pw" value="">
                         <a class="css-1gdr9kc ebon26m1" href="#">로그인에 문제가 있으신가요?</a>
+                        <a class="css-lpbwa0 e5voaya3" href="./idFind">아이디 찾기</a>
+                        <a class="css-lpbwa0 e5voaya3" href="./pwFind">비밀번호 찾기</a>
                         <section class="css-1wsvmq e16e5uzo5">
                         <div class="css-h2yjam e16e5uzo3" style="overflow: hidden;"></div>
                     </section>

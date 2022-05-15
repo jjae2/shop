@@ -57,39 +57,6 @@
 		ON (H.NUM =HF.NUM)
 	</select>
 	<resultMap type="HouseDTO" id="listResult">
-     	<id column="num" property="num" />
-		<result column="order_num" property="order_num" />
-		<result column="cart_num" property="cart_num" />
-		<result column="product_num" property="product_num" />
-		<result column="title" property="title" />
-		<result column="id" property="id" />
-		<result column="contents" property="contents" />
-		<result column="cd" property="cd" />
-		<result column="md" property="md" />
-		<result column="hit" property="hit" />
-		<result column="house_type" property="house_type" />
-		<result column="house_space" property="house_space" />
-		<result column="house_style" property="house_style" />  
-       
-       <association property="houseFileDTO" javaType="HouseFileDTO">   
-          <id column="fileNum" property="fileNum"/>
-          <result column="fileName" property="fileName"/>
-          <result column="oriName" property="oriName"/>
-       </association>
-    </resultMap>
-	<select id="count" resultType="Long">
-	select count(num)  from house
-	</select>
-	<select id="detail" parameterType="HouseDTO"
-		resultMap="listResult">
-		SELECT H.*,HF.*
-		FROM HOUSE H
-		LEFT JOIN
-		HOUSEFILE HF
-		ON (H.NUM =HF.NUM)
-		WHERE H.NUM=#{num}
-	</select>
-<!-- 	<resultMap type="HouseDTO" id="detailResult">
 		<id column="num" property="num" />
 		<result column="order_num" property="order_num" />
 		<result column="cart_num" property="cart_num" />
@@ -104,15 +71,27 @@
 		<result column="house_space" property="house_space" />
 		<result column="house_style" property="house_style" />
 
-
-		<collection property="fileDTOs" javaType="List"
-			ofType="HouseFileDTO">
-			<id column="fileNum" property="fileNum" /> 		num은 위에서 써줬기 때문에 안써줘도 된다
+		<association property="houseFileDTO"
+			javaType="HouseFileDTO">
+			<id column="fileNum" property="fileNum" />
 			<result column="fileName" property="fileName" />
 			<result column="oriName" property="oriName" />
-		</collection></resultMap> -->
+		</association>
+	</resultMap>
+	<select id="count" resultType="Long">
+		select count(num) from house
+	</select>
+	<select id="detail" parameterType="HouseDTO"
+		resultMap="listResult">
+		SELECT H.*,HF.*
+		FROM HOUSE H
+		LEFT JOIN
+		HOUSEFILE HF
+		ON (H.NUM
+		=HF.NUM)
+		WHERE H.NUM=#{num}
+	</select>
 
-	
 	<update id="update" parameterType="HouseDTO">
 		UPDATE HOUSE SET
 		TITLE=#{title},CONTENTS=#{contents},HOUSE_TYPE=#{house_type},HOUSE_SPACE=#{house_space},HOUSE_STYLE=#{house_style}
@@ -133,34 +112,33 @@
 	</insert>
 
 	<insert id="add" parameterType="HouseDTO">
-		<selectKey keyProperty="num" order="BEFORE"	resultType="Long">
+		<selectKey keyProperty="num" order="BEFORE"
+			resultType="Long">
 			SELECT HOUSE_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO
 		HOUSE(NUM,ID,ORDER_NUM,CART_NUM,PRODUCT_NUM,TITLE,CONTENTS,CD,MD,HIT,HOUSE_TYPE,HOUSE_SPACE,HOUSE_STYLE)
 		VALUES(#{num},#{id},0,0,0,#{title},#{contents},SYSDATE,null,0,#{house_type},#{house_space},#{house_style})
 	</insert>
-	
-    <select id="listFile" parameterType="BoardDTO" resultType="HouseFileDTO">
-    SELECT * FROM HOUSEFILE
-    WHERE NUM= #{num}
-    </select>
-    
-    
-    <select id="detailFile" resultType="HouseFileDTO" parameterType="HouseFileDTO">
-	SELECT * FROM HOUSEFILE
-	WHERE FILENUM=#{fileNum}
+
+	<select id="listFile" parameterType="BoardDTO"
+		resultType="HouseFileDTO">
+		SELECT * FROM HOUSEFILE
+		WHERE NUM= #{num}
 	</select>
-	
+
+	<select id="detailFile" resultType="HouseFileDTO"
+		parameterType="HouseFileDTO">
+		SELECT * FROM HOUSEFILE
+		WHERE FILENUM=#{fileNum}
+	</select>
+
 	<delete id="deleteFile" parameterType="HouseFileDTO">
- 		DELETE HOUSEFILE WHERE FILENUM=#{fileNum}
- 	</delete>
- 	<update id="hitCount" parameterType="BoardDTO">
- 	UPDATE HOUSE SET HIT = HIT+1
-	WHERE NUM = #{num}
- 	</update>
-	
-
-
+		DELETE HOUSEFILE WHERE FILENUM=#{fileNum}
+	</delete>
+	<update id="hitCount" parameterType="BoardDTO">
+		UPDATE HOUSE SET HIT = HIT+1
+		WHERE NUM = #{num}
+	</update>
 
 </mapper>

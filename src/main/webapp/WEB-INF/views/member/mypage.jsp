@@ -52,6 +52,7 @@
 	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="../scrap/listScrap?id=${member.id}">스크랩 북</a></button>
 	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./update?id=${member.id}">회원정보 수정</a></button>
 	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./updatePw?id=${member.id}">비밀번호 수정</a></button>
+	<button class="_3Z6oR _3AsCW _2tsrJ css-1d3w5wq e1y3odo22"><a href="./delete?id=${member.id}">회원 탈퇴</a></button>
 	</div>
 	
 </body>

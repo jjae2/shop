@@ -6,12 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.one.s1.product.ProductDTO;
-import com.one.s1.util.Pager;
-
-
-
-
 @Repository
 public class MemberDAO {
 
@@ -19,20 +13,6 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.one.s1.members.MemberDAO.";
 
-	
-	//판매자탭입니다
-	
-	/*
-	 * public List<ProductDTO> list(Pager pager) throws Exception { return
-	 * sqlSession.selectList(NAMESPACE + "list", pager); }
-	 */
-	
-	
-	
-	
-	//(끝) 판매자탭입니다
-	
-	// UPDATE
 	public int update(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "update", memberDTO);
 	}
@@ -42,11 +22,15 @@ public class MemberDAO {
 	public int updateA(MemberDTO memberDTO) throws Exception {
 		return sqlSession.update(NAMESPACE + "updateA", memberDTO);
 	}
+	
+	public MemberFileDTO fileList(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"fileList",memberDTO);
+	}
+	
 	public int addFile(MemberFileDTO memberFileDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "addFile", memberFileDTO);
 	}
 	
-	// join 회원가입 폼
 	public int join(MemberDTO memberDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE + "join", memberDTO);
 	}
@@ -63,6 +47,26 @@ public class MemberDAO {
 	}
 	public List<MemberDTO> list()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"list");
+	}
+
+	public int idCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"idCheck", memberDTO);
+	}
+	
+	public int emailCheck(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"emailCheck", memberDTO);
+	}
+	
+	public int delete(MemberDTO memberDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"delete", memberDTO);
+	}
+	
+	public MemberDTO idFind(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"idFind", memberDTO);
+	}
+	
+	public int pwFind(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"pwFind", memberDTO);
 	}
 
 }
