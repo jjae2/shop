@@ -26,23 +26,25 @@
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="1" />
 	</beans:bean>
-	
-	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+
+	<beans:bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"></beans:property>
 	</beans:bean>
-	
+
 	<interceptors>
 		<interceptor>
-			<mapping path="/cart/**"/>
-			<exclude-mapping path="/cart/add"/>
-			<beans:bean id="CartInterceptor" class="com.one.s1.interceptor.CartInterceptor"></beans:bean>
+			<mapping path="/cart/**" />
+			<exclude-mapping path="/cart/add" />
+			<beans:bean id="CartInterceptor"
+				class="com.one.s1.interceptor.CartInterceptor"></beans:bean>
 		</interceptor>
 		<interceptor>
 			<mapping path="/house/delete" />
 			<beans:bean
 				class="com.one.s1.interceptor.WriterInterceptor"></beans:bean>
 		</interceptor>
-			<interceptor>
+		<interceptor>
 			<mapping path="/house/update" />
 			<beans:bean
 				class="com.one.s1.interceptor.WriterInterceptor"></beans:bean>
@@ -54,10 +56,11 @@
 			<beans:bean
 				class="com.one.s1.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>
-			<interceptor>
-			<mapping path="/member/*" />
-			<exclude-mapping path="/member/join" />
-			<exclude-mapping path="/member/login" />
+		<interceptor>
+			<mapping path="/member/mypage" />
+			<mapping path="/member/updatePw" />
+			<mapping path="/member/update" />
+			<mapping path="/member/delete" />
 			<beans:bean
 				class="com.one.s1.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>
@@ -68,14 +71,14 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/member/sellmain" />
-			<beans:bean
-				class="com.one.s1.interceptor.SellInterceptor"></beans:bean>
+			<beans:bean class="com.one.s1.interceptor.SellInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
 
 
-	
-	<context:component-scan base-package="com.one.s1" />
+
+	<context:component-scan
+		base-package="com.one.s1" />
 
 
 

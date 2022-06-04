@@ -144,7 +144,7 @@ public class MemberController {
 			model.addAttribute("path", p);
 			String path = "common/result";
 			return path;
-	}
+		}
 
 
 	@RequestMapping(value = "login", method = RequestMethod.GET)

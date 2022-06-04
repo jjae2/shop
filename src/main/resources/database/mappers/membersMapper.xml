@@ -49,8 +49,7 @@
 	</update>
 	
 	<update id="updatePw" parameterType="MemberDTO">
-		UPDATE MEMBERS SET PW=#{pw}
-		WHERE ID=#{id}
+		UPDATE MEMBERS SET PW=#{pw} WHERE ID=#{id}
 	</update>
 	
 	<select id="list" resultType="MemberDTO">

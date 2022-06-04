@@ -12,7 +12,8 @@ import com.one.s1.members.MemberDTO;
 @Component
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
 
 		MemberDTO memberDTO = (MemberDTO) request.getSession().getAttribute("member");
 		boolean check = true;
@@ -25,11 +26,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			RequestDispatcher view = request.getRequestDispatcher("../WEB-INF/views/common/result.jsp");
 			view.forward(request, response);
 
-			// 2.redirect
-//			response.sendRedirect("../member/login");
 		}
-//			return super.preHandle(request, response, handler);
-			return check;
-		
+
+		return check;
+
 	}
 }

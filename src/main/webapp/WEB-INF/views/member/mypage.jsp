@@ -17,7 +17,7 @@
         <div class="css-5bso4y e1y3odo23">
             <div class="css-1kfo0kb euhjq6q3">
                 <label class="css-ef7ez6 euhjq6q2">프로필</label>
-                <img width=360px height=360px alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
+                <img width=150px height=150px alt="" src="../resources/upload/member/${member.memberFileDTO.fileName}">
             <div class="css-1kfo0kb euhjq6q3">
                 <label class="css-ef7ez6 euhjq6q2">아이디</label>
                  <h2 class="css-1pmd5bp e1y3odo24">${member.id}</h2></div>
